@@ -1,0 +1,294 @@
+codigo,generico,concepto,id_mensual,id_quincenal
+general,Índice general,,865586,821908
+001,Arroz,04 Arroz y cereales preparados,865610,821932
+002,Botanas elaboradas con cereales,01 Tortillas y derivados del maíz,865591,821913
+003,Cereales en hojuelas,04 Arroz y cereales preparados,865611,821933
+004,Galletas,"03 Galletas, pastas y harinas de trigo",865603,821925
+005,Harinas de trigo,"03 Galletas, pastas y harinas de trigo",865606,821928
+006,Maíz,01 Tortillas y derivados del maíz,865592,821914
+007,Masa y harinas de maíz,01 Tortillas y derivados del maíz,865593,821915
+008,Pan blanco,02 Pan,865597,821919
+009,Pan de caja,02 Pan,865598,821920
+010,Pan dulce,02 Pan,865599,821921
+011,Pasta para sopa,"03 Galletas, pastas y harinas de trigo",865607,821929
+012,"Pasteles, pastelillos y pan dulce empaquetado",02 Pan,865600,821922
+013,Pastelillos y pasteles a granel,02 Pan,865601,821923
+014,Tortilla de maíz,01 Tortillas y derivados del maíz,865594,821916
+015,Tortillas de harina de trigo,"03 Galletas, pastas y harinas de trigo",865608,821930
+016,Tostadas,01 Tortillas y derivados del maíz,865595,821917
+017,Carne de cerdo,06 Carne y vísceras de cerdo,865618,821940
+018,Carne de res,07 Carne y vísceras de res,865625,821947
+019,"Carnes secas, procesadas y otros embutidos","08 Carnes frías, secas y embutidos",865633,821955
+020,Chorizo,"08 Carnes frías, secas y embutidos",865634,821956
+021,Jamón,"08 Carnes frías, secas y embutidos",865635,821957
+022,Pollo,05 Carne de ave,865614,821936
+023,Salchichas,"08 Carnes frías, secas y embutidos",865636,821958
+024,Tocino,"08 Carnes frías, secas y embutidos",865637,821959
+025,Vísceras de res,07 Carne y vísceras de res,865631,821953
+026,Atún y sardina en lata,10 Pescados y mariscos en conserva,865643,821965
+027,Camarón,09 Pescados y mariscos,865640,821962
+028,Pescado,09 Pescados y mariscos,865641,821963
+029,Otros pescados y mariscos en conserva,10 Pescados y mariscos en conserva,865644,821966
+030,Crema y otros productos a base de leche,13 Derivados de leche,865654,821976
+031,Huevo,14 Huevo,865664,821986
+032,Leche en polvo,12 Leche procesada,865650,821972
+033,Leche evaporada y condensada,12 Leche procesada,865651,821973
+034,Leche pasteurizada y fresca,11 Leche pasteurizada y fresca,865647,821969
+035,Leches de origen vegetal,11 Leche pasteurizada y fresca,865648,821970
+036,Queso amarillo,13 Derivados de leche,865655,821977
+037,Queso fresco,13 Derivados de leche,865656,821978
+038,Queso manchego y Chihuahua,13 Derivados de leche,865657,821979
+039,Queso Oaxaca y asadero,13 Derivados de leche,865658,821980
+040,Otros quesos,13 Derivados de leche,865659,821981
+041,Yogurt,13 Derivados de leche,865660,821982
+042,Aceites y grasas vegetales comestibles,15 Aceites y grasas vegetales comestibles,865667,821989
+043,Manteca de cerdo,06 Carne y vísceras de cerdo,865623,821945
+044,Mantequilla,13 Derivados de leche,865661,821983
+045,Aguacate,16 Frutas frescas,865670,821992
+046,Durazno,16 Frutas frescas,865671,821993
+047,Guayaba,16 Frutas frescas,865672,821994
+048,Limón,16 Frutas frescas,865673,821995
+049,Manzana,16 Frutas frescas,865674,821996
+050,Melón,16 Frutas frescas,865675,821997
+051,Naranja,16 Frutas frescas,865676,821998
+052,Papaya,16 Frutas frescas,865677,821999
+053,Pera,16 Frutas frescas,865678,822000
+054,Piña,16 Frutas frescas,865679,822001
+055,Plátanos,16 Frutas frescas,865680,822002
+056,Sandía,16 Frutas frescas,865681,822003
+057,Uva,16 Frutas frescas,865682,822004
+058,Otras conservas de frutas,19 Frutas y legumbres procesadas,865709,822031
+059,Otras frutas,16 Frutas frescas,865683,822005
+060,Calabacita,17 Hortalizas frescas,865688,822010
+061,Cebolla,17 Hortalizas frescas,865689,822011
+062,Chayote,17 Hortalizas frescas,865690,822012
+063,Chile poblano,17 Hortalizas frescas,865691,822013
+064,Chile seco,18 Legumbres secas,865705,822027
+065,Chile serrano,17 Hortalizas frescas,865692,822014
+066,Chiles envasados,19 Frutas y legumbres procesadas,865710,822032
+067,Ejotes,17 Hortalizas frescas,865693,822015
+068,Frijol,18 Legumbres secas,865706,822028
+069,Frijol procesado,19 Frutas y legumbres procesadas,865711,822033
+070,Jitomate,17 Hortalizas frescas,865694,822016
+071,Lechuga y col,17 Hortalizas frescas,865695,822017
+072,Nopales,17 Hortalizas frescas,865696,822018
+073,Papa y otros tubérculos,17 Hortalizas frescas,865697,822019
+074,Papas fritas,24 Chocolates y golosinas,865733,822055
+075,Pepino,17 Hortalizas frescas,865698,822020
+076,Tomate verde,17 Hortalizas frescas,865699,822021
+077,Verduras envasadas,19 Frutas y legumbres procesadas,865712,822034
+078,Zanahoria,17 Hortalizas frescas,865700,822022
+079,Otras legumbres secas,18 Legumbres secas,865707,822029
+080,Otras verduras y legumbres,17 Hortalizas frescas,865701,822023
+081,Otros chiles frescos,17 Hortalizas frescas,865702,822024
+082,Azúcar,20 Azúcar,865718,822040
+083,Chocolate líquido y para preparar bebida,24 Chocolates y golosinas,865734,822056
+084,Chocolate y productos de confitería,24 Chocolates y golosinas,865735,822057
+085,"Gelatina, miel y mermeladas",24 Chocolates y golosinas,865736,822058
+086,"Helados, nieves y paletas de hielo",13 Derivados de leche,865662,821984
+087,"Cilantro, epazote y perejil",17 Hortalizas frescas,865703,822025
+088,Concentrados de pollo y sal,23 Condimentos,865729,822051
+089,Gelatina en polvo,24 Chocolates y golosinas,865737,822059
+090,Leche maternizada y alimentos para bebé,12 Leche procesada,865652,821974
+091,Mayonesa y mostaza,23 Condimentos,865730,822052
+092,Moles y salsas,19 Frutas y legumbres procesadas,865713,822035
+093,Sopas instantáneas y puré de tomate,19 Frutas y legumbres procesadas,865714,822036
+094,Otros condimentos,23 Condimentos,865731,822053
+095,Jugos o néctares envasados,19 Frutas y legumbres procesadas,865715,822037
+096,Café soluble,21 Café,865720,822042
+097,Café tostado,21 Café,865721,822043
+098,Té,21 Café,865722,822044
+099,Agua embotellada,22 Refrescos envasados y agua embotellada,865724,822046
+100,Refrescos envasados,22 Refrescos envasados y agua embotellada,865725,822047
+101,Bebidas energéticas,22 Refrescos envasados y agua embotellada,865726,822048
+102,Concentrados para refrescos,24 Chocolates y golosinas,865738,822060
+103,Brandy,27 Vinos y licores,865750,822072
+104,Ron,27 Vinos y licores,865751,822073
+105,Tequila,27 Vinos y licores,865752,822074
+106,Otros licores,27 Vinos y licores,865753,822075
+107,Vino de mesa,27 Vinos y licores,865754,822076
+108,Cerveza,26 Cerveza,865748,822070
+109,Cigarrillos,28 Cigarrillos,865757,822079
+110,Blusas y playeras para mujer,31 Blusas y ropa interior para mujer,865771,822093
+111,"Calcetas, medias y pantimedias",31 Blusas y ropa interior para mujer,865772,822094
+112,Calcetines y calcetas para hombre,29 Camisas y ropa interior para hombre,865762,822084
+113,Calcetines y calcetas para niños,34 Ropa para niños,865781,822103
+114,Camisas y playeras para hombre,29 Camisas y ropa interior para hombre,865763,822085
+115,Camisas y playeras para niños,34 Ropa para niños,865782,822104
+116,Pantalones para hombre,"30 Pantalones, trajes y otras prendas para hombre",865766,822088
+117,Pantalones para mujer,32 Pantalones y otras prendas para mujer,865775,822097
+118,Pantalones para niño,34 Ropa para niños,865783,822105
+119,Ropa de abrigo,36 Ropa de abrigo,865792,822114
+120,Ropa interior para hombre,29 Camisas y ropa interior para hombre,865764,822086
+121,Ropa interior para mujer,31 Blusas y ropa interior para mujer,865773,822095
+122,"Ropa interior para niños, niñas y adolescentes",34 Ropa para niños,865784,822106
+123,Ropa para bebés,35 Ropa para bebés,865789,822111
+124,Traje para hombre,"30 Pantalones, trajes y otras prendas para hombre",865767,822089
+125,Uniformes escolares,37 Uniformes escolares,865797,822119
+126,Vestidos y faldas para mujer,"33 Vestidos, faldas y conjuntos para mujer",865777,822099
+127,"Vestidos, faldas y pantalones para niñas",34 Ropa para niños,865787,822109
+128,Otras prendas de vestir para hombre,"30 Pantalones, trajes y otras prendas para hombre",865768,822090
+129,Otras prendas de vestir para mujer,"33 Vestidos, faldas y conjuntos para mujer",865778,822100
+130,Complementos de vestir,40 Accesorios personales,865812,822134
+131,Servicio de lavandería,39 Limpieza vestido y mantenimiento de calzado,865809,822131
+132,Servicio de tintorería,39 Limpieza vestido y mantenimiento de calzado,865810,822132
+133,Sandalias y huaraches,38 Calzado,865801,822123
+134,Zapatos para hombre,38 Calzado,865802,822124
+135,Zapatos para mujer,38 Calzado,865803,822125
+136,Zapatos para niños y niñas,38 Calzado,865804,822126
+137,Zapatos tenis,38 Calzado,865805,822127
+138,Renta de vivienda,41 Vivienda alquilada,865819,822141
+139,Vivienda propia,42 Vivienda propia,865821,822143
+140,Productos para reparación menor de la vivienda,42 Vivienda propia,865822,822144
+141,"Servicios para el mantenimiento, reparación y seguridad de la vivienda",46 Servicios de la vivienda,865837,822159
+142,Derechos por el suministro de agua,42 Vivienda propia,865823,822145
+143,Otros servicios relacionados con la vivienda,46 Servicios de la vivienda,865838,822160
+144,Electricidad,43 Electricidad,865827,822149
+145,Gas doméstico LP,44 Gas doméstico,865829,822151
+146,Gas doméstico natural,44 Gas doméstico,865830,822152
+147,Colchones,48 Muebles de madera,865847,822169
+148,Comedores y antecomedores,48 Muebles de madera,865848,822170
+149,Muebles diversos para el hogar,48 Muebles de madera,865849,822171
+150,Muebles para cocina,47 Muebles de cocina,865844,822166
+151,Recámaras,48 Muebles de madera,865850,822172
+152,Salas,48 Muebles de madera,865851,822173
+153,Colchas y cobijas,53 Accesorios textiles de uso en el hogar,865884,822206
+154,Sábanas,53 Accesorios textiles de uso en el hogar,865885,822207
+155,"Toallas, cortinas y otros blancos",53 Accesorios textiles de uso en el hogar,865886,822208
+156,Aparatos de aire acondicionado,49 Aparatos eléctricos,865854,822176
+157,Aspiradoras y otros aparatos para el hogar,49 Aparatos eléctricos,865855,822177
+158,Estufas,47 Muebles de cocina,865845,822167
+159,Horno de microondas,49 Aparatos eléctricos,865856,822178
+160,Lavadoras de ropa,49 Aparatos eléctricos,865857,822179
+161,Refrigeradores,49 Aparatos eléctricos,865858,822180
+162,"Cafeteras, tostadoras, ventiladores y otros electrodomésticos pequeños",49 Aparatos eléctricos,865859,822181
+163,Licuadoras,49 Aparatos eléctricos,865860,822182
+164,Planchas eléctricas,49 Aparatos eléctricos,865861,822183
+165,Artículos y utensilios para el hogar,52 Utensilios domésticos,865878,822200
+166,Baterías de cocina,52 Utensilios domésticos,865879,822201
+167,"Loza, cristalería y cubiertos",52 Utensilios domésticos,865880,822202
+168,Utensilios de plástico para el hogar,52 Utensilios domésticos,865881,822203
+169,Focos,51 Accesorios domésticos,865871,822193
+170,Herramientas y equipo para el hogar,51 Accesorios domésticos,865872,822194
+171,Pilas,51 Accesorios domésticos,865873,822195
+172,Artículos desechables y no duraderos,51 Accesorios domésticos,865874,822196
+173,Blanqueadores,54 Detergentes y productos similares,865889,822211
+174,Cerillos,51 Accesorios domésticos,865875,822197
+175,Desodorantes ambientales,54 Detergentes y productos similares,865890,822212
+176,Detergentes,54 Detergentes y productos similares,865891,822213
+177,"Escobas, fibras y estropajos",52 Utensilios domésticos,865882,822204
+178,Jabón para lavar,54 Detergentes y productos similares,865892,822214
+179,Plaguicidas,54 Detergentes y productos similares,865893,822215
+180,Servilletas de papel,60 Artículos de papel para higiene personal,865945,822267
+181,Suavizantes y limpiadores,54 Detergentes y productos similares,865894,822216
+182,Velas y veladoras,51 Accesorios domésticos,865876,822198
+183,Servicio doméstico,46 Servicios de la vivienda,865839,822161
+184,Analgésicos,55 Medicamentos,865899,822221
+185,Antibióticos,55 Medicamentos,865900,822222
+186,Antigripales,55 Medicamentos,865901,822223
+187,Antiinflamatorios,55 Medicamentos,865902,822224
+188,Cardiovasculares,55 Medicamentos,865903,822225
+189,Dermatológicos,55 Medicamentos,865904,822226
+190,Expectorantes y descongestivos,55 Medicamentos,865905,822227
+191,Gastrointestinales,55 Medicamentos,865906,822228
+192,Medicamentos para alergias,55 Medicamentos,865907,822229
+193,Medicamentos para diabetes,55 Medicamentos,865908,822230
+194,Medicinas homeopáticas y naturistas,55 Medicamentos,865909,822231
+195,Nutricionales,55 Medicamentos,865910,822232
+196,Otros medicamentos,55 Medicamentos,865911,822233
+197,Material de curación,55 Medicamentos,865914,822236
+198,"Lentes, aparatos para sordera y ortopédicos",56 Aparatos médicos,865916,822238
+199,Consulta médica,57 Servicios médicos,865919,822241
+200,Consulta y prótesis dental,57 Servicios médicos,865922,822244
+201,Atención médica durante el parto,57 Servicios médicos,865923,822245
+202,Hospitalización general,57 Servicios médicos,865924,822246
+203,Hospitalización parto,57 Servicios médicos,865925,822247
+204,Operación quirúrgica,57 Servicios médicos,865926,822248
+205,Análisis clínicos,57 Servicios médicos,865927,822249
+206,Automóviles,63 Vehículos automotores y de pedal,865967,822289
+207,Motocicletas,63 Vehículos automotores y de pedal,865968,822290
+208,Bicicletas,63 Vehículos automotores y de pedal,865969,822291
+209,Acumuladores,65 Refacciones y accesorios automotrices,865976,822298
+210,Neumáticos,65 Refacciones y accesorios automotrices,865977,822299
+211,"Partes, accesorios y otras refacciones para vehículos",65 Refacciones y accesorios automotrices,865978,822300
+212,Aceites lubricantes,64 Gasolinas y aceites lubricantes,865972,822294
+213,Gasolina de alto octanaje,64 Gasolinas y aceites lubricantes,865973,822295
+214,Gasolina de bajo octanaje,64 Gasolinas y aceites lubricantes,865974,822296
+215,Lavado y engrasado de automóvil,66 Servicios para el automóvil,865980,822302
+216,Mantenimiento de automóvil,66 Servicios para el automóvil,865981,822303
+217,Reparación de automóvil,66 Servicios para el automóvil,865982,822304
+218,Cuotas de autopistas,66 Servicios para el automóvil,865983,822305
+219,Estacionamiento,66 Servicios para el automóvil,865984,822306
+220,Trámites vehiculares,66 Servicios para el automóvil,865985,822307
+221,Metro o transporte eléctrico,61 Transporte público urbano,865955,822277
+222,Autobús foráneo,62 Transporte público foráneo,865962,822284
+223,Autobús urbano,61 Transporte público urbano,865956,822278
+224,Colectivo,61 Transporte público urbano,865957,822279
+225,Taxi,61 Transporte público urbano,865958,822280
+226,Transporte escolar,61 Transporte público urbano,865959,822281
+227,Transporte aéreo,62 Transporte público foráneo,865963,822285
+228,Equipo terminal de comunicación,49 Aparatos eléctricos,865862,822184
+229,Computadoras,50 Aparatos electrónicos,865865,822187
+230,"Reproductores de audio y video, y sus accesorios",50 Aparatos electrónicos,865866,822188
+231,Televisores,50 Aparatos electrónicos,865867,822189
+232,Servicios de telefonía fija,45 Servicio telefónico,865834,822156
+233,Servicio de telefonía móvil,45 Servicio telefónico,865835,822157
+234,Servicio de internet,71 Otros servicios de esparcimiento,866013,822335
+235,"Paquetes de internet, telefonía y televisión de paga",71 Otros servicios de esparcimiento,866014,822336
+236,Servicio de televisión de paga,71 Otros servicios de esparcimiento,866015,822337
+237,Streaming de películas y música,71 Otros servicios de esparcimiento,866016,822338
+238,Material y aparatos fotográficos,73 Otros artículos de esparcimiento,866027,822349
+239,"Consolas, discos y descargas de videojuegos",73 Otros artículos de esparcimiento,866028,822350
+240,Juguetes y juegos de mesa,73 Otros artículos de esparcimiento,866029,822351
+241,Artículos deportivos,73 Otros artículos de esparcimiento,866030,822352
+242,Plantas y flores,73 Otros artículos de esparcimiento,866031,822353
+243,Alimento para mascotas,73 Otros artículos de esparcimiento,866032,822354
+244,Servicios para mascotas,71 Otros servicios de esparcimiento,866017,822339
+245,Club deportivo,71 Otros servicios de esparcimiento,866018,822340
+246,Servicios recreativos y centros nocturnos,71 Otros servicios de esparcimiento,866019,822341
+247,"Instrumentos musicales, y descargas de audio y video",73 Otros artículos de esparcimiento,866033,822355
+248,Cine,71 Otros servicios de esparcimiento,866020,822342
+249,Museos y sitios culturales,71 Otros servicios de esparcimiento,866021,822343
+250,Paquetes para fiesta,71 Otros servicios de esparcimiento,866022,822344
+251,Libros de texto,68 Libros,866001,822323
+252,Otros libros,68 Libros,866002,822324
+253,Periódicos y revistas,72 Periódicos y revistas,866025,822347
+254,Material escolar,69 Material escolar,866004,822326
+255,Servicios turísticos en paquete,70 Hoteles y gastos turísticos,866010,822332
+256,Preescolar,67 Educación privada,865991,822313
+257,Primaria,67 Educación privada,865992,822314
+258,Secundaria,67 Educación privada,865993,822315
+259,Preparatoria,67 Educación privada,865994,822316
+260,Universidad,67 Educación privada,865995,822317
+261,Carrera corta,67 Educación privada,865996,822318
+262,Enseñanza adicional,67 Educación privada,865997,822319
+263,Barbacoa o birria,25 Alimentos cocinados fuera de casa,865740,822062
+264,Carnitas,25 Alimentos cocinados fuera de casa,865741,822063
+265,"Loncherías, fondas, torterías y taquerías","74 Restaurantes, bares y similares",866038,822360
+266,Pizzas,25 Alimentos cocinados fuera de casa,865742,822064
+267,Pollos rostizados,25 Alimentos cocinados fuera de casa,865743,822065
+268,Restaurantes y similares,"74 Restaurantes, bares y similares",866039,822361
+269,Otros alimentos cocinados,25 Alimentos cocinados fuera de casa,865744,822066
+270,Hoteles,70 Hoteles y gastos turísticos,866011,822333
+271,Seguro de automóvil,66 Servicios para el automóvil,865986,822308
+272,Aparatos eléctricos para el cuidado personal,49 Aparatos eléctricos,865863,822185
+273,Artículos de maquillaje,59 Artículos para el cuidado personal,865935,822257
+274,Crema y productos para higiene dental,59 Artículos para el cuidado personal,865936,822258
+275,Cremas para la piel,59 Artículos para el cuidado personal,865937,822259
+276,Desodorantes personales,59 Artículos para el cuidado personal,865938,822260
+277,Jabón de tocador,59 Artículos para el cuidado personal,865939,822261
+278,Lociones y perfumes,59 Artículos para el cuidado personal,865940,822262
+279,Navajas y máquinas de afeitar,59 Artículos para el cuidado personal,865941,822263
+280,Pañales,60 Artículos de papel para higiene personal,865946,822268
+281,Papel higiénico y pañuelos desechables,60 Artículos de papel para higiene personal,865947,822269
+282,Productos para el cabello,59 Artículos para el cuidado personal,865942,822264
+283,Toallas sanitarias,60 Artículos de papel para higiene personal,865950,822272
+284,Otros artículos de tocador,59 Artículos para el cuidado personal,865943,822265
+285,Corte de cabello,58 Servicios para el cuidado personal,865931,822253
+286,Sala de belleza y masajes,58 Servicios para el cuidado personal,865932,822254
+287,"Relojes, joyas y bisutería",40 Accesorios personales,865813,822135
+288,Bolsas y mochilas,40 Accesorios personales,865814,822136
+289,Guarderías y estancias infantiles,67 Educación privada,865998,822320
+290,Expedición de documentos del sector público,76 Servicios diversos,866046,822368
+291,Servicios funerarios,76 Servicios diversos,866047,822369
+292,Servicios profesionales,75 Servicios profesionales,866044,822366

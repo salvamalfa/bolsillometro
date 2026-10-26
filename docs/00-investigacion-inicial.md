@@ -61,7 +61,8 @@ Las otras fuentes sirven menos para esto:
 - **SIE de Banxico.** Solo tiene agregados (SP1, SP8664, subyacente y componentes), no genéricos, porque desde 2011 la facultad de elaborar los índices es de INEGI ([Banxico SIE](https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?sector=8&accion=consultarDirectorioCuadros&locale=es)).
 - **R.** `inegiR` salió de CRAN el 1-jun-2026 ([CRAN](https://cran.r-project.org/package=inegiR)).
 - **Python.** Existen `INEGIpy` y `pyinegi` ([PyPI INEGIpy](https://pypi.org/project/INEGIpy/)).
-- **Código reutilizable.** El repo `2kom/replica-inpc-mx` (MIT, 365 commits) ya replica el INPC con canastas encadenadas y convierte los ponderadores a CSV. Puedes reutilizarlo en lugar de empezar de cero ([GitHub](https://github.com/2kom/replica-inpc-mx)).
+
+Bolsillómetro no depende de ninguna de estas librerías ni de otros repos del INPC: el pipeline se construye desde cero sobre la exportación de INEGI.
 
 El riesgo es que la exportación no está documentada como API y ya existe una ruta `indicesdepreciosv2`. La defensa es versionar los CSV en el repo y validar cada corrida contra el INPC publicado.
 
@@ -287,7 +288,7 @@ Los envoltorios de datos ya son commodity. Lo diferenciador sería el mapeo a ge
 | Kukk et al. (Estonia) | Inflación personal con datos bancarios | La cifra predice decisiones financieras; sirve como referencia para inversiones |
 | Truflation / PriceStats | Índices privados de precios, negocio B2B | Al consumidor se llega gratis; el dinero está en B2B |
 | Argentina 2011 / Turquía 2022 | Índices alternativos castigados | Usar precios de INEGI elimina el conflicto |
-| Dahafla, guita, replica-inpc-mx | Piezas sueltas con tracción nula | Hay código reutilizable; tú los integrarías y les darías difusión |
+| Dahafla, guita, replica-inpc-mx | Piezas sueltas con tracción nula | El nicho sigue vacío; Bolsillómetro se construye desde cero e integra todo en un solo proyecto |
 | Hacker News | "Personal inflation": ≤2 puntos; "pedir aumento por inflación": 55 puntos y 101 comentarios | Interesa más la negociación salarial que la medición abstracta ([HN](https://news.ycombinator.com/item?id=31166006)) |
 
 ## Bolsillómetro y Canastómetro encabezan los nombres
@@ -382,7 +383,7 @@ El episodio de Morodo te sirve como una pregunta abierta, no como especificació
 
 | # | Paso | Cuándo |
 |---|---|---|
-| 1 | Crear el repo con licencia permisiva, el pipeline `inpc-data` (POST a `Exportacion.aspx` + XLSX de ponderadores) y la prueba que reconstruye el INPC ±0.001 desde ago-2024; evaluar si conviene reutilizar `replica-inpc-mx` | Semanas 1–2 |
+| 1 | Crear el repo con licencia permisiva, el pipeline `inpc-data` (POST a `Exportacion.aspx` + XLSX de ponderadores) y la prueba que reconstruye el INPC ±0.001 desde ago-2024, todo construido desde cero (hecho: fase 0) | Semanas 1–2 |
 | 2 | Implementar las fórmulas 1–7 con incidencias, reglas para vivienda propia y "gasto no cubierto", y elección de ciudad (por ejemplo, Pachuca) | Semanas 2–4 |
 | 3 | Publicar el MVP en modo presupuesto declarado como web estática que calcula en el navegador, con explicación de qué movió tu cifra y comparativo de rendimiento real | Mes 2 |
 | 4 | Probarlo con 20–50 personas de perfiles distintos (rentan o son dueños, tienen auto o usan transporte público, escuela privada o pública) y medir si entienden la diferencia contra el INPC | Mes 2 |

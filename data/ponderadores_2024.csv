@@ -1,0 +1,293 @@
+codigo,generico,division,grupo,clase,durabilidad,ponderador
+001,Arroz,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.1891
+002,Botanas elaboradas con cereales,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.0786
+003,Cereales en hojuelas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.1386
+004,Galletas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.2348
+005,Harinas de trigo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.0384
+006,Maíz,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.2441
+007,Masa y harinas de maíz,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.1312
+008,Pan blanco,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.269
+009,Pan de caja,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.1956
+010,Pan dulce,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.5795
+011,Pasta para sopa,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.1683
+012,"Pasteles, pastelillos y pan dulce empaquetado",01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.0671
+013,Pastelillos y pasteles a granel,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.077
+014,Tortilla de maíz,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,1.8672
+015,Tortillas de harina de trigo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.1037
+016,Tostadas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.1 Cereales y productos a base de cereales,No duradero,0.1093
+017,Carne de cerdo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.2 Animales vivos, carne y otras partes comestibles de animales terrestres",No duradero,0.9322
+018,Carne de res,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.2 Animales vivos, carne y otras partes comestibles de animales terrestres",No duradero,1.7028
+019,"Carnes secas, procesadas y otros embutidos",01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.2 Animales vivos, carne y otras partes comestibles de animales terrestres",No duradero,0.2049
+020,Chorizo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.2 Animales vivos, carne y otras partes comestibles de animales terrestres",No duradero,0.2666
+021,Jamón,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.2 Animales vivos, carne y otras partes comestibles de animales terrestres",No duradero,0.3114
+022,Pollo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.2 Animales vivos, carne y otras partes comestibles de animales terrestres",No duradero,1.7883
+023,Salchichas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.2 Animales vivos, carne y otras partes comestibles de animales terrestres",No duradero,0.1577
+024,Tocino,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.2 Animales vivos, carne y otras partes comestibles de animales terrestres",No duradero,0.0238
+025,Vísceras de res,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.2 Animales vivos, carne y otras partes comestibles de animales terrestres",No duradero,0.0336
+026,Atún y sardina en lata,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.3 Pescados y otros mariscos,No duradero,0.1277
+027,Camarón,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.3 Pescados y otros mariscos,No duradero,0.0872
+028,Pescado,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.3 Pescados y otros mariscos,No duradero,0.2848
+029,Otros pescados y mariscos en conserva,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.3 Pescados y otros mariscos,No duradero,0.0454
+030,Crema y otros productos a base de leche,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.1761
+031,Huevo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,1.0237
+032,Leche en polvo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.0505
+033,Leche evaporada y condensada,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.0195
+034,Leche pasteurizada y fresca,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.9891
+035,Leches de origen vegetal,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.0198
+036,Queso amarillo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.0191
+037,Queso fresco,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.2592
+038,Queso manchego y Chihuahua,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.0967
+039,Queso Oaxaca y asadero,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.2097
+040,Otros quesos,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.1988
+041,Yogurt,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.4 Leche, otros productos lácteos y huevos",No duradero,0.1273
+042,Aceites y grasas vegetales comestibles,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.5 Aceites y grasas,No duradero,0.3499
+043,Manteca de cerdo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.5 Aceites y grasas,No duradero,0.0262
+044,Mantequilla,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.5 Aceites y grasas,No duradero,0.0293
+045,Aguacate,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.2123
+046,Durazno,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0125
+047,Guayaba,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0598
+048,Limón,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0981
+049,Manzana,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.2066
+050,Melón,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0491
+051,Naranja,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.1875
+052,Papaya,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0867
+053,Pera,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0282
+054,Piña,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0588
+055,Plátanos,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.2634
+056,Sandía,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0385
+057,Uva,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0548
+058,Otras conservas de frutas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.0173
+059,Otras frutas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.6 Frutas y frutos secos,No duradero,0.2437
+060,Calabacita,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.1416
+061,Cebolla,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.2399
+062,Chayote,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.1292
+063,Chile poblano,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.051
+064,Chile seco,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.0491
+065,Chile serrano,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.0928
+066,Chiles envasados,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.04
+067,Ejotes,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.0327
+068,Frijol,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.411
+069,Frijol procesado,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.0907
+070,Jitomate,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.7892
+071,Lechuga y col,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.1444
+072,Nopales,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.0724
+073,Papa y otros tubérculos,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.3213
+074,Papas fritas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.0542
+075,Pepino,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.0572
+076,Tomate verde,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.1449
+077,Verduras envasadas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.0732
+078,Zanahoria,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.117
+079,Otras legumbres secas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.092
+080,Otras verduras y legumbres,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.2594
+081,Otros chiles frescos,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.7 Hortalizas, tubérculos, plátanos de cocción y legumbres",No duradero,0.091
+082,Azúcar,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.8 Azúcar, productos para confitería y postres",No duradero,0.2509
+083,Chocolate líquido y para preparar bebida,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.8 Azúcar, productos para confitería y postres",No duradero,0.02
+084,Chocolate y productos de confitería,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.8 Azúcar, productos para confitería y postres",No duradero,0.0459
+085,"Gelatina, miel y mermeladas",01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.8 Azúcar, productos para confitería y postres",No duradero,0.0336
+086,"Helados, nieves y paletas de hielo",01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,"01.1.8 Azúcar, productos para confitería y postres",No duradero,0.0571
+087,"Cilantro, epazote y perejil",01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.9 Alimentos preparados y otros productos alimenticios,No duradero,0.0345
+088,Concentrados de pollo y sal,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.9 Alimentos preparados y otros productos alimenticios,No duradero,0.0523
+089,Gelatina en polvo,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.9 Alimentos preparados y otros productos alimenticios,No duradero,0.0201
+090,Leche maternizada y alimentos para bebé,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.9 Alimentos preparados y otros productos alimenticios,No duradero,0.0673
+091,Mayonesa y mostaza,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.9 Alimentos preparados y otros productos alimenticios,No duradero,0.0731
+092,Moles y salsas,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.9 Alimentos preparados y otros productos alimenticios,No duradero,0.0712
+093,Sopas instantáneas y puré de tomate,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.9 Alimentos preparados y otros productos alimenticios,No duradero,0.0223
+094,Otros condimentos,01 Alimentos y bebidas no alcohólicas,01.1 Alimentos,01.1.9 Alimentos preparados y otros productos alimenticios,No duradero,0.0291
+095,Jugos o néctares envasados,01 Alimentos y bebidas no alcohólicas,01.2 Bebidas no alcohólicas,01.2.1 Jugos de frutas y hortalizas,No duradero,0.1739
+096,Café soluble,01 Alimentos y bebidas no alcohólicas,01.2 Bebidas no alcohólicas,01.2.2 Café y sustitutos de café,No duradero,0.1305
+097,Café tostado,01 Alimentos y bebidas no alcohólicas,01.2 Bebidas no alcohólicas,01.2.2 Café y sustitutos de café,No duradero,0.042
+098,Té,01 Alimentos y bebidas no alcohólicas,01.2 Bebidas no alcohólicas,"01.2.3 Té, yerba mate y otros productos vegetales para infusión",No duradero,0.0302
+099,Agua embotellada,01 Alimentos y bebidas no alcohólicas,01.2 Bebidas no alcohólicas,01.2.5 Agua,No duradero,0.459
+100,Refrescos envasados,01 Alimentos y bebidas no alcohólicas,01.2 Bebidas no alcohólicas,01.2.6 Refrescos,No duradero,1.2335
+101,Bebidas energéticas,01 Alimentos y bebidas no alcohólicas,01.2 Bebidas no alcohólicas,01.2.9 Otras bebidas no alcohólicas,No duradero,0.0177
+102,Concentrados para refrescos,01 Alimentos y bebidas no alcohólicas,01.2 Bebidas no alcohólicas,01.2.9 Otras bebidas no alcohólicas,No duradero,0.0234
+103,Brandy,02 Bebidas alcohólicas y tabaco,02.1 Bebidas alcohólicas,02.1.1 Bebidas destiladas y licores,No duradero,0.0865
+104,Ron,02 Bebidas alcohólicas y tabaco,02.1 Bebidas alcohólicas,02.1.1 Bebidas destiladas y licores,No duradero,0.1643
+105,Tequila,02 Bebidas alcohólicas y tabaco,02.1 Bebidas alcohólicas,02.1.1 Bebidas destiladas y licores,No duradero,0.2953
+106,Otros licores,02 Bebidas alcohólicas y tabaco,02.1 Bebidas alcohólicas,02.1.1 Bebidas destiladas y licores,No duradero,0.0812
+107,Vino de mesa,02 Bebidas alcohólicas y tabaco,02.1 Bebidas alcohólicas,02.1.2 Vino,No duradero,0.2702
+108,Cerveza,02 Bebidas alcohólicas y tabaco,02.1 Bebidas alcohólicas,02.1.3 Cerveza,No duradero,0.7681
+109,Cigarrillos,02 Bebidas alcohólicas y tabaco,02.3 Tabaco,02.3.0 Tabaco,No duradero,0.6243
+110,Blusas y playeras para mujer,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.2173
+111,"Calcetas, medias y pantimedias",03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.0124
+112,Calcetines y calcetas para hombre,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.02
+113,Calcetines y calcetas para niños,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.0266
+114,Camisas y playeras para hombre,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.2859
+115,Camisas y playeras para niños,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.1016
+116,Pantalones para hombre,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.3616
+117,Pantalones para mujer,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.2825
+118,Pantalones para niño,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.1167
+119,Ropa de abrigo,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.3039
+120,Ropa interior para hombre,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.044
+121,Ropa interior para mujer,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.0908
+122,"Ropa interior para niños, niñas y adolescentes",03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.0401
+123,Ropa para bebés,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.1783
+124,Traje para hombre,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.0322
+125,Uniformes escolares,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.1909
+126,Vestidos y faldas para mujer,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.1319
+127,"Vestidos, faldas y pantalones para niñas",03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.2287
+128,Otras prendas de vestir para hombre,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.0247
+129,Otras prendas de vestir para mujer,03 Ropa y calzado,03.1 Ropa,03.1.2 Prendas de vestir,Semiduradero,0.0401
+130,Complementos de vestir,03 Ropa y calzado,03.1 Ropa,03.1.3 Otras prendas y complementos de vestir,Semiduradero,0.0477
+131,Servicio de lavandería,03 Ropa y calzado,03.1 Ropa,"03.1.4 Limpieza, reparación, confección y alquiler de ropa",Servicio,0.1258
+132,Servicio de tintorería,03 Ropa y calzado,03.1 Ropa,"03.1.4 Limpieza, reparación, confección y alquiler de ropa",Servicio,0.0613
+133,Sandalias y huaraches,03 Ropa y calzado,03.2 Calzado,03.2.1 Calzado y otros tipos de calzado,Semiduradero,0.0762
+134,Zapatos para hombre,03 Ropa y calzado,03.2 Calzado,03.2.1 Calzado y otros tipos de calzado,Semiduradero,0.1821
+135,Zapatos para mujer,03 Ropa y calzado,03.2 Calzado,03.2.1 Calzado y otros tipos de calzado,Semiduradero,0.1854
+136,Zapatos para niños y niñas,03 Ropa y calzado,03.2 Calzado,03.2.1 Calzado y otros tipos de calzado,Semiduradero,0.1579
+137,Zapatos tenis,03 Ropa y calzado,03.2 Calzado,03.2.1 Calzado y otros tipos de calzado,Semiduradero,0.6886
+138,Renta de vivienda,"04 Vivienda, agua, electricidad y gas",04.1 Alquileres reales de vivienda,04.1.1 Alquileres reales pagados por los inquilinos de la residencia principal,Servicio,2.7889
+139,Vivienda propia,"04 Vivienda, agua, electricidad y gas",04.2 Alquileres imputados para vivienda,04.2.1 Alquileres imputados de propietarios-ocupantes para residencia principal,Servicio,13.7742
+140,Productos para reparación menor de la vivienda,"04 Vivienda, agua, electricidad y gas","04.3 Mantenimiento, reparación y seguridad de la vivienda",04.3.1 Materiales para el mantenimiento y reparación de la vivienda,No duradero,0.2647
+141,"Servicios para el mantenimiento, reparación y seguridad de la vivienda","04 Vivienda, agua, electricidad y gas","04.3 Mantenimiento, reparación y seguridad de la vivienda","04.3.2 Servicios para el mantenimiento, reparación y seguridad de la vivienda",Servicio,0.2173
+142,Derechos por el suministro de agua,"04 Vivienda, agua, electricidad y gas",04.4 Suministro de agua y servicios diversos relacionados con la vivienda,04.4.1 Suministro de agua,Servicio,0.8198
+143,Otros servicios relacionados con la vivienda,"04 Vivienda, agua, electricidad y gas",04.4 Suministro de agua y servicios diversos relacionados con la vivienda,04.4.4 Otros servicios relacionados con la vivienda,Servicio,0.2999
+144,Electricidad,"04 Vivienda, agua, electricidad y gas","04.5 Electricidad, gas y otros combustibles",04.5.1 Electricidad,Servicio,1.1235
+145,Gas doméstico LP,"04 Vivienda, agua, electricidad y gas","04.5 Electricidad, gas y otros combustibles",04.5.2 Gas,No duradero,1.4661
+146,Gas doméstico natural,"04 Vivienda, agua, electricidad y gas","04.5 Electricidad, gas y otros combustibles",04.5.2 Gas,No duradero,0.1264
+147,Colchones,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.1 Muebles, mobiliario y alfombras sueltas","05.1.1 Muebles, mobiliario y alfombras sueltas",Duradero,0.1633
+148,Comedores y antecomedores,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.1 Muebles, mobiliario y alfombras sueltas","05.1.1 Muebles, mobiliario y alfombras sueltas",Duradero,0.0417
+149,Muebles diversos para el hogar,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.1 Muebles, mobiliario y alfombras sueltas","05.1.1 Muebles, mobiliario y alfombras sueltas",Duradero,0.0469
+150,Muebles para cocina,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.1 Muebles, mobiliario y alfombras sueltas","05.1.1 Muebles, mobiliario y alfombras sueltas",Duradero,0.0304
+151,Recámaras,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.1 Muebles, mobiliario y alfombras sueltas","05.1.1 Muebles, mobiliario y alfombras sueltas",Duradero,0.0788
+152,Salas,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.1 Muebles, mobiliario y alfombras sueltas","05.1.1 Muebles, mobiliario y alfombras sueltas",Duradero,0.0603
+153,Colchas y cobijas,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.2 Textiles para el hogar,05.2.1 Textiles para el hogar,Semiduradero,0.075
+154,Sábanas,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.2 Textiles para el hogar,05.2.1 Textiles para el hogar,Semiduradero,0.0347
+155,"Toallas, cortinas y otros blancos","05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.2 Textiles para el hogar,05.2.1 Textiles para el hogar,Semiduradero,0.0587
+156,Aparatos de aire acondicionado,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.3 Electrodomésticos,"05.3.1 Grandes electrodomésticos, eléctricos o no",Duradero,0.0485
+157,Aspiradoras y otros aparatos para el hogar,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.3 Electrodomésticos,"05.3.1 Grandes electrodomésticos, eléctricos o no",Duradero,0.0405
+158,Estufas,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.3 Electrodomésticos,"05.3.1 Grandes electrodomésticos, eléctricos o no",Duradero,0.0754
+159,Horno de microondas,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.3 Electrodomésticos,"05.3.1 Grandes electrodomésticos, eléctricos o no",Duradero,0.0254
+160,Lavadoras de ropa,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.3 Electrodomésticos,"05.3.1 Grandes electrodomésticos, eléctricos o no",Duradero,0.14
+161,Refrigeradores,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.3 Electrodomésticos,"05.3.1 Grandes electrodomésticos, eléctricos o no",Duradero,0.147
+162,"Cafeteras, tostadoras, ventiladores y otros electrodomésticos pequeños","05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.3 Electrodomésticos,05.3.2 Electrodomésticos pequeños,Semiduradero,0.0589
+163,Licuadoras,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.3 Electrodomésticos,05.3.2 Electrodomésticos pequeños,Semiduradero,0.0333
+164,Planchas eléctricas,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.3 Electrodomésticos,05.3.2 Electrodomésticos pequeños,Semiduradero,0.0119
+165,Artículos y utensilios para el hogar,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.4 Cristalería, vajillas y utensilios para el hogar","05.4.0 Cristalería, vajillas y utensilios para el hogar",Semiduradero,0.0104
+166,Baterías de cocina,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.4 Cristalería, vajillas y utensilios para el hogar","05.4.0 Cristalería, vajillas y utensilios para el hogar",Semiduradero,0.0551
+167,"Loza, cristalería y cubiertos","05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.4 Cristalería, vajillas y utensilios para el hogar","05.4.0 Cristalería, vajillas y utensilios para el hogar",Semiduradero,0.053
+168,Utensilios de plástico para el hogar,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar","05.4 Cristalería, vajillas y utensilios para el hogar","05.4.0 Cristalería, vajillas y utensilios para el hogar",Semiduradero,0.0429
+169,Focos,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.5 Herramienta y equipo para casa y jardín,05.5.2 Herramientas no motorizadas y accesorios diversos,Semiduradero,0.0799
+170,Herramientas y equipo para el hogar,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.5 Herramienta y equipo para casa y jardín,05.5.2 Herramientas no motorizadas y accesorios diversos,Semiduradero,0.0194
+171,Pilas,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.5 Herramienta y equipo para casa y jardín,05.5.2 Herramientas no motorizadas y accesorios diversos,Semiduradero,0.0297
+172,Artículos desechables y no duraderos,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.0501
+173,Blanqueadores,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.2854
+174,Cerillos,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.0395
+175,Desodorantes ambientales,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.1017
+176,Detergentes,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.9387
+177,"Escobas, fibras y estropajos","05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.1846
+178,Jabón para lavar,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.1907
+179,Plaguicidas,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.1131
+180,Servilletas de papel,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.1629
+181,Suavizantes y limpiadores,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.752
+182,Velas y veladoras,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.1 Artículos domésticos no duraderos,No duradero,0.081
+183,Servicio doméstico,"05 Mobiliario, equipo doméstico y mantenimiento rutinario del hogar",05.6 Bienes y servicios para el mantenimiento rutinario del hogar,05.6.2 Servicios domésticos y para el hogar,Servicio,0.9747
+184,Analgésicos,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.131
+185,Antibióticos,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.149
+186,Antigripales,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.0771
+187,Antiinflamatorios,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.0529
+188,Cardiovasculares,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.1216
+189,Dermatológicos,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.0159
+190,Expectorantes y descongestivos,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.0385
+191,Gastrointestinales,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.0707
+192,Medicamentos para alergias,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.026
+193,Medicamentos para diabetes,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.1607
+194,Medicinas homeopáticas y naturistas,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.04
+195,Nutricionales,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.1262
+196,Otros medicamentos,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.1 Medicamentos,No duradero,0.3441
+197,Material de curación,06 Salud,06.1 Medicamentos y productos sanitarios,06.1.2 Productos médicos,No duradero,0.1448
+198,"Lentes, aparatos para sordera y ortopédicos",06 Salud,06.1 Medicamentos y productos sanitarios,06.1.3 Productos de apoyo,Duradero,0.1821
+199,Consulta médica,06 Salud,06.2 Servicios de atención para pacientes ambulatorios,06.2.1 Servicios de atención preventiva,Servicio,0.597
+200,Consulta y prótesis dental,06 Salud,06.2 Servicios de atención para pacientes ambulatorios,06.2.2 Servicios dentales para pacientes ambulatorios,Servicio,0.209
+201,Atención médica durante el parto,06 Salud,06.3 Servicios de atención para pacientes hospitalizados,06.3.1 Servicios curativos y de rehabilitación para pacientes hospitalizados,Servicio,0.1048
+202,Hospitalización general,06 Salud,06.3 Servicios de atención para pacientes hospitalizados,06.3.1 Servicios curativos y de rehabilitación para pacientes hospitalizados,Servicio,0.7084
+203,Hospitalización parto,06 Salud,06.3 Servicios de atención para pacientes hospitalizados,06.3.1 Servicios curativos y de rehabilitación para pacientes hospitalizados,Servicio,0.1015
+204,Operación quirúrgica,06 Salud,06.3 Servicios de atención para pacientes hospitalizados,06.3.1 Servicios curativos y de rehabilitación para pacientes hospitalizados,Servicio,0.4456
+205,Análisis clínicos,06 Salud,06.4 Otros servicios de salud,06.4.1 Servicios de diagnóstico por imágenes y servicios de laboratorio médico,Servicio,0.282
+206,Automóviles,07 Transporte,07.1 Compra de vehículos,07.1.1 Automóviles,Duradero,2.559
+207,Motocicletas,07 Transporte,07.1 Compra de vehículos,07.1.2 Motocicletas,Duradero,0.2718
+208,Bicicletas,07 Transporte,07.1 Compra de vehículos,07.1.3 Bicicletas,Duradero,0.0245
+209,Acumuladores,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.1 Partes y accesorios para equipo de transporte personal,Semiduradero,0.0383
+210,Neumáticos,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.1 Partes y accesorios para equipo de transporte personal,Semiduradero,0.2144
+211,"Partes, accesorios y otras refacciones para vehículos",07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.1 Partes y accesorios para equipo de transporte personal,Semiduradero,0.0477
+212,Aceites lubricantes,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.2 Combustibles y lubricantes para equipo de transporte personal,No duradero,0.0895
+213,Gasolina de alto octanaje,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.2 Combustibles y lubricantes para equipo de transporte personal,No duradero,0.5053
+214,Gasolina de bajo octanaje,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.2 Combustibles y lubricantes para equipo de transporte personal,No duradero,4.8245
+215,Lavado y engrasado de automóvil,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.3 Mantenimiento y reparación de equipo de transporte personal,Servicio,0.0711
+216,Mantenimiento de automóvil,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.3 Mantenimiento y reparación de equipo de transporte personal,Servicio,0.2894
+217,Reparación de automóvil,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.3 Mantenimiento y reparación de equipo de transporte personal,Servicio,0.1176
+218,Cuotas de autopistas,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.4 Otros servicios relacionados con equipos de transporte personal,Servicio,0.0583
+219,Estacionamiento,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.4 Otros servicios relacionados con equipos de transporte personal,Servicio,0.0331
+220,Trámites vehiculares,07 Transporte,07.2 Funcionamiento del equipo de transporte personal,07.2.4 Otros servicios relacionados con equipos de transporte personal,Servicio,0.143
+221,Metro o transporte eléctrico,07 Transporte,07.3 Servicios de transporte de pasajeros,07.3.1 Transporte de pasajeros por ferrocarril,Servicio,0.0867
+222,Autobús foráneo,07 Transporte,07.3 Servicios de transporte de pasajeros,07.3.2 Transporte de pasajeros por carretera,Servicio,0.469
+223,Autobús urbano,07 Transporte,07.3 Servicios de transporte de pasajeros,07.3.2 Transporte de pasajeros por carretera,Servicio,0.7586
+224,Colectivo,07 Transporte,07.3 Servicios de transporte de pasajeros,07.3.2 Transporte de pasajeros por carretera,Servicio,1.5995
+225,Taxi,07 Transporte,07.3 Servicios de transporte de pasajeros,07.3.2 Transporte de pasajeros por carretera,Servicio,0.9744
+226,Transporte escolar,07 Transporte,07.3 Servicios de transporte de pasajeros,07.3.2 Transporte de pasajeros por carretera,Servicio,0.0316
+227,Transporte aéreo,07 Transporte,07.3 Servicios de transporte de pasajeros,07.3.3 Transporte de pasajeros por vía aérea,Servicio,0.2776
+228,Equipo terminal de comunicación,08 Información y comunicación,08.1 Equipo de información y comunicación,08.1.2 Equipo de telefonía móvil,Duradero,0.3385
+229,Computadoras,08 Información y comunicación,08.1 Equipo de información y comunicación,08.1.3 Equipo de procesamiento de información,Duradero,0.1505
+230,"Reproductores de audio y video, y sus accesorios",08 Información y comunicación,08.1 Equipo de información y comunicación,"08.1.4 Equipo para la recepción, grabación y reproducción de sonido y video",Duradero,0.0567
+231,Televisores,08 Información y comunicación,08.1 Equipo de información y comunicación,"08.1.4 Equipo para la recepción, grabación y reproducción de sonido y video",Duradero,0.1993
+232,Servicios de telefonía fija,08 Información y comunicación,08.3 Servicios de información y comunicaciones,08.3.1 Servicios de comunicaciones fijas,Servicio,0.0335
+233,Servicio de telefonía móvil,08 Información y comunicación,08.3 Servicios de información y comunicaciones,08.3.2 Servicios de comunicaciones móviles,Servicio,1.8964
+234,Servicio de internet,08 Información y comunicación,08.3 Servicios de información y comunicaciones,08.3.3 Servicios de provisión de acceso a internet y servicios de almacenamiento en red,Servicio,0.4386
+235,"Paquetes de internet, telefonía y televisión de paga",08 Información y comunicación,08.3 Servicios de información y comunicaciones,08.3.4 Servicios de telecomunicaciones agrupados,Servicio,1.2347
+236,Servicio de televisión de paga,08 Información y comunicación,08.3 Servicios de información y comunicaciones,08.3.9 Otros servicios de información y comunicación,Servicio,0.2857
+237,Streaming de películas y música,08 Información y comunicación,08.3 Servicios de información y comunicaciones,08.3.9 Otros servicios de información y comunicación,Servicio,0.1035
+238,Material y aparatos fotográficos,"09 Recreación, deporte y cultura",09.1 Bienes recreativos duraderos,09.1.1 Equipos e instrumentos ópticos fotográficos y cinematográficos,Duradero,0.0147
+239,"Consolas, discos y descargas de videojuegos","09 Recreación, deporte y cultura",09.2 Otros bienes recreativos,"09.2.1 Juguetes, juegos y pasatiempos",Semiduradero,0.0522
+240,Juguetes y juegos de mesa,"09 Recreación, deporte y cultura",09.2 Otros bienes recreativos,"09.2.1 Juguetes, juegos y pasatiempos",Semiduradero,0.1479
+241,Artículos deportivos,"09 Recreación, deporte y cultura",09.2 Otros bienes recreativos,"09.2.2 Equipo para deportes, campismo y recreación al aire libre",Semiduradero,0.017
+242,Plantas y flores,"09 Recreación, deporte y cultura",09.3 Productos de jardín y mascotas,"09.3.1 Productos de jardinería, plantas y flores",No duradero,0.0186
+243,Alimento para mascotas,"09 Recreación, deporte y cultura",09.3 Productos de jardín y mascotas,09.3.2 Mascotas y productos relacionados,No duradero,0.3687
+244,Servicios para mascotas,"09 Recreación, deporte y cultura",09.3 Productos de jardín y mascotas,09.4.5 Veterinarios y otros servicios para mascotas,Servicio,0.0497
+245,Club deportivo,"09 Recreación, deporte y cultura",09.4 Servicios recreativos,09.4.6 Servicios recreativos y deportivos,Servicio,0.1014
+246,Servicios recreativos y centros nocturnos,"09 Recreación, deporte y cultura",09.4 Servicios recreativos,09.4.6 Servicios recreativos y deportivos,Servicio,0.0217
+247,Instrumentos musicales y descargas de audio y video,"09 Recreación, deporte y cultura",09.5 Bienes culturales,09.5.1 Instrumentos musicales,Duradero,0.0149
+248,Cine,"09 Recreación, deporte y cultura",09.6 Servicios culturales,"09.6.1 Cines, teatros y conciertos",Servicio,0.1491
+249,Museos y sitios culturales,"09 Recreación, deporte y cultura",09.6 Servicios culturales,"09.6.2 Museos, bibliotecas y sitios culturales",Servicio,0.0281
+250,Paquetes para fiesta,"09 Recreación, deporte y cultura",09.6 Servicios culturales,09.6.9 Otros servicios culturales,Servicio,0.6931
+251,Libros de texto,"09 Recreación, deporte y cultura","09.7 Periódicos, libros y artículos de papelería",09.7.1 Libros,Semiduradero,0.1546
+252,Otros libros,"09 Recreación, deporte y cultura","09.7 Periódicos, libros y artículos de papelería",09.7.1 Libros,Semiduradero,0.0415
+253,Periódicos y revistas,"09 Recreación, deporte y cultura","09.7 Periódicos, libros y artículos de papelería",09.7.2 Periódicos y publicaciones periódicas,No duradero,0.0168
+254,Material escolar,"09 Recreación, deporte y cultura","09.7 Periódicos, libros y artículos de papelería",09.7.4 Material de papelería y dibujo,No duradero,0.4486
+255,Servicios turísticos en paquete,"09 Recreación, deporte y cultura",09.8 Paquetes de vacaciones,09.8.0 Paquetes de vacaciones,Servicio,0.1911
+256,Preescolar,10 Servicios educativos,10.1 Educación preescolar y primaria,10.1.0 Educación preescolar y primaria,Servicio,0.1549
+257,Primaria,10 Servicios educativos,10.1 Educación preescolar y primaria,10.1.0 Educación preescolar y primaria,Servicio,0.4389
+258,Secundaria,10 Servicios educativos,10.2 Educación secundaria,10.2.0 Educación secundaria,Servicio,0.1934
+259,Preparatoria,10 Servicios educativos,10.3 Educación postsecundaria no terciaria,10.3.0 Educación postsecundaria no terciaria,Servicio,0.4026
+260,Universidad,10 Servicios educativos,10.4 Educación terciaria (universitaria),10.4.0 Educación terciaria (universitaria),Servicio,1.1334
+261,Carrera corta,10 Servicios educativos,10.5 Educación no definida por nivel,10.5.0 Educación no definida por nivel,Servicio,0.0287
+262,Enseñanza adicional,10 Servicios educativos,10.5 Educación no definida por nivel,10.5.0 Educación no definida por nivel,Servicio,0.1354
+263,Barbacoa o birria,11 Restaurantes y servicios de alojamiento,11.1 Servicios de alimentos y bebidas,"11.1.1 Restaurantes, cafés y similares",No duradero,0.2237
+264,Carnitas,11 Restaurantes y servicios de alojamiento,11.1 Servicios de alimentos y bebidas,"11.1.1 Restaurantes, cafés y similares",No duradero,0.1991
+265,"Loncherías, fondas, torterías y taquerías",11 Restaurantes y servicios de alojamiento,11.1 Servicios de alimentos y bebidas,"11.1.1 Restaurantes, cafés y similares",Servicio,5.0479
+266,Pizzas,11 Restaurantes y servicios de alojamiento,11.1 Servicios de alimentos y bebidas,"11.1.1 Restaurantes, cafés y similares",No duradero,0.3068
+267,Pollos rostizados,11 Restaurantes y servicios de alojamiento,11.1 Servicios de alimentos y bebidas,"11.1.1 Restaurantes, cafés y similares",No duradero,0.6521
+268,Restaurantes y similares,11 Restaurantes y servicios de alojamiento,11.1 Servicios de alimentos y bebidas,"11.1.1 Restaurantes, cafés y similares",Servicio,2.8006
+269,Otros alimentos cocinados,11 Restaurantes y servicios de alojamiento,11.1 Servicios de alimentos y bebidas,"11.1.1 Restaurantes, cafés y similares",No duradero,2.1484
+270,Hoteles,11 Restaurantes y servicios de alojamiento,11.2 Servicios de alojamiento,11.2.0 Servicios de alojamiento,Servicio,0.1738
+271,Seguro de automóvil,12 Seguros y servicios financieros,12.1 Seguros,12.1.4 Seguros relacionado con el transporte,Servicio,0.2378
+272,Aparatos eléctricos para el cuidado personal,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,13.1.1 Aparatos eléctricos para el cuidado personal,Duradero,0.0213
+273,Artículos de maquillaje,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.1457
+274,Crema y productos para higiene dental,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.439
+275,Cremas para la piel,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.3388
+276,Desodorantes personales,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.4465
+277,Jabón de tocador,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.373
+278,Lociones y perfumes,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.3989
+279,Navajas y máquinas de afeitar,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",Duradero,0.1812
+280,Pañales,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.3848
+281,Papel higiénico y pañuelos desechables,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.7466
+282,Productos para el cabello,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.6769
+283,Toallas sanitarias,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.2257
+284,Otros artículos de tocador,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,"13.1.2 Otros aparatos, artículos y productos para el cuidado personal",No duradero,0.1264
+285,Corte de cabello,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,13.1.3 Salones de peluquería y establecimientos de aseo personal,Servicio,0.4629
+286,Sala de belleza y masajes,"13 Cuidado personal, protección social y bienes diversos",13.1 Cuidado personal,13.1.3 Salones de peluquería y establecimientos de aseo personal,Servicio,0.2604
+287,"Relojes, joyas y bisutería","13 Cuidado personal, protección social y bienes diversos",13.2 Efectos personales,13.2.1 Joyas y relojes,Duradero,0.049
+288,Bolsas y mochilas,"13 Cuidado personal, protección social y bienes diversos",13.2 Efectos personales,13.2.9 Otros efectos personales,Semiduradero,0.1057
+289,Guarderías y estancias infantiles,"13 Cuidado personal, protección social y bienes diversos",13.3 Protección social,13.3.0 Protección social,Servicio,0.0335
+290,Expedición de documentos del sector público,"13 Cuidado personal, protección social y bienes diversos",13.9 Otros servicios,13.9.0 Otros servicios,Servicio,0.0816
+291,Servicios funerarios,"13 Cuidado personal, protección social y bienes diversos",13.9 Otros servicios,13.9.0 Otros servicios,Servicio,0.2855
+292,Servicios profesionales,"13 Cuidado personal, protección social y bienes diversos",13.9 Otros servicios,13.9.0 Otros servicios,Servicio,0.2447

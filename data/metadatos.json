@@ -1,0 +1,25 @@
+{
+  "base_ponderadores": "2024-07-2Q",
+  "deslinde": "Cálculos propios con datos del INPC. No es un producto oficial del INEGI ni de Banco de México.",
+  "factor_encadenamiento": 1.36095,
+  "fuente": "INEGI, Índice Nacional de Precios al Consumidor (INPC)",
+  "inpc_base_ponderadores": 136.095,
+  "origen": {
+    "estructura_mensual": "112001700030",
+    "estructura_quincenal": "112001600030",
+    "exportacion": "https://www.inegi.org.mx/app/indicesdeprecios/Exportacion.aspx",
+    "ponderadores": "https://www.inegi.org.mx/rnm/index.php/catalog/1015/download/32034"
+  },
+  "reconstruccion": {
+    "mensual": {
+      "error_maximo": 0.001,
+      "periodos": 26
+    },
+    "quincenal": {
+      "error_maximo": 0.001,
+      "periodos": 53
+    }
+  },
+  "ultimo_mensual": "2026-09",
+  "ultimo_quincenal": "2026-10-1Q"
+}

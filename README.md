@@ -60,6 +60,7 @@ los días de publicación del INPC y hace commit solo cuando hay datos nuevos.
 
 ## Documentos
 
+- [`pendientes/`](pendientes/README.md): lo que falta, incluido el alcance de la fase 1 y sus decisiones abiertas.
 - [`docs/00-investigacion-inicial.md`](docs/00-investigacion-inicial.md): reporte con la viabilidad, las fórmulas para
   re-ponderar genéricos, la arquitectura local-first, la hoja de ruta (MVP → plugin para Claude/ChatGPT → capa de pago
   opcional), los precedentes en México y el mundo, las ideas de nombre, el modelo de negocio y las líneas regulatorias.

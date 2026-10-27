@@ -132,6 +132,12 @@ def leer_presupuesto(texto: str, rubros: Mapping[str, Rubro]) -> Presupuesto:
     if modo not in MODOS_VIVIENDA:
         raise ErrorPresupuesto(f"vivienda_propia: debe ser {' o '.join(MODOS_VIVIENDA)}")
 
+    for seccion in ("gasto", "aumento_propio", "no_cubierto"):
+        if not isinstance(datos.get(seccion, {}), dict):
+            raise ErrorPresupuesto(
+                f"{seccion}: debe ser una sección [{seccion}] con un monto por línea"
+            )
+
     gasto = {}
     for clave, valor in dict(datos.get("gasto", {})).items():
         _rubro_conocido("gasto", clave, rubros)

@@ -93,6 +93,7 @@ def test_la_plantilla_se_lee_de_vuelta(rubros):
         ('vivienda_propia = "rentada"\n' + MINIMO, "vivienda_propia"),
         (MINIMO + "[aumento_propio]\nrenta = 8", "no tiene gasto"),
         ("esto no es toml = = =", "TOML"),
+        ('periodo_gasto = "2026-09"\ngasto = 5', "sección"),
     ],
 )
 def test_errores_del_presupuesto(rubros, texto, mensaje):

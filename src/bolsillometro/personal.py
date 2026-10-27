@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import csv
 import difflib
+import math
 import textwrap
 import tomllib
 from collections import defaultdict
@@ -97,6 +98,8 @@ class Presupuesto:
 def _numero(seccion: str, clave: str, valor: object, minimo: float = 0) -> float:
     if isinstance(valor, bool) or not isinstance(valor, int | float):
         raise ErrorPresupuesto(f"[{seccion}] {clave}: debe ser un número, no {valor!r}")
+    if not math.isfinite(valor):
+        raise ErrorPresupuesto(f"[{seccion}] {clave}: debe ser un número finito, no {valor!r}")
     if valor < minimo:
         raise ErrorPresupuesto(f"[{seccion}] {clave}: debe ser al menos {minimo}")
     return float(valor)

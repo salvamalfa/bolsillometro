@@ -8,7 +8,9 @@ Notación (la misma del reporte en ``docs/00-investigacion-inicial.md``):
 
 El índice agregado es ``P(t) = f · 100 · Σ_k s_k · I_k(t) / I_k(b)``, donde ``f`` es un
 factor de encadenamiento (1 para un índice propio; el INPC de la 2Q jul-2024 / 100 para
-reproducir el INPC publicado).
+reproducir el INPC publicado). Cuando cambian los pesos, ``encadenar`` une los tramos en el
+periodo de traslape (fórmula 5 del reporte) y ``rendimiento_real`` compara una inversión
+contra la inflación (fórmula 7).
 """
 
 from __future__ import annotations
@@ -121,3 +123,54 @@ def incidencias(
         codigo: 100 * peso * (relativo[codigo][1] - relativo[codigo][0]) / denominador
         for codigo, peso in pesos.items()
     }
+
+
+def encadenar(
+    anterior: Mapping[Periodo, float],
+    series: Mapping[str, Serie],
+    pesos_nuevos: Mapping[str, float],
+    eslabon: Periodo,
+) -> dict[Periodo, float]:
+    """Cambia los pesos de un índice en el periodo de traslape ``eslabon`` (``L``).
+
+    ``P(t) = P(L) · Σ_k s_k(nuevo) · I_k(t) / I_k(L)`` para ``t > L``; hasta ``L`` se conserva
+    ``anterior``. Los pesos nuevos deben estar referidos a ``L``: si el gasto es de otro
+    periodo, llévalos antes con ``pesos_lowe``. Se puede encadenar varias veces.
+    """
+    if eslabon not in anterior:
+        raise KeyError(f"El índice anterior no tiene dato en el eslabón {eslabon}")
+    faltantes = [codigo for codigo in pesos_nuevos if codigo not in series]
+    if faltantes:
+        raise KeyError(f"Faltan series para: {', '.join(sorted(faltantes))}")
+    base = valores_en({codigo: series[codigo] for codigo in pesos_nuevos}, eslabon)
+    tramo = indice_ponderado(series, pesos_nuevos, base, anterior[eslabon] / 100)
+    return {p: v for p, v in anterior.items() if p <= eslabon} | {
+        p: v for p, v in tramo.items() if p > eslabon
+    }
+
+
+def incidencias_encadenadas(
+    antes: Mapping[str, float], despues: Mapping[str, float]
+) -> dict[str, float]:
+    """Incidencias de una variación que cruza un eslabón, en puntos porcentuales.
+
+    ``antes`` son las incidencias de ``desde → L`` (suman ``a``) y ``despues`` las de
+    ``L → hasta`` (suman ``b``). Con la convención ``(1+a)(1+b) − 1 = Σ Cᵃ·(1+b) + Σ Cᵇ``,
+    ``C_k = Cᵃ_k · (1 + b) + Cᵇ_k``, y las incidencias suman la variación total.
+    """
+    b = sum(despues.values()) / 100
+    return {
+        codigo: antes.get(codigo, 0.0) * (1 + b) + despues.get(codigo, 0.0)
+        for codigo in antes.keys() | despues.keys()
+    }
+
+
+def rendimiento_real(nominal: float, inflacion: float) -> float:
+    """``r_real = (1 + r_nominal) / (1 + π) − 1``, todo en porcentaje.
+
+    Con ``π`` tu inflación personal, es lo que tu inversión ganó (o perdió) en poder de
+    compra de tu propia canasta durante el mismo periodo.
+    """
+    if inflacion <= -100:
+        raise ValueError("La inflación debe ser mayor que -100%")
+    return ((1 + nominal / 100) / (1 + inflacion / 100) - 1) * 100

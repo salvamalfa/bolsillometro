@@ -18,7 +18,7 @@ quien tiene auto y quien usa transporte público, escuela privada y pública.
    - Regla documentada: el índice de la ciudad para lo local (vivienda, transporte colectivo,
      electricidad, alimentos frescos, loncherías) y el nacional para lo que tiene precio casi
      único (autos, gasolina con tope, telefonía, streaming).
-2. **Presupuesto declarado.** Un archivo (YAML o CSV) con 15 a 40 rubros en lenguaje común:
+2. **Presupuesto declarado.** Un archivo TOML con unos 25 rubros en lenguaje común:
    renta, súper, gasolina, colegiatura, restaurantes, etc.
    - Cada rubro se asigna a sus genéricos. El gasto de un rubro se reparte entre ellos con los
      ponderadores oficiales y queda marcado como **imputado** (nivel B del reporte).
@@ -39,17 +39,60 @@ quien tiene auto y quien usa transporte público, escuela privada y pública.
    - Qué parte del gasto se observó y qué parte se imputó.
    - Rendimiento real contra Cetes y UDI.
 6. **Interfaz:**
-   - Un CLI (`bolsillometro mi-inflacion presupuesto.yaml`).
+   - Un CLI (`bolsillometro mi-inflacion presupuesto.toml`).
    - Una web estática que calcula en el navegador, sin servidor y sin que los datos salgan.
 
-## Decisiones abiertas (para el plan)
+## Decisiones tomadas (27-oct-2026)
 
-- [ ] ¿La web estática entra en la fase 1 o se deja para después del CLI?
-- [ ] ¿Cuál es la lista de rubros (15, 25 o 40) y su mapeo a genéricos?
-- [ ] ¿Formato del presupuesto: YAML, CSV o ambos?
-- [ ] ¿De dónde salen Cetes y UDI?
-  - El API SIE de Banxico pide token (gratis, con límites de consulta).
-  - La alternativa es capturarlos a mano o desde otra fuente pública.
-- [ ] ¿Se incluye ya un import de CSV genérico del banco o se deja para la fase 2?
-- [ ] ¿Ciudades en `data/` como un solo CSV o uno por ciudad? Importa por el tamaño y por
-  los diffs de cada actualización.
+- [x] **Web estática:** entra en la fase 1, pero después del CLI y en su propio PR. Las 20 a 50
+  personas de la prueba no van a usar un CLI.
+- [x] **Rubros:** unos 25, en lenguaje común.
+- [x] **Formato del presupuesto:** TOML. Se lee con `tomllib`, de la biblioteca estándar, sin
+  dependencias nuevas. Admite comentarios para una plantilla autoexplicada. Agrupa en un archivo
+  la configuración (ciudad, periodo del gasto, modo de vivienda propia), los rubros con su
+  aumento propio opcional y el gasto no cubierto. La web importa y exporta el mismo archivo.
+- [x] **Cetes y UDI:** se toman de las exportaciones públicas del SIE de Banxico (CSV/IQY sin
+  token, como el INEGI), se validan y se versionan en `data/` con el mismo workflow. El API
+  REST con token queda como respaldo.
+- [x] **Import de CSV del banco:** se deja para la fase 2, junto con los parsers por banco y
+  el diccionario de comercios.
+- [x] **Ciudades en `data/`:** un CSV por ciudad (`data/ciudades/<clave>_mensual.csv`), con
+  la misma forma ancha que el nacional. Un solo CSV tendría 16,060 columnas y cada
+  actualización cambiaría una línea enorme. Por ciudad solo se guarda la serie mensual:
+  son unos 14 MB contra unos 41 MB con quincenas, y el ruido de la muestra por ciudad hace
+  poco útil la quincena.
+
+## Plan por PRs
+
+Cada PR pasa `ruff format --check`, `ruff check` y `pytest` antes del push.
+
+1. [x] **Motor: fórmulas 5 y 7.** `encadenar` (cambio de pesos en un eslabón),
+   `incidencias_encadenadas` (convención `(1+a)(1+b) − 1`) y `rendimiento_real`. Prueba
+   con datos reales: encadenar los ponderadores oficiales en jul-2025 sigue reconstruyendo el
+   INPC con un error máximo de ±0.001.
+2. [ ] **Datos por ciudad.** Estructura `112001700060` en el pipeline, `data/ciudades/` y un
+   catálogo de ciudades con sus ids. El timeout del cliente debe aguantar el árbol de ~63 MB.
+   Validación:
+   - Estructura completa: 55 ciudades × 292 genéricos, con los mismos códigos que el nacional.
+   - Plausibilidad: el índice general de cada ciudad contra el reconstruido con los
+     ponderadores nacionales, con una tolerancia calibrada con los datos reales y
+     documentada. No puede ser exacta, porque el INEGI no publica pesos genérico × ciudad.
+3. [ ] **Cetes y UDI.** Descarga del SIE sin token, mensualizada (UDI de fin de mes, Cetes 28
+   de la primera subasta del mes o el promedio, a definir y documentar). Validación de
+   continuidad y rangos.
+4. [ ] **Presupuesto y cálculo personal.**
+   - Catálogo versionado de ~25 rubros → genéricos y regla ciudad/nacional por genérico.
+   - `bolsillometro plantilla` escribe un `presupuesto.toml` comentado.
+   - `bolsillometro mi-inflacion presupuesto.toml` calcula el índice personal.
+   - Reglas especiales:
+     - Vivienda propia en modo "consumo" o "gasto efectivo".
+     - "Gasto no cubierto" aparte.
+     - Precio propio en partidas grandes, como una serie sintética con el aumento capturado.
+5. [ ] **Reporte.**
+   - Inflación mensual y anual personal contra el INPC.
+   - Incidencias en lenguaje claro.
+   - Parte del gasto asignada directo a un genérico contra parte repartida con ponderadores
+     (imputada).
+   - Rendimiento real contra Cetes y UDI.
+6. [ ] **Web estática.** Calcula en el navegador con los mismos datos y el mismo formato de
+   presupuesto. No usa servidor y los datos no salen de la máquina.

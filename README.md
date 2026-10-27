@@ -55,7 +55,7 @@ los días de publicación del INPC y hace commit solo cuando hay datos nuevos.
 |---|---|
 | `inegi.py` | Cliente de la app "Índices de Precios" del INEGI (la misma exportación que usan los .IQY de Excel). |
 | `lectura.py` | Lee el árbol de series, la exportación CSV y el XLSX de ponderadores. |
-| `indices.py` | Motor Laspeyres/Lowe: índice ponderado, pesos tipo Lowe, variaciones e incidencias. |
+| `indices.py` | Motor Laspeyres/Lowe: índice ponderado, pesos tipo Lowe, variaciones, incidencias, encadenamiento y rendimiento real. |
 | `reconstruccion.py` | Reconstruye el INPC con los ponderadores oficiales y lo compara con el publicado. |
 | `pipeline.py` | Descarga, valida y escribe `data/`. |
 | `ciudades.py` | INPC por ciudad (55 ciudades × 292 genéricos, mensual): descarga, validación contra el nacional y `data/ciudades/`. |

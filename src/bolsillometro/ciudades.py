@@ -299,17 +299,31 @@ def _ultimo(serie: Mapping[Periodo, float | None]) -> Periodo:
     return max(p for p, v in serie.items() if v is not None)
 
 
+def ultimo_mes(datos: DatosCiudades) -> Periodo:
+    """Último mes con dato; ``validar`` garantiza que es el mismo en todas las ciudades."""
+    return _ultimo(datos.series[datos.ciudades[0].clave][COLUMNA_GENERAL])
+
+
 def validar(datos: DatosCiudades, nacional: DatosINPC) -> Validacion:
-    """Falla con ``ErrorCiudades`` si los datos por ciudad no son consistentes con el nacional."""
+    """Falla con ``ErrorCiudades`` si los datos por ciudad no son consistentes con el nacional.
+
+    Las ciudades pueden ir atrás del nacional: el workflow las baja después, en su propio paso.
+    Lo que no puede pasar es que vayan adelante o que unas lleguen más lejos que otras.
+    """
     ultimo_nacional = _ultimo(nacional.mensual[COLUMNA_GENERAL])
+    ultimo_ciudades = ultimo_mes(datos)
+    if ultimo_ciudades > ultimo_nacional:
+        raise ErrorCiudades(
+            f"Las ciudades llegan a {ultimo_ciudades}, después que el nacional ({ultimo_nacional})"
+        )
     for ciudad in datos.ciudades:
         series = datos.series[ciudad.clave]
         if set(series) != set(nacional.mensual):
             raise ErrorCiudades(f"{ciudad.nombre}: los genéricos no coinciden con el nacional")
-        if _ultimo(series[COLUMNA_GENERAL]) != ultimo_nacional:
+        if _ultimo(series[COLUMNA_GENERAL]) != ultimo_ciudades:
             raise ErrorCiudades(
                 f"{ciudad.nombre}: el último mes es {_ultimo(series[COLUMNA_GENERAL])}; "
-                f"el nacional llega a {ultimo_nacional}"
+                f"las demás ciudades llegan a {ultimo_ciudades}"
             )
 
     revisiones, fuera = acotamiento(datos, nacional)
@@ -349,14 +363,13 @@ def sin_dato_reciente(datos: DatosCiudades) -> dict[str, list[str]]:
 
 def metadatos(datos: DatosCiudades, validacion: Validacion) -> dict:
     peor = validacion.peor
-    general = datos.series[datos.ciudades[0].clave][COLUMNA_GENERAL]
     return {
         "fuente": "INEGI, Índice Nacional de Precios al Consumidor (INPC), por ciudad",
         "deslinde": "Cálculos propios con datos del INPC. No es un producto oficial del "
         "INEGI ni de Banco de México.",
         "estructura": ESTRUCTURA_CIUDADES,
         "ciudades": len(datos.ciudades),
-        "ultimo_mensual": str(_ultimo(general)),
+        "ultimo_mensual": str(ultimo_mes(datos)),
         "acotamiento": {
             "desde": str(INICIO_ACOTAMIENTO),
             "hasta": str(FIN_ACOTAMIENTO),
@@ -395,6 +408,12 @@ def actualizar(directorio: Path, cliente: ClienteINEGI | None = None) -> Resumen
     anio_final = _ultimo(nacional.mensual[COLUMNA_GENERAL]).anio
     datos = descargar(cliente or ClienteINEGI(), anio_final)
     resultado = validar(datos, nacional)
+    # El INEGI publica nacional y ciudades el mismo día: una descarga atrasada no se guarda.
+    ultimo_nacional = _ultimo(nacional.mensual[COLUMNA_GENERAL])
+    if ultimo_mes(datos) != ultimo_nacional:
+        raise ErrorCiudades(
+            f"La descarga por ciudad llega a {ultimo_mes(datos)}; el nacional, a {ultimo_nacional}"
+        )
 
     previos: set[Periodo] = set()
     if (directorio / DIRECTORIO / ARCHIVO_CATALOGO).exists():

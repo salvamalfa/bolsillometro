@@ -168,15 +168,51 @@ def test_un_id_cruzado_rompe_el_acotamiento(reales, nacional):
         ciudades.validar(cruzados, nacional)
 
 
+def _sin_ultimo_mes(reales, claves=None):
+    """Copia de las ciudades sin su último mes (todas, o solo las de ``claves``)."""
+    ultimo = ciudades.ultimo_mes(reales)
+    series = {}
+    for clave, propias in reales.series.items():
+        if claves is None or clave in claves:
+            propias = {
+                codigo: {p: v for p, v in serie.items() if p != ultimo}
+                for codigo, serie in propias.items()
+            }
+        series[clave] = propias
+    return DatosCiudades(reales.ciudades, series)
+
+
+def _nacional_hasta(nacional, hasta):
+    """Copia del nacional sin los meses (ni sus quincenas) posteriores a ``hasta``."""
+    limite = Periodo(hasta.anio, hasta.mes, 2)
+    return disco.DatosINPC(
+        mensual={
+            c: {p: v for p, v in s.items() if p <= hasta} for c, s in nacional.mensual.items()
+        },
+        quincenal={
+            c: {p: v for p, v in s.items() if p <= limite} for c, s in nacional.quincenal.items()
+        },
+        ponderadores=nacional.ponderadores,
+        catalogo=nacional.catalogo,
+    )
+
+
 def test_falla_si_una_ciudad_no_llega_al_ultimo_mes(reales, nacional):
-    ultimo = max(nacional.mensual["general"])
-    series = {clave: dict(s) for clave, s in reales.series.items()}
-    series["pachuca"] = {
-        codigo: {p: v for p, v in serie.items() if p != ultimo}
-        for codigo, serie in series["pachuca"].items()
-    }
     with pytest.raises(ErrorCiudades, match="Pachuca"):
-        ciudades.validar(DatosCiudades(reales.ciudades, series), nacional)
+        ciudades.validar(_sin_ultimo_mes(reales, {"pachuca"}), nacional)
+
+
+def test_las_ciudades_pueden_ir_atras_del_nacional(reales, nacional):
+    # Así queda data/ entre el paso nacional del workflow y el de ciudades.
+    atrasadas = _sin_ultimo_mes(reales)
+    assert ciudades.ultimo_mes(atrasadas) < max(nacional.mensual["general"])
+    assert ciudades.validar(atrasadas, nacional).cumple
+
+
+def test_falla_si_las_ciudades_van_adelante_del_nacional(reales, nacional):
+    ultimo = ciudades.ultimo_mes(reales)
+    with pytest.raises(ErrorCiudades, match="después que el nacional"):
+        ciudades.validar(reales, _nacional_hasta(nacional, ultimo.anterior()))
 
 
 def test_metadatos_coinciden_con_los_datos(reales):
@@ -248,18 +284,17 @@ class ClienteFalso:
         return "\n".join(lineas) + "\n"
 
 
-def _copiar_nacional(destino):
-    for archivo in (
-        disco.ARCHIVO_MENSUAL,
-        disco.ARCHIVO_QUINCENAL,
-        disco.ARCHIVO_PONDERADORES,
-        disco.ARCHIVO_CATALOGO,
-    ):
-        (destino / archivo).write_bytes((DATOS / archivo).read_bytes())
+def _copiar_nacional(destino, reales, nacional):
+    """Escribe el nacional hasta el último mes de las ciudades, como cuando se publican juntos.
+
+    Así las pruebas del pipeline también pasan cuando ``data/`` ya trae un mes nacional que
+    las ciudades todavía no (entre los dos pasos del workflow).
+    """
+    disco.guardar(destino, _nacional_hasta(nacional, ciudades.ultimo_mes(reales)))
 
 
 def test_actualizar_regenera_data_ciudades_byte_por_byte(tmp_path, reales, nacional):
-    _copiar_nacional(tmp_path)
+    _copiar_nacional(tmp_path, reales, nacional)
     resumen = ciudades.actualizar(tmp_path, ClienteFalso(reales, nacional))
     assert resumen.validacion.cumple
     assert resumen.nuevos[0] == Periodo(2018, 1)
@@ -275,16 +310,23 @@ def test_actualizar_regenera_data_ciudades_byte_por_byte(tmp_path, reales, nacio
 
 
 def test_actualizar_no_escribe_nada_si_falla(tmp_path, reales, nacional):
-    _copiar_nacional(tmp_path)
+    _copiar_nacional(tmp_path, reales, nacional)
     with pytest.raises(ErrorCiudades):
         ciudades.actualizar(tmp_path, ClienteFalso(reales, nacional, cruzar=True))
     assert not (tmp_path / ciudades.DIRECTORIO).exists()
 
 
 def test_actualizar_falla_si_la_exportacion_es_de_otra_ciudad(tmp_path, reales, nacional):
-    _copiar_nacional(tmp_path)
+    _copiar_nacional(tmp_path, reales, nacional)
     with pytest.raises(ErrorCiudades, match="título"):
         ciudades.actualizar(tmp_path, ClienteFalso(reales, nacional, otra_ciudad=True))
+    assert not (tmp_path / ciudades.DIRECTORIO).exists()
+
+
+def test_actualizar_no_guarda_una_descarga_atrasada(tmp_path, reales, nacional):
+    _copiar_nacional(tmp_path, reales, nacional)
+    with pytest.raises(ErrorCiudades, match="descarga por ciudad"):
+        ciudades.actualizar(tmp_path, ClienteFalso(_sin_ultimo_mes(reales), nacional))
     assert not (tmp_path / ciudades.DIRECTORIO).exists()
 
 

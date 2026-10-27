@@ -1,10 +1,13 @@
 import pytest
 
 from bolsillometro.indices import (
+    encadenar,
     incidencias,
+    incidencias_encadenadas,
     indice_ponderado,
     normalizar,
     pesos_lowe,
+    rendimiento_real,
     valores_en,
     variacion,
 )
@@ -85,3 +88,57 @@ def test_incidencias_suman_la_variacion():
     contribuciones = incidencias(SERIES, pesos, base, T1, T2)
     assert sum(contribuciones.values()) == pytest.approx(variacion(indice, T2))
     assert contribuciones["A"] > 0 > contribuciones["B"]
+
+
+def test_encadenar_aplica_los_pesos_nuevos_desde_el_eslabon():
+    base = valores_en(SERIES, B)
+    anterior = indice_ponderado(SERIES, {"A": 1, "B": 1}, base)
+    encadenado = encadenar(anterior, SERIES, {"B": 1}, T1)
+    assert encadenado[B] == anterior[B]
+    assert encadenado[T1] == anterior[T1]
+    # Desde T1 solo pesa B: P(T2) = P(T1) · I_B(T2) / I_B(T1).
+    assert encadenado[T2] == pytest.approx(anterior[T1] * 190 / 200)
+
+
+def test_encadenar_con_los_pesos_efectivos_no_cambia_el_indice():
+    base = valores_en(SERIES, B)
+    pesos = {"A": 2, "B": 3}
+    anterior = indice_ponderado(SERIES, pesos, base)
+    # Los pesos viejos llevados a T1 por precios relativos describen la misma canasta.
+    pesos_t1 = pesos_lowe(pesos, base, valores_en({c: SERIES[c] for c in pesos}, T1))
+    assert encadenar(anterior, SERIES, pesos_t1, T1) == pytest.approx(anterior)
+
+
+def test_encadenar_falla_sin_eslabon_o_sin_series():
+    anterior = {B: 100.0}
+    with pytest.raises(KeyError, match="eslabón"):
+        encadenar(anterior, SERIES, {"A": 1}, T1)
+    with pytest.raises(KeyError, match="Z"):
+        encadenar(anterior, SERIES, {"Z": 1}, B)
+
+
+def test_incidencias_encadenadas_suman_la_variacion_total():
+    base = valores_en(SERIES, B)
+    pesos_viejos = {"A": 2, "B": 3}
+    pesos_nuevos = {"A": 1, "B": 4}
+    anterior = indice_ponderado(SERIES, pesos_viejos, base)
+    encadenado = encadenar(anterior, SERIES, pesos_nuevos, T1)
+
+    antes = incidencias(SERIES, pesos_viejos, base, B, T1)
+    despues = incidencias(SERIES, pesos_nuevos, valores_en(SERIES, T1), T1, T2)
+    total = incidencias_encadenadas(antes, despues)
+    assert sum(total.values()) == pytest.approx((encadenado[T2] / encadenado[B] - 1) * 100)
+
+
+def test_incidencias_encadenadas_con_genericos_de_un_solo_tramo():
+    total = incidencias_encadenadas({"A": 1.0}, {"B": 2.0})
+    assert total == pytest.approx({"A": 1.02, "B": 2.0})
+
+
+def test_rendimiento_real():
+    # 10% nominal con 4% de inflación: 1.10 / 1.04 − 1.
+    assert rendimiento_real(10, 4) == pytest.approx((1.10 / 1.04 - 1) * 100)
+    assert rendimiento_real(5, 5) == pytest.approx(0)
+    assert rendimiento_real(3, 6) < 0
+    with pytest.raises(ValueError):
+        rendimiento_real(5, -100)

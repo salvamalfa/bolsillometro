@@ -15,8 +15,8 @@ Lo que quedó abierto al cerrar la sesión del 26-oct-2026. Al retomarlo, empiez
 
 ## Próximo paso técnico: la fase 1
 
-Ver [`fase-1.md`](fase-1.md). Hay que pedir el plan detallado y tomar las decisiones abiertas
-que se listan ahí.
+Ver [`fase-1.md`](fase-1.md). Las decisiones ya se tomaron y el plan va en 6 PRs. El primero
+(fórmulas 5 y 7 del motor) está hecho; sigue el de datos por ciudad.
 
 ## Pendientes no técnicos (antes del lanzamiento público)
 
@@ -49,7 +49,7 @@ que se listan ahí.
 - **Diseño local-first:** los movimientos y facturas del usuario nunca salen de su máquina.
   Hacia fuera solo salen agregados.
 - **Antes de cada push:** correr `ruff format --check src tests`, `ruff check src tests` y
-  `pytest`. Las 48 pruebas deben pasar, incluida la reconstrucción con los datos reales.
+  `pytest`. Las 55 pruebas deben pasar, incluida la reconstrucción con los datos reales.
 - **Notas del episodio:** las del podcast (*Revolución de la Riqueza* #292) no se subieron al
   repo porque citaban demasiado texto del episodio. Su resumen está en
   `docs/00-investigacion-inicial.md`.

@@ -5,7 +5,14 @@ from pathlib import Path
 import pytest
 
 from bolsillometro import datos as disco
-from bolsillometro.indices import incidencias, indice_ponderado, valores_en, variacion
+from bolsillometro.indices import (
+    encadenar,
+    incidencias,
+    indice_ponderado,
+    pesos_lowe,
+    valores_en,
+    variacion,
+)
 from bolsillometro.periodos import Periodo
 from bolsillometro.pipeline import reconstruir
 from bolsillometro.reconstruccion import (
@@ -95,6 +102,26 @@ def test_incidencias_oficiales_suman_la_inflacion_anual(datos):
     # El índice reconstruido da la inflación anual publicada (con redondeo de las series).
     publicada = variacion(datos.mensual["general"], hasta, rezago=12)
     assert variacion(indice, hasta, rezago=12) == pytest.approx(publicada, abs=0.002)
+
+
+def test_encadenar_los_pesos_oficiales_sigue_reconstruyendo_el_inpc(datos):
+    pesos = {p.codigo: p.ponderador for p in datos.ponderadores}
+    genericos = {codigo: datos.mensual[codigo] for codigo in pesos}
+    base = valores_en({c: datos.quincenal[c] for c in pesos}, BASE_PONDERADORES)
+    indice = indice_ponderado(genericos, pesos, base, factor_encadenamiento(datos.quincenal))
+    # Los ponderadores oficiales llevados a jul-2025 por precios relativos: encadenar con
+    # ellos en ese mes no debe mover el INPC reconstruido.
+    eslabon = Periodo(2025, 7)
+    pesos_eslabon = pesos_lowe(pesos, base, valores_en(genericos, eslabon))
+    encadenado = encadenar(indice, genericos, pesos_eslabon, eslabon)
+    publicado = datos.mensual["general"]
+    fallas = [
+        (str(p), round(v, 3) - publicado[p])
+        for p, v in encadenado.items()
+        if p > eslabon and abs(round(v, 3) - publicado[p]) > 0.001 + 1e-9
+    ]
+    assert fallas == []
+    assert max(encadenado) == _ultimo(publicado)
 
 
 def test_metadatos_coinciden_con_los_datos(datos, resultado):

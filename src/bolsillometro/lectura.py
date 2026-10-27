@@ -15,12 +15,14 @@ import openpyxl
 from .periodos import Periodo
 
 _SERIE_EN_ARBOL = re.compile(r"ShowMoreInformation\('(\d+)','(\d+)','([^']*)'")
+# Los temas (ciudades, subtemas) no son series: solo traen la clave y el título.
+_TEMA_EN_ARBOL = re.compile(r'id="PT(\d+)"[^>]*>([^<]*)<')
 _GENERICO = re.compile(r"^(\d{3})\s+(.+)$")
 # Dos dígitos: un concepto en el árbol por objeto del gasto o una división en la CCIF.
 _DOS_DIGITOS = re.compile(r"^\d{2}\s")
 _GRUPO = re.compile(r"^\d{2}\.\d\s")
 _CLASE = re.compile(r"^\d{2}\.\d\.\d\s")
-_SIN_DATO = {"", "NA", "N/E"}
+_SIN_DATO = {"", "NA", "N/E", "ND"}
 
 TITULO_GENERAL = "Índice general"
 
@@ -66,6 +68,14 @@ def leer_arbol(respuesta: str | Mapping) -> list[Nodo]:
     ]
 
 
+def leer_temas(respuesta: str | Mapping) -> dict[str, str]:
+    """Temas del árbol (p. ej. las ciudades de "Por ciudad"), como ``{clave: titulo}``."""
+    datos = json.loads(respuesta) if isinstance(respuesta, str) else respuesta
+    return {
+        clave: html.unescape(titulo).strip() for clave, titulo in _TEMA_EN_ARBOL.findall(datos["d"])
+    }
+
+
 def genericos_del_arbol(nodos: Iterable[Nodo]) -> tuple[str, dict[str, Generico]]:
     """Devuelve el id del índice general y los genéricos del árbol, indexados por código.
 
@@ -97,7 +107,7 @@ def leer_exportacion(texto: str) -> dict[str, dict[Periodo, float | None]]:
     """Lee el CSV de ``Exportacion.aspx`` y devuelve ``{id_serie: {periodo: valor}}``.
 
     Las filas de metadatos se ignoran; la fila ``Fecha`` trae los ids de las series y las
-    siguientes, una por periodo. ``NA`` y ``N/E`` se leen como ``None``.
+    siguientes, una por periodo. ``NA``, ``N/E`` y ``ND`` se leen como ``None``.
     """
     filas = list(csv.reader(io.StringIO(texto)))
     try:

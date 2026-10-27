@@ -9,6 +9,7 @@ from bolsillometro.lectura import (
     leer_arbol,
     leer_exportacion,
     leer_ponderadores,
+    leer_temas,
 )
 from bolsillometro.periodos import Periodo
 
@@ -71,6 +72,13 @@ def test_leer_exportacion_quincenal():
     assert serie == {Periodo(2024, 7, 2): 136.095, Periodo(2024, 8, 1): 135.997}
 
 
+def test_leer_exportacion_por_ciudad_trae_nd():
+    texto = '"Fecha","886350","886573"\n"Jun 2024","140.1","ND"\n"Ago 2024","141.2","N/E"\n'
+    series = leer_exportacion(texto)
+    assert series["886350"] == {Periodo(2024, 6): 140.1, Periodo(2024, 8): 141.2}
+    assert set(series["886573"].values()) == {None}
+
+
 def test_leer_exportacion_sin_fila_fecha():
     with pytest.raises(ValueError, match="Fecha"):
         leer_exportacion('"Instituto Nacional de Estadística y Geografía",\n')
@@ -86,6 +94,19 @@ def test_arbol_genericos_y_conceptos():
     assert tortilla.id_serie == "865594"
     assert tortilla.concepto == "01 Tortillas y derivados del maíz"
     assert genericos["004"].concepto == "03 Galletas, pastas y harinas de trigo"
+
+
+def test_leer_temas():
+    arbol = {
+        "d": '<td class="EstiloTexto" id="PT1120017000600360">Pachuca, Hgo.</a></td>'
+        '<td id="PT11200170006003600010">Índice de precios al consumidor, '
+        "por objeto del gasto</a></td>"
+    }
+    assert leer_temas(arbol) == {
+        "1120017000600360": "Pachuca, Hgo.",
+        "11200170006003600010": "Índice de precios al consumidor, por objeto del gasto",
+    }
+    assert leer_temas(ARBOL) == {}
 
 
 def test_arbol_genericos_repetidos():

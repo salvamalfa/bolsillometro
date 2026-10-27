@@ -42,3 +42,39 @@ jobs:
           git add data
           git commit -m "datos: INPC hasta $ultimo (Fuente: INEGI)"
           git push
+
+      # Las ciudades tardan ~10 minutos (un árbol de ~63 MB y 55 exportaciones), así que solo
+      # se bajan cuando el nacional trae un mes que data/ciudades todavía no tiene. Van en su
+      # propio commit: si fallan, el nacional ya quedó guardado.
+      - name: ¿Faltan meses por ciudad?
+        id: ciudades
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, pathlib
+          nacional = json.load(open("data/metadatos.json"))["ultimo_mensual"]
+          ruta = pathlib.Path("data/ciudades/metadatos.json")
+          ciudades = json.load(ruta.open())["ultimo_mensual"] if ruta.exists() else ""
+          print(f"pendiente={'si' if ciudades != nacional else 'no'}")
+          PY
+
+      - name: Descargar, validar y escribir data/ciudades/
+        if: steps.ciudades.outputs.pendiente == 'si'
+        run: python -m bolsillometro actualizar-ciudades --datos data
+
+      - name: Pruebas con los datos por ciudad
+        if: steps.ciudades.outputs.pendiente == 'si'
+        run: pytest
+
+      - name: Commit si hay datos nuevos por ciudad
+        if: steps.ciudades.outputs.pendiente == 'si'
+        run: |
+          if [ -z "$(git status --porcelain -- data/ciudades)" ]; then
+            echo "Sin datos nuevos por ciudad."
+            exit 0
+          fi
+          ultimo=$(python -c "import json; print(json.load(open('data/ciudades/metadatos.json'))['ultimo_mensual'])")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ciudades
+          git commit -m "datos: INPC por ciudad hasta $ultimo (Fuente: INEGI)"
+          git push

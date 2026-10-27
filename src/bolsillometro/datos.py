@@ -41,7 +41,7 @@ class DatosINPC:
     catalogo: list[EntradaCatalogo]
 
 
-def _escribir_csv(ruta: Path, encabezado: list[str], filas: Iterable[list[str]]) -> None:
+def escribir_csv(ruta: Path, encabezado: list[str], filas: Iterable[list[str]]) -> None:
     ruta.parent.mkdir(parents=True, exist_ok=True)
     with ruta.open("w", encoding="utf-8", newline="") as archivo:
         escritor = csv.writer(archivo, lineterminator="\n")
@@ -49,7 +49,7 @@ def _escribir_csv(ruta: Path, encabezado: list[str], filas: Iterable[list[str]])
         escritor.writerows(filas)
 
 
-def _leer_csv(ruta: Path) -> list[dict[str, str]]:
+def leer_csv(ruta: Path) -> list[dict[str, str]]:
     with ruta.open(encoding="utf-8", newline="") as archivo:
         return list(csv.DictReader(archivo))
 
@@ -63,7 +63,7 @@ def escribir_series(ruta: Path, series: Mapping[str, Serie]) -> None:
     """Formato ancho: una fila por periodo y una columna por serie (``general`` primero)."""
     columnas = [COLUMNA_GENERAL] + sorted(c for c in series if c != COLUMNA_GENERAL)
     periodos = sorted({p for serie in series.values() for p in serie})
-    _escribir_csv(
+    escribir_csv(
         ruta,
         ["periodo", *columnas],
         ([str(p), *(_formato(series[c].get(p)) for c in columnas)] for p in periodos),
@@ -71,7 +71,7 @@ def escribir_series(ruta: Path, series: Mapping[str, Serie]) -> None:
 
 
 def leer_series(ruta: Path) -> dict[str, dict[Periodo, float | None]]:
-    filas = _leer_csv(ruta)
+    filas = leer_csv(ruta)
     if not filas:
         return {}
     series: dict[str, dict[Periodo, float | None]] = {c: {} for c in filas[0] if c != "periodo"}
@@ -84,7 +84,7 @@ def leer_series(ruta: Path) -> dict[str, dict[Periodo, float | None]]:
 
 def escribir_ponderadores(ruta: Path, ponderadores: Iterable[Ponderador]) -> None:
     nombres = [campo.name for campo in fields(Ponderador)]
-    _escribir_csv(
+    escribir_csv(
         ruta,
         nombres,
         (
@@ -96,12 +96,12 @@ def escribir_ponderadores(ruta: Path, ponderadores: Iterable[Ponderador]) -> Non
 
 def leer_ponderadores(ruta: Path) -> list[Ponderador]:
     return [
-        Ponderador(**{**fila, "ponderador": float(fila["ponderador"])}) for fila in _leer_csv(ruta)
+        Ponderador(**{**fila, "ponderador": float(fila["ponderador"])}) for fila in leer_csv(ruta)
     ]
 
 
 def escribir_catalogo(ruta: Path, catalogo: Iterable[EntradaCatalogo]) -> None:
-    _escribir_csv(
+    escribir_csv(
         ruta,
         [campo.name for campo in fields(EntradaCatalogo)],
         (list(asdict(entrada).values()) for entrada in catalogo),
@@ -109,7 +109,7 @@ def escribir_catalogo(ruta: Path, catalogo: Iterable[EntradaCatalogo]) -> None:
 
 
 def leer_catalogo(ruta: Path) -> list[EntradaCatalogo]:
-    return [EntradaCatalogo(**fila) for fila in _leer_csv(ruta)]
+    return [EntradaCatalogo(**fila) for fila in leer_csv(ruta)]
 
 
 def escribir_metadatos(ruta: Path, metadatos: Mapping) -> None:

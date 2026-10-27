@@ -21,6 +21,7 @@ URL_PONDERADORES = "https://www.inegi.org.mx/rnm/index.php/catalog/1015/download
 
 ESTRUCTURA_MENSUAL = "112001700030"  # INPC nacional (mensual), por objeto del gasto
 ESTRUCTURA_QUINCENAL = "112001600030"  # INPC nacional (quincenal), por objeto del gasto
+ESTRUCTURA_CIUDADES = "112001700060"  # INPC por ciudad (mensual): 55 ciudades × 292 genéricos
 
 ENCABEZADOS = {"User-Agent": f"bolsillometro/{__version__}"}
 
@@ -43,10 +44,14 @@ class ClienteINEGI:
         self.reintentos = reintentos
         self.espera = espera
 
-    def _pedir(self, metodo: str, url: str, **kwargs) -> requests.Response:
+    def _pedir(
+        self, metodo: str, url: str, timeout: float | None = None, **kwargs
+    ) -> requests.Response:
         for intento in range(1, self.reintentos + 1):
             try:
-                respuesta = self.sesion.request(metodo, url, timeout=self.timeout, **kwargs)
+                respuesta = self.sesion.request(
+                    metodo, url, timeout=timeout or self.timeout, **kwargs
+                )
                 if respuesta.status_code < 500:
                     respuesta.raise_for_status()
                     return respuesta
@@ -59,8 +64,12 @@ class ClienteINEGI:
             f"Sin respuesta válida de {url} tras {self.reintentos} intentos"
         ) from error
 
-    def obtener_arbol(self, estructura: str) -> dict:
-        """Árbol de series de una estructura (ids, claves jerárquicas y títulos)."""
+    def obtener_arbol(self, estructura: str, timeout: float | None = None) -> dict:
+        """Árbol de series de una estructura (ids, claves jerárquicas y títulos).
+
+        El de "Por ciudad" pesa ~63 MB y el INEGI tarda unos 3 minutos en armarlo; para ese
+        conviene un ``timeout`` mayor que el del cliente.
+        """
         cuerpo = {
             "idNodo": estructura,
             "tituloPrincipal": "",
@@ -70,7 +79,7 @@ class ClienteINEGI:
             "paramEstructura": estructura,
             "notas": [],
         }
-        return self._pedir("POST", URL_ARBOL, json=cuerpo).json()
+        return self._pedir("POST", URL_ARBOL, timeout=timeout, json=cuerpo).json()
 
     def exportar(
         self, estructura: str, ids: Iterable[str], anio_inicial: int, anio_final: int

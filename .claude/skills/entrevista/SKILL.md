@@ -15,8 +15,9 @@ Tú haces las preguntas, armas el presupuesto y corres el cálculo.
   ni pegues las respuestas en un PR o issue.
 - **Lenguaje común:** usa el texto de cada pregunta tal como está en el cuestionario. No hables
   de genéricos, ponderadores ni del INPC salvo que la persona pregunte.
-- **Aproximado está bien:** si dan un rango ("entre 3 y 4 mil"), usa el punto medio. Si no saben,
-  pide una idea ("¿más o menos que mil?"); si siguen sin saber, pon 0 y dilo al final.
+- **Aproximado está bien:** por eso se pregunta con rangos. Si escriben un monto propio o un rango
+  ("entre 3 y 4 mil"), usa ese monto o el punto medio. Si no saben, pide una idea; si siguen sin
+  saber, pon 0 y dilo al final.
 - **Frecuencia:** si responden por otro periodo que el de la pregunta (recibo bimestral, gasto
   semanal, pago anual), guarda `{"monto": x, "cada": "bimestre"}` (`mes`, `bimestre`,
   `trimestre`, `semestre`, `año`); si es semanal, multiplica por 4.3 y guárdalo como mensual.
@@ -28,8 +29,11 @@ Tú haces las preguntas, armas el presupuesto y corres el cálculo.
 2. **Ciudad:** pregunta con AskUserQuestion. Si la persona dice una ciudad que no está en
    `data/ciudades/catalogo.csv`, elige la más cercana y díselo. Usa la `clave` del catálogo.
 3. **Opciones** (`tipo = "opcion"`): AskUserQuestion con las opciones del cuestionario.
-4. **Montos:** pregunta de 3 a 5 por mensaje, en texto, numerados, para que contesten rápido.
-   Los `porcentaje` con `opcional = true` se pueden saltar (no los guardes).
+4. **Montos y porcentajes:** usa AskUserQuestion, hasta 4 preguntas por llamada, con las
+   opciones de su `escala` (sección `[escalas]` del cuestionario), en el mismo orden y con el
+   mismo texto. La persona puede escribir un monto exacto en "Other". Guarda como respuesta el
+   texto de la opción elegida ("$300 a $700"): `bolsillometro entrevista` le pone el valor de la
+   escala. "No sé" en un aumento también se guarda tal cual y se omite.
 5. Al terminar, muestra un resumen corto de lo que entendiste (rubro y monto al mes) y pide que
    lo confirme o corrija.
 6. Guarda las respuestas en `presupuestos/<alias>.json` (alias corto, sin datos personales),

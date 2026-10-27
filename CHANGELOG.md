@@ -8,6 +8,11 @@ de datos (`datos: INPC hasta …`) no se anotan aquí; están en el historial de
 
 ### Fase 1: MVP (en curso)
 
+- **Ajustes tras la primera entrevista** (#10): la primera entrevista real (el dueño del
+  proyecto, 27-oct-2026) salió bien con preguntas de opción por rango, así que el cuestionario
+  ahora trae `[escalas]` estándar (a lo más 4 opciones, con un valor representativo cada una)
+  y las respuestas pueden ser el texto de la opción. El reporte dice "la Ciudad de México" en
+  vez del nombre del INEGI.
 - **Entrevista y reporte de una cifra** (#9): cuestionario estandarizado de 33 preguntas en
   lenguaje común (`catalogos/cuestionario.toml`), `bolsillometro entrevista respuestas.json` y
   el skill `entrevista` para que Claude haga las preguntas y arme el presupuesto. El reporte

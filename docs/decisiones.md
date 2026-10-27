@@ -106,3 +106,11 @@ fase; si una cambia, no se borra: se marca como reemplazada y se anota la nueva.
 - **El mes del gasto en la entrevista es el último con datos:** las respuestas describen un mes
   típico de hoy.
 - **`presupuestos/` está en `.gitignore`:** las respuestas de una persona nunca se suben.
+- **Respuestas por rango, con escalas en el cuestionario** (27-oct-2026, tras la primera
+  entrevista): contestar eligiendo un rango es más rápido que escribir cifras. Las opciones y su
+  valor representativo viven en `[escalas]` del cuestionario, no en cada interfaz, para que
+  Claude, la web y el plugin den el mismo resultado con las mismas respuestas. Siempre se puede
+  dar un monto exacto.
+- **Nombre común de la ciudad en el reporte:** "la Ciudad de México" en vez de "Area
+  Metropolitana de la Cd. de México" (`ciudades.NOMBRES_COMUNES`); el catálogo conserva el
+  nombre del INEGI.

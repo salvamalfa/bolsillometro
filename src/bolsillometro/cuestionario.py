@@ -8,6 +8,8 @@ y ``presupuesto_desde_respuestas`` las convierte en un ``Presupuesto``:
 - Un monto que llena varios rubros (p. ej. "súper y mercado") se reparte entre ellos con los
   ponderadores oficiales del INPC llevados al mes del gasto.
 - Las preguntas cuya condición ``si`` no se cumple no cuentan, aunque traigan respuesta.
+- Una respuesta puede ser el texto de una opción de su ``escala`` ("$300 a $700"); se usa el
+  valor que la escala le da. "No sé" en un aumento se omite.
 - El mes del gasto es el último con datos: las respuestas describen un mes típico de hoy.
 """
 
@@ -39,12 +41,20 @@ class Pregunta:
     opciones: tuple[str, ...] = ()
     si: Mapping | None = None
     opcional: bool = False
+    escala: str | None = None
+
+
+@dataclass(frozen=True)
+class Opcion:
+    texto: str
+    valor: float | None  # None: la respuesta se omite (p. ej. "No sé")
 
 
 @dataclass(frozen=True)
 class Cuestionario:
     version: int
     preguntas: tuple[Pregunta, ...] = field(default_factory=tuple)
+    escalas: Mapping[str, tuple[Opcion, ...]] = field(default_factory=dict)
 
     def por_id(self) -> dict[str, Pregunta]:
         return {p.id: p for p in self.preguntas}
@@ -58,7 +68,27 @@ def cargar_cuestionario(ruta: Path = CUESTIONARIO) -> Cuestionario:
         cruda["rubros"] = tuple(cruda.get("rubros", ()))
         cruda["opciones"] = tuple(o["valor"] for o in cruda.get("opciones", ()))
         preguntas.append(Pregunta(**cruda))
-    return Cuestionario(datos["version"], tuple(preguntas))
+    escalas = {
+        nombre: tuple(
+            Opcion(o["texto"], None if o.get("omitir") else float(o["valor"])) for o in opciones
+        )
+        for nombre, opciones in datos.get("escalas", {}).items()
+    }
+    return Cuestionario(datos["version"], tuple(preguntas), escalas)
+
+
+_OMITIDA = object()
+
+
+def resolver(pregunta: Pregunta, valor: object, cuestionario: Cuestionario) -> object:
+    """Traduce el texto de una opción de la escala a su valor; lo demás queda igual."""
+    if isinstance(valor, str) and pregunta.escala:
+        for opcion in cuestionario.escalas[pregunta.escala]:
+            if opcion.texto == valor:
+                return _OMITIDA if opcion.valor is None else opcion.valor
+        textos = ", ".join(o.texto for o in cuestionario.escalas[pregunta.escala])
+        raise ErrorPresupuesto(f"{pregunta.id}: {valor!r} no es una opción ({textos})")
+    return valor
 
 
 def aplica(pregunta: Pregunta, respuestas: Mapping[str, object]) -> bool:
@@ -104,10 +134,17 @@ def presupuesto_desde_respuestas(
     aumento: dict[str, float] = {}
     no_cubierto: dict[str, float] = {}
 
+    resueltas = {}
     for pregunta in cuestionario.preguntas:
-        if pregunta.id not in respuestas or not aplica(pregunta, respuestas):
+        if pregunta.id in respuestas:
+            valor = resolver(pregunta, respuestas[pregunta.id], cuestionario)
+            if valor is not _OMITIDA:
+                resueltas[pregunta.id] = valor
+
+    for pregunta in cuestionario.preguntas:
+        if pregunta.id not in resueltas or not aplica(pregunta, resueltas):
             continue
-        valor = respuestas[pregunta.id]
+        valor = resueltas[pregunta.id]
         try:
             if pregunta.tipo == "ciudad":
                 ciudad = str(valor)

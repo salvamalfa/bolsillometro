@@ -69,6 +69,31 @@ def test_el_cuestionario_es_consistente(cuestionario, rubros):
     assert set(rubros) - llenados == {"auto_compra", "vivienda_propia"}
 
 
+def test_cada_monto_tiene_una_escala_de_a_lo_mas_cuatro_opciones(cuestionario):
+    for pregunta in cuestionario.preguntas:
+        if pregunta.tipo in ("monto", "porcentaje"):
+            assert pregunta.escala in cuestionario.escalas, pregunta.id
+    for nombre, opciones in cuestionario.escalas.items():
+        assert 2 <= len(opciones) <= 4, nombre  # caben en una pregunta de opción múltiple
+        valores = [o.valor for o in opciones if o.valor is not None]
+        assert valores == sorted(valores) and min(valores) >= 0, nombre
+
+
+def test_las_respuestas_pueden_ser_opciones_de_la_escala(cuestionario, rubros, nacional):
+    respuestas = {
+        "vivienda": "rentada",
+        "renta": "$5,000 a $12,000",
+        "aumento_renta": "No sé",
+        "luz": "$300 a $700",
+        "ropa_calzado": "Menos de $3,000",  # anual: 2000 / 12
+    }
+    presupuesto = _convertir(respuestas, cuestionario, rubros, nacional)
+    assert presupuesto.gasto == {"renta": 8500, "luz": 500, "ropa_calzado": pytest.approx(166.67)}
+    assert presupuesto.aumento_propio == {}
+    respuestas["aumento_renta"] = "4% a 8%"
+    assert _convertir(respuestas, cuestionario, rubros, nacional).aumento_propio == {"renta": 6}
+
+
 def test_aplica(cuestionario):
     preguntas = cuestionario.por_id()
     assert aplica(preguntas["gasolina"], {"auto": "si"})
@@ -120,7 +145,8 @@ def test_frecuencias_condiciones_y_no_cubierto(cuestionario, rubros, nacional):
         ({"super": 1000, "lotería": 50}, "no existen"),
         ({"super": 1000, "vivienda": "en un barco"}, "vivienda: debe ser una de"),
         ({"super": -5}, "super: monto negativo"),
-        ({"super": "mucho"}, "super: monto inválido"),
+        ({"super": "mucho"}, "super: 'mucho' no es una opción"),
+        ({"super": True}, "super: monto inválido"),
         ({"super": {"monto": 900, "cada": "quincena"}}, "frecuencia desconocida"),
         ({"vivienda": "rentada", "renta": 5000, "aumento_renta": "poco"}, "aumento_renta"),
         ({"super": 0}, "ningún gasto"),
@@ -219,4 +245,4 @@ def test_cli_entrevista_con_error(tmp_path, capsys):
     respuestas = tmp_path / "yo.json"
     respuestas.write_text(json.dumps({"super": "mucho"}), "utf-8")
     assert main(["entrevista", str(respuestas), "--datos", str(DATOS)]) == 1
-    assert "super: monto inválido" in capsys.readouterr().err
+    assert "super: 'mucho' no es una opción" in capsys.readouterr().err

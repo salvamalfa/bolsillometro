@@ -82,6 +82,14 @@ def test_ciudades_del_arbol_usa_solo_el_subtema_por_objeto_del_gasto():
     assert {c: g.id_serie for c, g in resultado[0][1].items()} == {"014": "5", "138": "6"}
 
 
+def test_nombre_comun():
+    assert (
+        ciudades.nombre_comun(Ciudad("cdmx", "Area Metropolitana de la Cd. de México", "", ""))
+        == "la Ciudad de México"
+    )
+    assert ciudades.nombre_comun(Ciudad("pachuca", "Pachuca, Hgo.", "", "")) == "Pachuca, Hgo."
+
+
 def test_ciudades_del_arbol_falla_sin_subtema():
     arbol = {"d": _tema(ESTRUCTURA_CIUDADES + "0360", "Pachuca, Hgo.")}
     with pytest.raises(ErrorCiudades, match="objeto del gasto"):

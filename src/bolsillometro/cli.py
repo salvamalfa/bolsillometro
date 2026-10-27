@@ -72,7 +72,9 @@ def _cargar_ciudades(datos: Path, clave: str) -> tuple[ciudades.DatosCiudades | 
     if clave == personal.NACIONAL:
         return None, None
     datos_ciudades = ciudades.cargar(datos)
-    nombre = next((c.nombre for c in datos_ciudades.ciudades if c.clave == clave), None)
+    nombre = next(
+        (ciudades.nombre_comun(c) for c in datos_ciudades.ciudades if c.clave == clave), None
+    )
     return datos_ciudades, nombre
 
 

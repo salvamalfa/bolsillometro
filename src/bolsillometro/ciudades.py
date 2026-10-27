@@ -44,6 +44,8 @@ SUBTEMA_OBJETO_DEL_GASTO = "por objeto del gasto"
 
 # Claves cortas para nombres que de otro modo serían incómodos de escribir.
 ALIAS = {"area-metropolitana-de-la-cd-de-mexico": "cdmx"}
+# Cómo se le dice a la ciudad en un reporte, cuando el nombre del INEGI suena raro.
+NOMBRES_COMUNES = {"cdmx": "la Ciudad de México"}
 
 
 class ErrorCiudades(RuntimeError):
@@ -70,6 +72,11 @@ def clave_ciudad(nombre: str) -> str:
     base = re.sub(r"^\d+\.\s*", "", sin_acentos).split(",")[0]
     clave = re.sub(r"[^a-z0-9]+", "-", base.lower()).strip("-")
     return ALIAS.get(clave, clave)
+
+
+def nombre_comun(ciudad: Ciudad) -> str:
+    """El nombre para mostrar: "la Ciudad de México" en vez de "Area Metropolitana de la Cd. …"."""
+    return NOMBRES_COMUNES.get(ciudad.clave, ciudad.nombre)
 
 
 def _nombre(titulo: str) -> str:

@@ -11,8 +11,73 @@
 # - no_cubierto / aumento_propio: a dónde va la respuesta, si no es gasto que mide el INPC.
 # - si: solo se pregunta si otra respuesta cumple: {pregunta, es} o {pregunta, mayor_que}.
 # - opcional: se puede saltar; si no, sin respuesta cuenta como 0.
+# - escala: las opciones (a lo más 4) con que se pregunta un monto o un porcentaje; cada una
+#   trae el valor que se usa al elegirla. La respuesta puede ser ese texto o un monto exacto.
 
 version = 1
+
+# Opciones estándar de respuesta. El valor es un punto representativo del rango.
+[escalas]
+servicios = [
+  { texto = "Nada", valor = 0 },
+  { texto = "Menos de $300", valor = 200 },
+  { texto = "$300 a $700", valor = 500 },
+  { texto = "Más de $700", valor = 1000 },
+]
+mes_chico = [
+  { texto = "Nada", valor = 0 },
+  { texto = "Menos de $500", valor = 300 },
+  { texto = "$500 a $1,500", valor = 1000 },
+  { texto = "Más de $1,500", valor = 2200 },
+]
+mes_mediano = [
+  { texto = "Nada", valor = 0 },
+  { texto = "Menos de $1,000", valor = 600 },
+  { texto = "$1,000 a $3,000", valor = 2000 },
+  { texto = "Más de $3,000", valor = 4500 },
+]
+mes_grande = [
+  { texto = "Nada", valor = 0 },
+  { texto = "Menos de $5,000", valor = 3500 },
+  { texto = "$5,000 a $12,000", valor = 8500 },
+  { texto = "Más de $12,000", valor = 16000 },
+]
+comida = [
+  { texto = "Menos de $4,000", valor = 3000 },
+  { texto = "$4,000 a $8,000", valor = 6000 },
+  { texto = "$8,000 a $12,000", valor = 10000 },
+  { texto = "Más de $12,000", valor = 15000 },
+]
+comer_fuera = [
+  { texto = "Nada", valor = 0 },
+  { texto = "Menos de $1,500", valor = 1000 },
+  { texto = "$1,500 a $4,000", valor = 2750 },
+  { texto = "Más de $4,000", valor = 6000 },
+]
+gasolina = [
+  { texto = "Menos de $1,000", valor = 700 },
+  { texto = "$1,000 a $2,500", valor = 1750 },
+  { texto = "$2,500 a $5,000", valor = 3750 },
+  { texto = "Más de $5,000", valor = 6500 },
+]
+anio_chico = [
+  { texto = "Nada", valor = 0 },
+  { texto = "Menos de $3,000", valor = 2000 },
+  { texto = "$3,000 a $10,000", valor = 6500 },
+  { texto = "Más de $10,000", valor = 15000 },
+]
+anio_grande = [
+  { texto = "Nada", valor = 0 },
+  { texto = "Menos de $10,000", valor = 7000 },
+  { texto = "$10,000 a $30,000", valor = 20000 },
+  { texto = "Más de $30,000", valor = 40000 },
+]
+aumento = [
+  { texto = "No sé", omitir = true },
+  { texto = "Menos de 4%", valor = 3 },
+  { texto = "4% a 8%", valor = 6 },
+  { texto = "Más de 8%", valor = 10 },
+]
 
 [[pregunta]]
 id = "ciudad"
@@ -31,6 +96,7 @@ opciones = [
 
 [[pregunta]]
 id = "renta"
+escala = "mes_grande"
 tipo = "monto"
 cada = "mes"
 rubros = ["renta"]
@@ -39,6 +105,7 @@ texto = "¿Cuánto pagas de renta al mes?"
 
 [[pregunta]]
 id = "aumento_renta"
+escala = "aumento"
 tipo = "porcentaje"
 aumento_propio = "renta"
 opcional = true
@@ -47,6 +114,7 @@ texto = "¿Cuánto te subieron la renta en el último año, en porcentaje? Si no
 
 [[pregunta]]
 id = "hipoteca"
+escala = "mes_grande"
 tipo = "monto"
 cada = "mes"
 no_cubierto = "hipoteca"
@@ -55,6 +123,7 @@ texto = "¿Pagas hipoteca? ¿Cuánto al mes? (Es deuda: la reporto aparte, no mu
 
 [[pregunta]]
 id = "super"
+escala = "comida"
 tipo = "monto"
 cada = "mes"
 rubros = ["super", "carne", "lacteos", "frutas_verduras", "refrescos"]
@@ -62,6 +131,7 @@ texto = "¿Cuánto gastas al mes en comida y bebida para la casa: súper, mercad
 
 [[pregunta]]
 id = "comer_fuera"
+escala = "comer_fuera"
 tipo = "monto"
 cada = "mes"
 rubros = ["restaurantes", "comida_para_llevar"]
@@ -69,6 +139,7 @@ texto = "¿Y en comer fuera o pedir comida: restaurantes, fondas, cafés, comida
 
 [[pregunta]]
 id = "alcohol_cigarros"
+escala = "mes_chico"
 tipo = "monto"
 cada = "mes"
 rubros = ["alcohol_cigarros"]
@@ -76,6 +147,7 @@ texto = "¿Cuánto en cerveza, vino, licores o cigarros al mes?"
 
 [[pregunta]]
 id = "luz"
+escala = "servicios"
 tipo = "monto"
 cada = "mes"
 rubros = ["luz"]
@@ -83,6 +155,7 @@ texto = "¿Cuánto pagas de luz? Si tu recibo es bimestral, dime el monto y yo l
 
 [[pregunta]]
 id = "agua"
+escala = "servicios"
 tipo = "monto"
 cada = "mes"
 rubros = ["agua"]
@@ -90,6 +163,7 @@ texto = "¿Y de agua?"
 
 [[pregunta]]
 id = "gas"
+escala = "servicios"
 tipo = "monto"
 cada = "mes"
 rubros = ["gas"]
@@ -97,6 +171,7 @@ texto = "¿Y de gas (tanque, cilindro o natural) al mes?"
 
 [[pregunta]]
 id = "celular"
+escala = "servicios"
 tipo = "monto"
 cada = "mes"
 rubros = ["celular"]
@@ -104,6 +179,7 @@ texto = "¿Cuánto pagan de celular (y teléfono fijo, si tienen) en tu casa al 
 
 [[pregunta]]
 id = "internet_tv"
+escala = "mes_chico"
 tipo = "monto"
 cada = "mes"
 rubros = ["internet_tv"]
@@ -111,6 +187,7 @@ texto = "¿Y de internet y TV de paga?"
 
 [[pregunta]]
 id = "transporte_publico"
+escala = "mes_chico"
 tipo = "monto"
 cada = "mes"
 rubros = ["transporte_publico"]
@@ -124,6 +201,7 @@ opciones = [{ valor = "si", texto = "Sí" }, { valor = "no", texto = "No" }]
 
 [[pregunta]]
 id = "gasolina"
+escala = "gasolina"
 tipo = "monto"
 cada = "mes"
 rubros = ["gasolina"]
@@ -132,6 +210,7 @@ texto = "¿Cuánto en gasolina al mes?"
 
 [[pregunta]]
 id = "auto_gastos"
+escala = "anio_grande"
 tipo = "monto"
 cada = "año"
 rubros = ["auto_gastos"]
@@ -140,6 +219,7 @@ texto = "¿Cuánto al año en el auto: servicio, reparaciones, seguro, tenencia 
 
 [[pregunta]]
 id = "credito_auto"
+escala = "mes_grande"
 tipo = "monto"
 cada = "mes"
 no_cubierto = "credito_auto"
@@ -148,6 +228,7 @@ texto = "¿Pagas mensualidad del auto? ¿Cuánto? (Es deuda: la reporto aparte).
 
 [[pregunta]]
 id = "colegiaturas"
+escala = "mes_grande"
 tipo = "monto"
 cada = "mes"
 rubros = ["colegiaturas"]
@@ -155,6 +236,7 @@ texto = "¿Cuánto pagan al mes de colegiaturas, guardería o clases extra?"
 
 [[pregunta]]
 id = "aumento_colegiatura"
+escala = "aumento"
 tipo = "porcentaje"
 aumento_propio = "colegiaturas"
 opcional = true
@@ -163,6 +245,7 @@ texto = "¿Cuánto subió la colegiatura este ciclo escolar, en porcentaje? Si n
 
 [[pregunta]]
 id = "utiles"
+escala = "anio_chico"
 tipo = "monto"
 cada = "año"
 rubros = ["utiles"]
@@ -170,6 +253,7 @@ texto = "¿Cuánto al año en útiles, libros y uniformes?"
 
 [[pregunta]]
 id = "limpieza_cuidado"
+escala = "mes_chico"
 tipo = "monto"
 cada = "mes"
 rubros = ["limpieza", "cuidado_personal"]
@@ -177,6 +261,7 @@ texto = "¿Cuánto al mes en limpieza y cuidado personal: detergente, jabón, pa
 
 [[pregunta]]
 id = "medicinas"
+escala = "mes_chico"
 tipo = "monto"
 cada = "mes"
 rubros = ["medicinas"]
@@ -184,6 +269,7 @@ texto = "¿Cuánto en medicinas al mes?"
 
 [[pregunta]]
 id = "salud"
+escala = "anio_chico"
 tipo = "monto"
 cada = "año"
 rubros = ["salud"]
@@ -191,6 +277,7 @@ texto = "¿Cuánto al año en consultas, dentista, análisis u hospital (lo que 
 
 [[pregunta]]
 id = "ropa_calzado"
+escala = "anio_chico"
 tipo = "monto"
 cada = "año"
 rubros = ["ropa_calzado"]
@@ -198,6 +285,7 @@ texto = "¿Cuánto al año en ropa y zapatos para toda la casa?"
 
 [[pregunta]]
 id = "casa"
+escala = "anio_chico"
 tipo = "monto"
 cada = "año"
 rubros = ["casa"]
@@ -205,6 +293,7 @@ texto = "¿Cuánto al año en muebles, aparatos y cosas para la casa?"
 
 [[pregunta]]
 id = "mantenimiento"
+escala = "mes_mediano"
 tipo = "monto"
 cada = "mes"
 rubros = ["mantenimiento"]
@@ -212,6 +301,7 @@ texto = "¿Cuánto al mes en ayuda doméstica y reparaciones de la casa?"
 
 [[pregunta]]
 id = "diversion"
+escala = "mes_chico"
 tipo = "monto"
 cada = "mes"
 rubros = ["diversion"]
@@ -219,6 +309,7 @@ texto = "¿Cuánto al mes en diversión: streaming, cine, gimnasio, fiestas, jug
 
 [[pregunta]]
 id = "mascotas"
+escala = "mes_chico"
 tipo = "monto"
 cada = "mes"
 rubros = ["mascotas"]
@@ -226,6 +317,7 @@ texto = "¿Cuánto al mes en mascotas (comida y veterinario)?"
 
 [[pregunta]]
 id = "viajes"
+escala = "anio_grande"
 tipo = "monto"
 cada = "año"
 rubros = ["viajes"]
@@ -233,6 +325,7 @@ texto = "¿Cuánto al año en viajes: avión, autobús foráneo, hoteles?"
 
 [[pregunta]]
 id = "otros_servicios"
+escala = "anio_chico"
 tipo = "monto"
 cada = "año"
 rubros = ["otros_servicios"]
@@ -240,6 +333,7 @@ texto = "¿Cuánto al año en trámites y servicios profesionales (abogado, cont
 
 [[pregunta]]
 id = "seguros"
+escala = "mes_mediano"
 tipo = "monto"
 cada = "mes"
 no_cubierto = "seguros"
@@ -247,6 +341,7 @@ texto = "¿Pagas seguro de gastos médicos o de vida? ¿Cuánto al mes? (El INPC
 
 [[pregunta]]
 id = "intereses"
+escala = "mes_mediano"
 tipo = "monto"
 cada = "mes"
 no_cubierto = "intereses_y_comisiones"

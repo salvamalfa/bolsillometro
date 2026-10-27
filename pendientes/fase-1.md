@@ -7,7 +7,7 @@ genéricos del INPC de su ciudad. Todavía no se conectan bancos.
 entiendan por qué su cifra difiere del INPC. Perfiles a cubrir: quien renta y quien es dueño,
 quien tiene auto y quien usa transporte público, escuela privada y pública.
 
-Va en 6 PRs; los pasos 1 y 2 ya están en [`CHANGELOG.md`](../CHANGELOG.md) y las decisiones
+Va en 6 PRs; los pasos 1, 2 y 4 ya están en [`CHANGELOG.md`](../CHANGELOG.md) y las decisiones
 de la fase, en [`docs/decisiones.md`](../docs/decisiones.md). Faltan estos:
 
 ## 3. Cetes y UDI
@@ -16,31 +16,6 @@ de la fase, en [`docs/decisiones.md`](../docs/decisiones.md). Faltan estos:
 - Mensualizarlos con un criterio documentado: por ejemplo, UDI de fin de mes y Cetes a 28 días
   de la primera subasta del mes, o su promedio.
 - Validar continuidad y rangos, y versionarlos en `data/` con el mismo workflow.
-
-## 4. Presupuesto y cálculo personal
-
-- **Catálogo de rubros:** unos 25 rubros en lenguaje común (renta, súper, gasolina,
-  colegiatura, restaurantes, etc.), versionados con su mapeo a genéricos.
-  - El gasto de un rubro se reparte entre sus genéricos con los ponderadores oficiales y
-    queda marcado como **imputado** (nivel B del reporte).
-- **Regla ciudad o nacional por genérico:**
-  - El índice de la ciudad para lo local: vivienda, transporte colectivo, electricidad,
-    alimentos frescos y loncherías.
-  - El nacional para lo que tiene precio casi único: autos, gasolina con tope, telefonía y
-    streaming.
-  - También el nacional para los genéricos que la ciudad ya no cotiza; la lista por ciudad
-    está en `data/ciudades/metadatos.json`.
-- **CLI:**
-  - `bolsillometro plantilla` escribe un `presupuesto.toml` comentado.
-  - `bolsillometro mi-inflacion presupuesto.toml` calcula el índice personal con el motor de
-    `indices.py`.
-- **Reglas especiales:**
-  - **Vivienda propia:** elegir entre incluir la renta imputada ("consumo") o excluirla
-    ("gasto efectivo"). La hipoteca nunca se mapea a vivienda propia.
-  - **"Gasto no cubierto":** seguro de gastos médicos, comisiones e intereses, impuestos. Se
-    reporta aparte y, si el usuario quiere, con el aumento que él capture.
-  - **Precio propio:** en partidas grandes (renta, colegiatura, prima de seguro) el usuario
-    puede poner su aumento real en lugar del índice, como una serie sintética.
 
 ## 5. Reporte
 

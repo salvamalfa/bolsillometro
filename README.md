@@ -8,7 +8,7 @@ Sirve para conocer tu costo de vida real y como benchmark de tus inversiones
 (rendimiento real contra *tu* inflación, no contra la de un hogar promedio).
 
 > Estado: fase 1 en curso. Ya están los datos nacionales y de las 55 ciudades, validados contra el INPC publicado.
-> Todavía no hay cálculo personal; lo que sigue está en [`pendientes/`](pendientes/README.md).
+> Ya calcula tu inflación personal desde la línea de comandos; lo que sigue está en [`pendientes/`](pendientes/README.md).
 > Este repo antes era "Combis Zempoala"; ese proyecto se deprecó y su contenido sigue en el historial de git.
 
 ## La idea en una fórmula
@@ -27,6 +27,21 @@ con los tuyos, da tu inflación.
 - **Local-first.** Tus movimientos bancarios y facturas no salen de tu máquina; lo que se comparte son agregados.
 - **Transparencia.** Cada resultado dice qué parte de tu gasto se observó y qué parte se imputó.
 - **Referencia, no recomendación.** No es asesoría de inversiones.
+
+## Calcula tu inflación
+
+```
+pip install -e .
+bolsillometro plantilla mi-presupuesto.toml   # llénala con tu gasto mensual por rubro
+bolsillometro mi-inflacion mi-presupuesto.toml
+```
+
+El presupuesto es un archivo TOML con 32 rubros en lenguaje común (súper, renta, gasolina,
+colegiaturas…), tu ciudad y el mes de tu gasto. Hay un ejemplo en
+[`ejemplos/pachuca-renta-auto.toml`](ejemplos/pachuca-renta-auto.toml). El resultado compara tu
+inflación anual y mensual con la del INPC nacional y la de tu ciudad, dice qué rubros la
+movieron y qué parte de tu gasto se asignó directo, cuál se repartió con los ponderadores
+oficiales y cuál usa el aumento que tú capturaste. Tus datos no salen de tu computadora.
 
 ## Fase 0: datos del INEGI
 
@@ -60,6 +75,7 @@ los días de publicación del INPC y hace commit solo cuando hay datos nuevos.
 | `reconstruccion.py` | Reconstruye el INPC con los ponderadores oficiales y lo compara con el publicado. |
 | `pipeline.py` | Descarga, valida y escribe `data/`. |
 | `ciudades.py` | INPC por ciudad (55 ciudades × 292 genéricos, mensual): descarga, validación contra el nacional y `data/ciudades/`. |
+| `personal.py` | Tu inflación: presupuesto en TOML, catálogo de rubros (`catalogos/rubros.csv`) y cálculo con precios de tu ciudad o nacionales. |
 
 ## Documentos
 

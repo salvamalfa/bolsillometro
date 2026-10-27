@@ -8,6 +8,11 @@ de datos (`datos: INPC hasta …`) no se anotan aquí; están en el historial de
 
 ### Fase 1: MVP (en curso)
 
+- **Presupuesto y cálculo personal** (#8): `bolsillometro plantilla` y
+  `bolsillometro mi-inflacion presupuesto.toml`. 32 rubros que cubren los 292 genéricos
+  (`catalogos/rubros.csv`), precios de la ciudad o nacionales según el genérico, vivienda propia
+  en modo "gasto efectivo" o "consumo", aumento propio por rubro y gasto no cubierto aparte. Un
+  presupuesto con el gasto del hogar promedio reproduce la inflación del INPC (±0.002 pp).
 - **Datos por ciudad** (#5): 55 ciudades × 292 genéricos, mensual, en `data/ciudades/`.
   Comando `actualizar-ciudades`, validación por título, acotamiento y plausibilidad, y paso
   propio en el workflow. Desde la canasta 2024 algunos genéricos ya no se cotizan en ciertas

@@ -1,0 +1,293 @@
+rubro,nombre,codigo,generico,indice
+super,Súper: despensa y abarrotes,001,Arroz,ciudad
+super,Súper: despensa y abarrotes,002,Botanas elaboradas con cereales,ciudad
+super,Súper: despensa y abarrotes,003,Cereales en hojuelas,ciudad
+super,Súper: despensa y abarrotes,004,Galletas,ciudad
+super,Súper: despensa y abarrotes,005,Harinas de trigo,ciudad
+super,Súper: despensa y abarrotes,006,Maíz,ciudad
+super,Súper: despensa y abarrotes,007,Masa y harinas de maíz,ciudad
+super,Súper: despensa y abarrotes,008,Pan blanco,ciudad
+super,Súper: despensa y abarrotes,009,Pan de caja,ciudad
+super,Súper: despensa y abarrotes,010,Pan dulce,ciudad
+super,Súper: despensa y abarrotes,011,Pasta para sopa,ciudad
+super,Súper: despensa y abarrotes,012,"Pasteles, pastelillos y pan dulce empaquetado",ciudad
+super,Súper: despensa y abarrotes,013,Pastelillos y pasteles a granel,ciudad
+super,Súper: despensa y abarrotes,014,Tortilla de maíz,ciudad
+super,Súper: despensa y abarrotes,015,Tortillas de harina de trigo,ciudad
+super,Súper: despensa y abarrotes,016,Tostadas,ciudad
+super,Súper: despensa y abarrotes,026,Atún y sardina en lata,ciudad
+super,Súper: despensa y abarrotes,029,Otros pescados y mariscos en conserva,ciudad
+super,Súper: despensa y abarrotes,032,Leche en polvo,ciudad
+super,Súper: despensa y abarrotes,033,Leche evaporada y condensada,ciudad
+super,Súper: despensa y abarrotes,042,Aceites y grasas vegetales comestibles,ciudad
+super,Súper: despensa y abarrotes,058,Otras conservas de frutas,ciudad
+super,Súper: despensa y abarrotes,064,Chile seco,ciudad
+super,Súper: despensa y abarrotes,066,Chiles envasados,ciudad
+super,Súper: despensa y abarrotes,068,Frijol,ciudad
+super,Súper: despensa y abarrotes,069,Frijol procesado,ciudad
+super,Súper: despensa y abarrotes,074,Papas fritas,ciudad
+super,Súper: despensa y abarrotes,077,Verduras envasadas,ciudad
+super,Súper: despensa y abarrotes,079,Otras legumbres secas,ciudad
+super,Súper: despensa y abarrotes,082,Azúcar,ciudad
+super,Súper: despensa y abarrotes,083,Chocolate líquido y para preparar bebida,ciudad
+super,Súper: despensa y abarrotes,084,Chocolate y productos de confitería,ciudad
+super,Súper: despensa y abarrotes,085,"Gelatina, miel y mermeladas",ciudad
+super,Súper: despensa y abarrotes,088,Concentrados de pollo y sal,ciudad
+super,Súper: despensa y abarrotes,089,Gelatina en polvo,ciudad
+super,Súper: despensa y abarrotes,090,Leche maternizada y alimentos para bebé,ciudad
+super,Súper: despensa y abarrotes,091,Mayonesa y mostaza,ciudad
+super,Súper: despensa y abarrotes,092,Moles y salsas,ciudad
+super,Súper: despensa y abarrotes,093,Sopas instantáneas y puré de tomate,ciudad
+super,Súper: despensa y abarrotes,094,Otros condimentos,ciudad
+super,Súper: despensa y abarrotes,095,Jugos o néctares envasados,ciudad
+super,Súper: despensa y abarrotes,096,Café soluble,ciudad
+super,Súper: despensa y abarrotes,097,Café tostado,ciudad
+super,Súper: despensa y abarrotes,098,Té,ciudad
+super,Súper: despensa y abarrotes,102,Concentrados para refrescos,ciudad
+carne,"Carne, pollo y pescado",017,Carne de cerdo,ciudad
+carne,"Carne, pollo y pescado",018,Carne de res,ciudad
+carne,"Carne, pollo y pescado",019,"Carnes secas, procesadas y otros embutidos",ciudad
+carne,"Carne, pollo y pescado",020,Chorizo,ciudad
+carne,"Carne, pollo y pescado",021,Jamón,ciudad
+carne,"Carne, pollo y pescado",022,Pollo,ciudad
+carne,"Carne, pollo y pescado",023,Salchichas,ciudad
+carne,"Carne, pollo y pescado",024,Tocino,ciudad
+carne,"Carne, pollo y pescado",025,Vísceras de res,ciudad
+carne,"Carne, pollo y pescado",027,Camarón,ciudad
+carne,"Carne, pollo y pescado",028,Pescado,ciudad
+carne,"Carne, pollo y pescado",043,Manteca de cerdo,ciudad
+lacteos,"Leche, quesos y huevo",030,Crema y otros productos a base de leche,ciudad
+lacteos,"Leche, quesos y huevo",031,Huevo,ciudad
+lacteos,"Leche, quesos y huevo",034,Leche pasteurizada y fresca,ciudad
+lacteos,"Leche, quesos y huevo",035,Leches de origen vegetal,ciudad
+lacteos,"Leche, quesos y huevo",036,Queso amarillo,ciudad
+lacteos,"Leche, quesos y huevo",037,Queso fresco,ciudad
+lacteos,"Leche, quesos y huevo",038,Queso manchego y Chihuahua,ciudad
+lacteos,"Leche, quesos y huevo",039,Queso Oaxaca y asadero,ciudad
+lacteos,"Leche, quesos y huevo",040,Otros quesos,ciudad
+lacteos,"Leche, quesos y huevo",041,Yogurt,ciudad
+lacteos,"Leche, quesos y huevo",044,Mantequilla,ciudad
+lacteos,"Leche, quesos y huevo",086,"Helados, nieves y paletas de hielo",ciudad
+frutas_verduras,Frutas y verduras,045,Aguacate,ciudad
+frutas_verduras,Frutas y verduras,046,Durazno,ciudad
+frutas_verduras,Frutas y verduras,047,Guayaba,ciudad
+frutas_verduras,Frutas y verduras,048,Limón,ciudad
+frutas_verduras,Frutas y verduras,049,Manzana,ciudad
+frutas_verduras,Frutas y verduras,050,Melón,ciudad
+frutas_verduras,Frutas y verduras,051,Naranja,ciudad
+frutas_verduras,Frutas y verduras,052,Papaya,ciudad
+frutas_verduras,Frutas y verduras,053,Pera,ciudad
+frutas_verduras,Frutas y verduras,054,Piña,ciudad
+frutas_verduras,Frutas y verduras,055,Plátanos,ciudad
+frutas_verduras,Frutas y verduras,056,Sandía,ciudad
+frutas_verduras,Frutas y verduras,057,Uva,ciudad
+frutas_verduras,Frutas y verduras,059,Otras frutas,ciudad
+frutas_verduras,Frutas y verduras,060,Calabacita,ciudad
+frutas_verduras,Frutas y verduras,061,Cebolla,ciudad
+frutas_verduras,Frutas y verduras,062,Chayote,ciudad
+frutas_verduras,Frutas y verduras,063,Chile poblano,ciudad
+frutas_verduras,Frutas y verduras,065,Chile serrano,ciudad
+frutas_verduras,Frutas y verduras,067,Ejotes,ciudad
+frutas_verduras,Frutas y verduras,070,Jitomate,ciudad
+frutas_verduras,Frutas y verduras,071,Lechuga y col,ciudad
+frutas_verduras,Frutas y verduras,072,Nopales,ciudad
+frutas_verduras,Frutas y verduras,073,Papa y otros tubérculos,ciudad
+frutas_verduras,Frutas y verduras,075,Pepino,ciudad
+frutas_verduras,Frutas y verduras,076,Tomate verde,ciudad
+frutas_verduras,Frutas y verduras,078,Zanahoria,ciudad
+frutas_verduras,Frutas y verduras,080,Otras verduras y legumbres,ciudad
+frutas_verduras,Frutas y verduras,081,Otros chiles frescos,ciudad
+frutas_verduras,Frutas y verduras,087,"Cilantro, epazote y perejil",ciudad
+refrescos,Refrescos y agua embotellada,099,Agua embotellada,ciudad
+refrescos,Refrescos y agua embotellada,100,Refrescos envasados,ciudad
+refrescos,Refrescos y agua embotellada,101,Bebidas energéticas,ciudad
+comida_para_llevar,Comida preparada para llevar,263,Barbacoa o birria,ciudad
+comida_para_llevar,Comida preparada para llevar,264,Carnitas,ciudad
+comida_para_llevar,Comida preparada para llevar,266,Pizzas,ciudad
+comida_para_llevar,Comida preparada para llevar,267,Pollos rostizados,ciudad
+comida_para_llevar,Comida preparada para llevar,269,Otros alimentos cocinados,ciudad
+restaurantes,"Restaurantes, cafeterías y bares",265,"Loncherías, fondas, torterías y taquerías",ciudad
+restaurantes,"Restaurantes, cafeterías y bares",268,Restaurantes y similares,ciudad
+alcohol_cigarros,Alcohol y cigarros,103,Brandy,ciudad
+alcohol_cigarros,Alcohol y cigarros,104,Ron,ciudad
+alcohol_cigarros,Alcohol y cigarros,105,Tequila,ciudad
+alcohol_cigarros,Alcohol y cigarros,106,Otros licores,ciudad
+alcohol_cigarros,Alcohol y cigarros,107,Vino de mesa,ciudad
+alcohol_cigarros,Alcohol y cigarros,108,Cerveza,ciudad
+alcohol_cigarros,Alcohol y cigarros,109,Cigarrillos,ciudad
+ropa_calzado,Ropa y calzado,110,Blusas y playeras para mujer,ciudad
+ropa_calzado,Ropa y calzado,111,"Calcetas, medias y pantimedias",ciudad
+ropa_calzado,Ropa y calzado,112,Calcetines y calcetas para hombre,ciudad
+ropa_calzado,Ropa y calzado,113,Calcetines y calcetas para niños,ciudad
+ropa_calzado,Ropa y calzado,114,Camisas y playeras para hombre,ciudad
+ropa_calzado,Ropa y calzado,115,Camisas y playeras para niños,ciudad
+ropa_calzado,Ropa y calzado,116,Pantalones para hombre,ciudad
+ropa_calzado,Ropa y calzado,117,Pantalones para mujer,ciudad
+ropa_calzado,Ropa y calzado,118,Pantalones para niño,ciudad
+ropa_calzado,Ropa y calzado,119,Ropa de abrigo,ciudad
+ropa_calzado,Ropa y calzado,120,Ropa interior para hombre,ciudad
+ropa_calzado,Ropa y calzado,121,Ropa interior para mujer,ciudad
+ropa_calzado,Ropa y calzado,122,"Ropa interior para niños, niñas y adolescentes",ciudad
+ropa_calzado,Ropa y calzado,123,Ropa para bebés,ciudad
+ropa_calzado,Ropa y calzado,124,Traje para hombre,ciudad
+ropa_calzado,Ropa y calzado,126,Vestidos y faldas para mujer,ciudad
+ropa_calzado,Ropa y calzado,127,"Vestidos, faldas y pantalones para niñas",ciudad
+ropa_calzado,Ropa y calzado,128,Otras prendas de vestir para hombre,ciudad
+ropa_calzado,Ropa y calzado,129,Otras prendas de vestir para mujer,ciudad
+ropa_calzado,Ropa y calzado,130,Complementos de vestir,ciudad
+ropa_calzado,Ropa y calzado,131,Servicio de lavandería,ciudad
+ropa_calzado,Ropa y calzado,132,Servicio de tintorería,ciudad
+ropa_calzado,Ropa y calzado,133,Sandalias y huaraches,ciudad
+ropa_calzado,Ropa y calzado,134,Zapatos para hombre,ciudad
+ropa_calzado,Ropa y calzado,135,Zapatos para mujer,ciudad
+ropa_calzado,Ropa y calzado,136,Zapatos para niños y niñas,ciudad
+ropa_calzado,Ropa y calzado,137,Zapatos tenis,ciudad
+ropa_calzado,Ropa y calzado,287,"Relojes, joyas y bisutería",ciudad
+ropa_calzado,Ropa y calzado,288,Bolsas y mochilas,ciudad
+renta,Renta de vivienda,138,Renta de vivienda,ciudad
+vivienda_propia,Vivienda propia (renta imputada),139,Vivienda propia,ciudad
+agua,Agua,142,Derechos por el suministro de agua,ciudad
+luz,Luz,144,Electricidad,ciudad
+gas,Gas,145,Gas doméstico LP,ciudad
+gas,Gas,146,Gas doméstico natural,ciudad
+celular,Celular y teléfono,232,Servicios de telefonía fija,nacional
+celular,Celular y teléfono,233,Servicio de telefonía móvil,nacional
+internet_tv,Internet y TV de paga,234,Servicio de internet,nacional
+internet_tv,Internet y TV de paga,235,"Paquetes de internet, telefonía y televisión de paga",nacional
+internet_tv,Internet y TV de paga,236,Servicio de televisión de paga,nacional
+mantenimiento,Mantenimiento y servicio doméstico,140,Productos para reparación menor de la vivienda,ciudad
+mantenimiento,Mantenimiento y servicio doméstico,141,"Servicios para el mantenimiento, reparación y seguridad de la vivienda",ciudad
+mantenimiento,Mantenimiento y servicio doméstico,143,Otros servicios relacionados con la vivienda,ciudad
+mantenimiento,Mantenimiento y servicio doméstico,183,Servicio doméstico,ciudad
+casa,"Muebles, aparatos y cosas de la casa",147,Colchones,ciudad
+casa,"Muebles, aparatos y cosas de la casa",148,Comedores y antecomedores,ciudad
+casa,"Muebles, aparatos y cosas de la casa",149,Muebles diversos para el hogar,ciudad
+casa,"Muebles, aparatos y cosas de la casa",150,Muebles para cocina,ciudad
+casa,"Muebles, aparatos y cosas de la casa",151,Recámaras,ciudad
+casa,"Muebles, aparatos y cosas de la casa",152,Salas,ciudad
+casa,"Muebles, aparatos y cosas de la casa",153,Colchas y cobijas,ciudad
+casa,"Muebles, aparatos y cosas de la casa",154,Sábanas,ciudad
+casa,"Muebles, aparatos y cosas de la casa",155,"Toallas, cortinas y otros blancos",ciudad
+casa,"Muebles, aparatos y cosas de la casa",156,Aparatos de aire acondicionado,ciudad
+casa,"Muebles, aparatos y cosas de la casa",157,Aspiradoras y otros aparatos para el hogar,ciudad
+casa,"Muebles, aparatos y cosas de la casa",158,Estufas,ciudad
+casa,"Muebles, aparatos y cosas de la casa",159,Horno de microondas,ciudad
+casa,"Muebles, aparatos y cosas de la casa",160,Lavadoras de ropa,ciudad
+casa,"Muebles, aparatos y cosas de la casa",161,Refrigeradores,ciudad
+casa,"Muebles, aparatos y cosas de la casa",162,"Cafeteras, tostadoras, ventiladores y otros electrodomésticos pequeños",ciudad
+casa,"Muebles, aparatos y cosas de la casa",163,Licuadoras,ciudad
+casa,"Muebles, aparatos y cosas de la casa",164,Planchas eléctricas,ciudad
+casa,"Muebles, aparatos y cosas de la casa",165,Artículos y utensilios para el hogar,ciudad
+casa,"Muebles, aparatos y cosas de la casa",166,Baterías de cocina,ciudad
+casa,"Muebles, aparatos y cosas de la casa",167,"Loza, cristalería y cubiertos",ciudad
+casa,"Muebles, aparatos y cosas de la casa",168,Utensilios de plástico para el hogar,ciudad
+casa,"Muebles, aparatos y cosas de la casa",169,Focos,ciudad
+casa,"Muebles, aparatos y cosas de la casa",170,Herramientas y equipo para el hogar,ciudad
+casa,"Muebles, aparatos y cosas de la casa",171,Pilas,ciudad
+casa,"Muebles, aparatos y cosas de la casa",172,Artículos desechables y no duraderos,ciudad
+casa,"Muebles, aparatos y cosas de la casa",174,Cerillos,ciudad
+casa,"Muebles, aparatos y cosas de la casa",177,"Escobas, fibras y estropajos",ciudad
+casa,"Muebles, aparatos y cosas de la casa",182,Velas y veladoras,ciudad
+casa,"Muebles, aparatos y cosas de la casa",228,Equipo terminal de comunicación,ciudad
+casa,"Muebles, aparatos y cosas de la casa",229,Computadoras,ciudad
+casa,"Muebles, aparatos y cosas de la casa",230,"Reproductores de audio y video, y sus accesorios",ciudad
+casa,"Muebles, aparatos y cosas de la casa",231,Televisores,ciudad
+casa,"Muebles, aparatos y cosas de la casa",272,Aparatos eléctricos para el cuidado personal,ciudad
+limpieza,Limpieza del hogar,173,Blanqueadores,ciudad
+limpieza,Limpieza del hogar,175,Desodorantes ambientales,ciudad
+limpieza,Limpieza del hogar,176,Detergentes,ciudad
+limpieza,Limpieza del hogar,178,Jabón para lavar,ciudad
+limpieza,Limpieza del hogar,179,Plaguicidas,ciudad
+limpieza,Limpieza del hogar,181,Suavizantes y limpiadores,ciudad
+medicinas,Medicinas,184,Analgésicos,ciudad
+medicinas,Medicinas,185,Antibióticos,ciudad
+medicinas,Medicinas,186,Antigripales,ciudad
+medicinas,Medicinas,187,Antiinflamatorios,ciudad
+medicinas,Medicinas,188,Cardiovasculares,ciudad
+medicinas,Medicinas,189,Dermatológicos,ciudad
+medicinas,Medicinas,190,Expectorantes y descongestivos,ciudad
+medicinas,Medicinas,191,Gastrointestinales,ciudad
+medicinas,Medicinas,192,Medicamentos para alergias,ciudad
+medicinas,Medicinas,193,Medicamentos para diabetes,ciudad
+medicinas,Medicinas,194,Medicinas homeopáticas y naturistas,ciudad
+medicinas,Medicinas,195,Nutricionales,ciudad
+medicinas,Medicinas,196,Otros medicamentos,ciudad
+medicinas,Medicinas,197,Material de curación,ciudad
+medicinas,Medicinas,198,"Lentes, aparatos para sordera y ortopédicos",ciudad
+salud,"Doctores, dentista y hospital",199,Consulta médica,ciudad
+salud,"Doctores, dentista y hospital",200,Consulta y prótesis dental,ciudad
+salud,"Doctores, dentista y hospital",201,Atención médica durante el parto,ciudad
+salud,"Doctores, dentista y hospital",202,Hospitalización general,ciudad
+salud,"Doctores, dentista y hospital",203,Hospitalización parto,ciudad
+salud,"Doctores, dentista y hospital",204,Operación quirúrgica,ciudad
+salud,"Doctores, dentista y hospital",205,Análisis clínicos,ciudad
+cuidado_personal,Cuidado personal,180,Servilletas de papel,ciudad
+cuidado_personal,Cuidado personal,273,Artículos de maquillaje,ciudad
+cuidado_personal,Cuidado personal,274,Crema y productos para higiene dental,ciudad
+cuidado_personal,Cuidado personal,275,Cremas para la piel,ciudad
+cuidado_personal,Cuidado personal,276,Desodorantes personales,ciudad
+cuidado_personal,Cuidado personal,277,Jabón de tocador,ciudad
+cuidado_personal,Cuidado personal,278,Lociones y perfumes,ciudad
+cuidado_personal,Cuidado personal,279,Navajas y máquinas de afeitar,ciudad
+cuidado_personal,Cuidado personal,280,Pañales,ciudad
+cuidado_personal,Cuidado personal,281,Papel higiénico y pañuelos desechables,ciudad
+cuidado_personal,Cuidado personal,282,Productos para el cabello,ciudad
+cuidado_personal,Cuidado personal,283,Toallas sanitarias,ciudad
+cuidado_personal,Cuidado personal,284,Otros artículos de tocador,ciudad
+cuidado_personal,Cuidado personal,285,Corte de cabello,ciudad
+cuidado_personal,Cuidado personal,286,Sala de belleza y masajes,ciudad
+transporte_publico,Transporte público,221,Metro o transporte eléctrico,ciudad
+transporte_publico,Transporte público,223,Autobús urbano,ciudad
+transporte_publico,Transporte público,224,Colectivo,ciudad
+transporte_publico,Transporte público,225,Taxi,ciudad
+transporte_publico,Transporte público,226,Transporte escolar,ciudad
+gasolina,Gasolina,212,Aceites lubricantes,nacional
+gasolina,Gasolina,213,Gasolina de alto octanaje,nacional
+gasolina,Gasolina,214,Gasolina de bajo octanaje,nacional
+auto_gastos,"Auto: mantenimiento, seguro y casetas",209,Acumuladores,ciudad
+auto_gastos,"Auto: mantenimiento, seguro y casetas",210,Neumáticos,ciudad
+auto_gastos,"Auto: mantenimiento, seguro y casetas",211,"Partes, accesorios y otras refacciones para vehículos",ciudad
+auto_gastos,"Auto: mantenimiento, seguro y casetas",215,Lavado y engrasado de automóvil,ciudad
+auto_gastos,"Auto: mantenimiento, seguro y casetas",216,Mantenimiento de automóvil,ciudad
+auto_gastos,"Auto: mantenimiento, seguro y casetas",217,Reparación de automóvil,ciudad
+auto_gastos,"Auto: mantenimiento, seguro y casetas",218,Cuotas de autopistas,ciudad
+auto_gastos,"Auto: mantenimiento, seguro y casetas",219,Estacionamiento,ciudad
+auto_gastos,"Auto: mantenimiento, seguro y casetas",220,Trámites vehiculares,ciudad
+auto_gastos,"Auto: mantenimiento, seguro y casetas",271,Seguro de automóvil,ciudad
+auto_compra,"Compra de auto, moto o bici",206,Automóviles,nacional
+auto_compra,"Compra de auto, moto o bici",207,Motocicletas,nacional
+auto_compra,"Compra de auto, moto o bici",208,Bicicletas,nacional
+colegiaturas,Colegiaturas y guardería,256,Preescolar,ciudad
+colegiaturas,Colegiaturas y guardería,257,Primaria,ciudad
+colegiaturas,Colegiaturas y guardería,258,Secundaria,ciudad
+colegiaturas,Colegiaturas y guardería,259,Preparatoria,ciudad
+colegiaturas,Colegiaturas y guardería,260,Universidad,ciudad
+colegiaturas,Colegiaturas y guardería,261,Carrera corta,ciudad
+colegiaturas,Colegiaturas y guardería,262,Enseñanza adicional,ciudad
+colegiaturas,Colegiaturas y guardería,289,Guarderías y estancias infantiles,ciudad
+utiles,"Útiles, libros y uniformes",125,Uniformes escolares,ciudad
+utiles,"Útiles, libros y uniformes",251,Libros de texto,ciudad
+utiles,"Útiles, libros y uniformes",252,Otros libros,ciudad
+utiles,"Útiles, libros y uniformes",254,Material escolar,ciudad
+diversion,"Streaming, cine, deporte y diversión",237,Streaming de películas y música,nacional
+diversion,"Streaming, cine, deporte y diversión",238,Material y aparatos fotográficos,ciudad
+diversion,"Streaming, cine, deporte y diversión",239,"Consolas, discos y descargas de videojuegos",ciudad
+diversion,"Streaming, cine, deporte y diversión",240,Juguetes y juegos de mesa,ciudad
+diversion,"Streaming, cine, deporte y diversión",241,Artículos deportivos,ciudad
+diversion,"Streaming, cine, deporte y diversión",242,Plantas y flores,ciudad
+diversion,"Streaming, cine, deporte y diversión",245,Club deportivo,ciudad
+diversion,"Streaming, cine, deporte y diversión",246,Servicios recreativos y centros nocturnos,ciudad
+diversion,"Streaming, cine, deporte y diversión",247,"Instrumentos musicales, y descargas de audio y video",ciudad
+diversion,"Streaming, cine, deporte y diversión",248,Cine,ciudad
+diversion,"Streaming, cine, deporte y diversión",249,Museos y sitios culturales,ciudad
+diversion,"Streaming, cine, deporte y diversión",250,Paquetes para fiesta,ciudad
+diversion,"Streaming, cine, deporte y diversión",253,Periódicos y revistas,ciudad
+mascotas,Mascotas,243,Alimento para mascotas,ciudad
+mascotas,Mascotas,244,Servicios para mascotas,ciudad
+viajes,"Viajes: avión, autobús y hoteles",222,Autobús foráneo,ciudad
+viajes,"Viajes: avión, autobús y hoteles",227,Transporte aéreo,nacional
+viajes,"Viajes: avión, autobús y hoteles",255,Servicios turísticos en paquete,ciudad
+viajes,"Viajes: avión, autobús y hoteles",270,Hoteles,ciudad
+otros_servicios,"Otros servicios (trámites, profesionales)",290,Expedición de documentos del sector público,ciudad
+otros_servicios,"Otros servicios (trámites, profesionales)",291,Servicios funerarios,ciudad
+otros_servicios,"Otros servicios (trámites, profesionales)",292,Servicios profesionales,ciudad

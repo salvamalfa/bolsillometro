@@ -17,8 +17,8 @@ Cuando se termina una fase, se borra su archivo (`fase-N.md`).
 
 ## Técnicos
 
-- [ ] **Fase 1, pasos 3 a 6:** ver [`fase-1.md`](fase-1.md). Sigue el 3: Cetes y UDI de
-  Banxico.
+- [ ] **Fase 1, pasos 5 y 6:** ver [`fase-1.md`](fase-1.md). Sigue el 5: el reporte (incidencias
+  en lenguaje claro y rendimiento real contra Cetes y UDI).
 - [ ] **Primera actualización automática:** el INEGI publica la 2Q de octubre y el mensual de
   octubre hacia el 9-nov-2026. Confirmar que `actualizar-datos.yml` haga dos commits solos: uno
   `datos: INPC hasta 2026-10-2Q` y otro `datos: INPC por ciudad hasta 2026-10`.

@@ -114,3 +114,18 @@ fase; si una cambia, no se borra: se marca como reemplazada y se anota la nueva.
 - **Nombre común de la ciudad en el reporte:** "la Ciudad de México" en vez de "Area
   Metropolitana de la Cd. de México" (`ciudades.NOMBRES_COMUNES`); el catálogo conserva el
   nombre del INEGI.
+- **La web calcula en el navegador, sin servidor** (27-oct-2026): ningún dato de la persona sale de
+  su máquina. `web/calculo.js` replica `cuestionario.py`, `personal.py` y el rendimiento de
+  Cetes; `tests/test_web.py` lo corre en Node y exige el mismo resultado que Python.
+- **Datos de la web como scripts, no JSON:** `window.BOLSILLOMETRO_… = {...}` funciona también
+  abriendo `index.html` desde el disco, donde `fetch` no se permite. Solo van los últimos 15
+  meses (la inflación anual compara el último mes contra 12 antes, con margen) y cada ciudad en
+  su archivo, que se carga al elegirla.
+- **`web/datos/` va en el repo y se regenera en el mismo commit que los datos:** así la página
+  publicada nunca queda desfasada de `data/`, y la prueba que compara byte por byte no frena el
+  workflow.
+- **Si tu ciudad todavía no tiene el último mes, el mes del gasto es el anterior**
+  (`cuestionario.mes_del_gasto`, igual en la web): entre la publicación del nacional y la de
+  las ciudades, el cálculo sigue funcionando en vez de fallar.
+- **Publicación en GitHub Pages con un workflow que se salta si Pages no está activado:** no
+  deja `main` en rojo mientras no se active.

@@ -70,13 +70,20 @@ Cada PR pasa `ruff format --check`, `ruff check` y `pytest` antes del push.
    `incidencias_encadenadas` (convención `(1+a)(1+b) − 1`) y `rendimiento_real`. Prueba
    con datos reales: encadenar los ponderadores oficiales en jul-2025 sigue reconstruyendo el
    INPC con un error máximo de ±0.001.
-2. [ ] **Datos por ciudad.** Estructura `112001700060` en el pipeline, `data/ciudades/` y un
-   catálogo de ciudades con sus ids. El timeout del cliente debe aguantar el árbol de ~63 MB.
+2. [x] **Datos por ciudad.** Estructura `112001700060` en el pipeline, `data/ciudades/` y un
+   catálogo de ciudades con sus ids. El árbol de ~63 MB tiene timeout propio (900 s).
    Validación:
    - Estructura completa: 55 ciudades × 292 genéricos, con los mismos códigos que el nacional.
-   - Plausibilidad: el índice general de cada ciudad contra el reconstruido con los
-     ponderadores nacionales, con una tolerancia calibrada con los datos reales y
-     documentada. No puede ser exacta, porque el INEGI no publica pesos genérico × ciudad.
+   - Título: cada exportación nombra su ciudad, para que no se crucen dos ciudades.
+   - Acotamiento: de ago-2018 a jul-2024, el nacional de cada genérico queda entre el mínimo y
+     el máximo de sus ciudades (19,874 revisiones, 0 fuera de rango).
+   - Plausibilidad: inflación anual de cada ciudad contra sus genéricos con los ponderadores
+     nacionales, con tolerancia de ±2 pp (máximo real: 1.11 pp). No puede ser exacta, porque
+     el INEGI no publica pesos genérico × ciudad.
+   - Hallazgo: desde la canasta 2024 algunos genéricos ya no se cotizan en ciertas ciudades
+     (metro en 52, gas natural en 35, museos en 23, transporte escolar en 18); para ellos el
+     cálculo personal usa el nacional. La lista por ciudad está en
+     `data/ciudades/metadatos.json`.
 3. [ ] **Cetes y UDI.** Descarga del SIE sin token, mensualizada (UDI de fin de mes, Cetes 28
    de la primera subasta del mes o el promedio, a definir y documentar). Validación de
    continuidad y rangos.

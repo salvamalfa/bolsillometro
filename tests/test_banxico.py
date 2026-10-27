@@ -246,14 +246,19 @@ def _copiar_nacional(destino):
         (destino / archivo).write_bytes((DATOS / archivo).read_bytes())
 
 
-def test_actualizar_regenera_data_banxico_byte_por_byte(tmp_path, reales):
+def test_actualizar_regenera_data_banxico(tmp_path, reales):
     _copiar_nacional(tmp_path)
     resumen = banxico.actualizar(tmp_path, ClienteFalso(reales))
     assert resumen.nuevas_udi == len(reales.udi)
-    for archivo in (banxico.ARCHIVO_UDI, banxico.ARCHIVO_CETES28, banxico.ARCHIVO_METADATOS):
+    for archivo in (banxico.ARCHIVO_UDI, banxico.ARCHIVO_CETES28):
         assert filecmp.cmp(
             tmp_path / banxico.DIRECTORIO / archivo, DATOS / banxico.DIRECTORIO / archivo, False
         ), archivo
+    # La comparación contra el INPC depende del INPC que haya en data/, que puede ir adelante de
+    # cuando se escribieron estos metadatos; lo demás debe ser idéntico.
+    nuevos, guardados = banxico.leer_metadatos(tmp_path), banxico.leer_metadatos(DATOS)
+    nuevos.pop("udi_contra_inpc"), guardados.pop("udi_contra_inpc")
+    assert nuevos == guardados
     assert banxico.actualizar(tmp_path, ClienteFalso(reales)).nuevas_udi == 0
 
 

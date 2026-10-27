@@ -4,7 +4,7 @@
 `bolsillometro actualizar`. Cada corrida valida que el INPC publicado se reconstruya con los
 292 genéricos (±0.001) antes de escribir aquí.
 
-Fuente: INEGI, Índice Nacional de Precios al Consumidor (INPC). Base 2ª quincena de julio de
+Fuentes: INEGI, Índice Nacional de Precios al Consumidor (INPC); Banco de México, SIE (UDI y Cetes). Base 2ª quincena de julio de
 2018 = 100; canasta y ponderadores 2024. Cálculos propios con datos del INPC. No es un producto
 oficial del INEGI ni de Banco de México.
 
@@ -21,6 +21,9 @@ oficial del INEGI ni de Banco de México.
 | `ciudades/<clave>_mensual.csv` | Una por ciudad (55), con la misma forma que `inpc_mensual.csv`: una fila por mes desde `2018-01` (o `2018-07` en las 9 ciudades que entraron con la base 2018), `general` (INPC de la ciudad) y `001`…`292`. |
 | `ciudades/catalogo.csv` | `clave` (la del nombre de archivo, p. ej. `pachuca` o `cdmx`), `nombre`, `id_nodo` (tema del INEGI) e `id_general` (serie del índice general). |
 | `ciudades/metadatos.json` | Último mes, resultado de la validación y, por ciudad, los genéricos sin dato en el último mes. |
+| `banxico/udi_diaria.csv` | `fecha` (ISO) y `udi`: valor diario de la UDI (serie SP68257 del SIE) desde 2018. |
+| `banxico/cetes28_subasta.csv` | `fecha` y `tasa`: tasa de rendimiento de Cetes a 28 días en cada subasta semanal (SF43936), en porcentaje anual. |
+| `banxico/metadatos.json` | Últimas fechas y resultado de la validación de la UDI contra el INPC. |
 
 ## Convenciones
 
@@ -57,3 +60,21 @@ canasta 2024, algunos genéricos ya no se cotizan en ciertas ciudades (p. ej. ga
 metro en Pachuca); `metadatos.json` los lista y para ellos se usa el índice nacional. El INEGI
 advierte que los índices por ciudad tienen muestras chicas y "solo tienen valor informativo",
 así que conviene leerlos en variación anual.
+
+## Banxico
+
+`bolsillometro actualizar-banxico` baja del SIE de Banxico, sin token, la UDI diaria y la tasa
+de Cetes a 28 días de cada subasta, y las guarda tal como se publican. Antes de escribir
+`banxico/` valida:
+
+- **UDI contra INPC:** del día 10 al 25 de cada mes la UDI crece lo que subió el INPC en la 2ª
+  quincena del mes anterior, y del 25 al 10 del mes siguiente lo de la 1ª quincena del mes, a
+  tasa diaria constante. Con el INPC de este directorio cuadra tramo por tramo y día por día
+  (±1e-6). Es una prueba cruzada entre Banxico y el INEGI.
+- **Cetes:** tasas entre 0 y 30% y ninguna semana sin subasta (huecos de a lo más 14 días).
+- **Sin revisiones:** una descarga nueva no puede cambiar ni quitar fechas ya guardadas.
+
+La UDI se publica por adelantado, hasta el día 10 del mes siguiente. Para comparar contra la
+inflación se usa de fin de mes a fin de mes (`banxico.variacion_udi`); los Cetes, reinvirtiendo
+cada 28 días a la tasa de la última subasta, con la convención `tasa · días / 360`
+(`banxico.rendimiento_cetes`).

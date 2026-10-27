@@ -56,3 +56,18 @@ fase; si una cambia, no se borra: se marca como reemplazada y se anota la nueva.
   ciudades todavía no; las pruebas y `verificar` lo aceptan si todas las ciudades llegan al
   mismo mes. Lo que sí se exige es que una descarga nueva por ciudad llegue al mes del
   nacional, porque el INEGI publica ambos el mismo día.
+- **Banxico: series tal como se publican.** Se guardan la UDI diaria y la tasa de cada subasta
+  de Cetes, sin mensualizar; lo mensual se calcula al usarlas, para que el criterio quede en el
+  código y no en los datos.
+- **Rendimientos de fin de mes a fin de mes.** La UDI se toma el último día de cada mes. Los
+  Cetes se reinvierten cada 28 días a la tasa de la última subasta, con `tasa · días / 360`, y
+  el último tramo se prorratea. Es lo que obtendría alguien que compra Cetes a 28 días y los
+  renueva. El INPC mensual es un promedio del mes, así que la comparación tiene medio mes de
+  desfase; para la variación anual es despreciable.
+- **La UDI se valida contra el INPC.** Como Banxico la deriva del INPC quincenal con una regla
+  fija, cuadrar tramo por tramo y día por día confirma a la vez la descarga de Banxico y la del
+  INEGI.
+- **Banxico corre en cada ejecución del workflow, antes que las ciudades.** Son dos peticiones
+  chicas; si fallan, el dato nacional ya quedó guardado.
+- **`red.py` comparte los reintentos** entre el cliente del INEGI y el de Banxico, en lugar de
+  duplicarlos.

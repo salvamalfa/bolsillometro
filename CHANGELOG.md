@@ -8,6 +8,10 @@ de datos (`datos: INPC hasta …`) no se anotan aquí; están en el historial de
 
 ### Fase 1: MVP (en curso)
 
+- **Cetes y UDI de Banxico** (#7): UDI diaria y Cetes a 28 días por subasta en
+  `data/banxico/`, bajados del SIE sin token. La UDI se valida contra el INPC del INEGI tramo
+  por tramo y día por día (210 tramos y 3,195 días desde 2018, error máximo 1.6e-7). Comando
+  `actualizar-banxico`, rendimientos de fin de mes a fin de mes y paso propio en el workflow.
 - **Datos por ciudad** (#5): 55 ciudades × 292 genéricos, mensual, en `data/ciudades/`.
   Comando `actualizar-ciudades`, validación por título, acotamiento y plausibilidad, y paso
   propio en el workflow. Desde la canasta 2024 algunos genéricos ya no se cotizan en ciertas

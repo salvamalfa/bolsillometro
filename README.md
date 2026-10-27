@@ -31,18 +31,23 @@ con los tuyos, da tu inflación.
 
 ## Calcula tu inflación
 
+La forma fácil es **la entrevista**: en Claude Code, dentro de este repo, pide "hazme la
+entrevista" (skill [`entrevista`](.claude/skills/entrevista/SKILL.md)). Claude te hace las
+preguntas del [cuestionario estandarizado](src/bolsillometro/catalogos/cuestionario.toml) en
+lenguaje común (renta, súper, luz, gasolina, colegiaturas…), arma tu presupuesto y te da **una
+cifra: tu inflación de los últimos 12 meses**, qué la subió y si tus ahorros en Cetes le
+ganaron. Tus respuestas se guardan en `presupuestos/`, que git ignora: no salen de tu máquina.
+
+También se puede a mano:
+
 ```
 pip install -e .
-bolsillometro plantilla mi-presupuesto.toml   # llénala con tu gasto mensual por rubro
-bolsillometro mi-inflacion mi-presupuesto.toml
+bolsillometro entrevista respuestas.json        # respuestas del cuestionario → presupuesto.toml
+bolsillometro plantilla mi-presupuesto.toml     # o llenar los 32 rubros directamente
+bolsillometro mi-inflacion mi-presupuesto.toml  # --detalle compara con el INPC y desglosa
 ```
 
-El presupuesto es un archivo TOML con 32 rubros en lenguaje común (súper, renta, gasolina,
-colegiaturas…), tu ciudad y el mes de tu gasto. Hay un ejemplo en
-[`ejemplos/pachuca-renta-auto.toml`](ejemplos/pachuca-renta-auto.toml). El resultado compara tu
-inflación anual y mensual con la del INPC nacional y la de tu ciudad, dice qué rubros la
-movieron y qué parte de tu gasto se asignó directo, cuál se repartió con los ponderadores
-oficiales y cuál usa el aumento que tú capturaste. Tus datos no salen de tu computadora.
+Hay un ejemplo en [`ejemplos/pachuca-renta-auto.toml`](ejemplos/pachuca-renta-auto.toml).
 
 ## Fase 0: datos del INEGI
 
@@ -80,6 +85,8 @@ los días de publicación del INPC y hace commit solo cuando hay datos nuevos.
 | `banxico.py` | UDI y Cetes a 28 días del SIE de Banxico: descarga, validación de la UDI contra el INPC y rendimientos de fin de mes a fin de mes. |
 | `red.py` | Cliente HTTP con reintentos, común al INEGI y a Banxico. |
 | `personal.py` | Tu inflación: presupuesto en TOML, catálogo de rubros (`catalogos/rubros.csv`) y cálculo con precios de tu ciudad o nacionales. |
+| `cuestionario.py` | Del cuestionario estandarizado (`catalogos/cuestionario.toml`) a un presupuesto: frecuencias, condiciones y reparto oficial entre rubros. |
+| `reporte.py` | El reporte en lenguaje claro: una cifra, qué la movió y si los Cetes le ganaron; `--detalle` para el resto. |
 
 ## Documentos
 

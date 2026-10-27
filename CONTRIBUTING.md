@@ -24,6 +24,8 @@ reconstrucción del INPC nacional y la validación de las ciudades.
 - **Idioma:** identificadores, docstrings, comentarios, commits y documentos en español.
 - **Dependencias:** solo `requests` y `openpyxl`. Una nueva necesita una entrada en
   [`docs/decisiones.md`](docs/decisiones.md).
+- **Datos de personas:** los presupuestos y respuestas van en `presupuestos/`, que git ignora.
+  Nunca se suben ni se pegan en un PR o issue.
 - **Datos:** `data/` no se edita a mano. Se regenera con `bolsillometro actualizar` y
   `bolsillometro actualizar-ciudades`, que validan antes de escribir.
 - **Commits y PRs:** un PR por paso, fusionado con squash. El título empieza con su área:

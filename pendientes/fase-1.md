@@ -7,18 +7,11 @@ genéricos del INPC de su ciudad. Todavía no se conectan bancos.
 entiendan por qué su cifra difiere del INPC. Perfiles a cubrir: quien renta y quien es dueño,
 quien tiene auto y quien usa transporte público, escuela privada y pública.
 
-Va en 6 PRs; los pasos 1 a 4 ya están en [`CHANGELOG.md`](../CHANGELOG.md) y las decisiones
-de la fase, en [`docs/decisiones.md`](../docs/decisiones.md). Faltan estos:
-
-## 5. Reporte
-
-- Inflación mensual y anual personal contra el INPC.
-- Qué genéricos la mueven, con incidencias en lenguaje claro.
-- Qué parte del gasto se asignó directo a un genérico y qué parte se repartió con
-  ponderadores (imputada).
-- Rendimiento real contra Cetes y UDI (fórmula 7).
+Va en 6 PRs; los pasos 1 a 5 ya están en [`CHANGELOG.md`](../CHANGELOG.md) y las decisiones
+de la fase, en [`docs/decisiones.md`](../docs/decisiones.md). Falta este:
 
 ## 6. Web estática
 
-Calcula en el navegador con los mismos datos y el mismo `presupuesto.toml`, que importa y
-exporta. No usa servidor y los datos no salen de la máquina.
+Hace la misma entrevista (el cuestionario de `catalogos/cuestionario.toml`) y calcula en el
+navegador con los mismos datos; importa y exporta el mismo `presupuesto.toml`. No usa
+servidor y los datos no salen de la máquina.

@@ -17,8 +17,9 @@ Cuando se termina una fase, se borra su archivo (`fase-N.md`).
 
 ## Técnicos
 
-- [ ] **Fase 1, pasos 5 y 6:** ver [`fase-1.md`](fase-1.md). Sigue el 5: el reporte (incidencias
-  en lenguaje claro y rendimiento real contra Cetes y UDI).
+- [ ] **Fase 1, paso 6:** la web estática; ver [`fase-1.md`](fase-1.md).
+- [ ] **Primera entrevista real:** hacerla con el dueño del proyecto con el skill `entrevista` y
+  ajustar el cuestionario con lo que salga, antes de las 20 a 50 personas.
 - [ ] **Primera actualización automática:** el INEGI publica la 2Q de octubre y el mensual de
   octubre hacia el 9-nov-2026. Confirmar que `actualizar-datos.yml` haga sus commits solos:
   `datos: INPC hasta 2026-10-2Q`, el de UDI y Cetes de Banxico y

@@ -71,3 +71,20 @@ fase; si una cambia, no se borra: se marca como reemplazada y se anota la nueva.
   chicas; si fallan, el dato nacional ya quedó guardado.
 - **`red.py` comparte los reintentos** entre el cliente del INEGI y el de Banxico, en lugar de
   duplicarlos.
+- **32 rubros** (aprobados el 27-oct-2026), en `src/bolsillometro/catalogos/rubros.csv`: cada
+  genérico en exactamente un rubro. Es un catálogo curado, versionado con el código y no en
+  `data/`, que solo trae lo que se descarga. Vivienda propia queda solo con la renta imputada
+  (139); los derechos de agua (142) son un rubro propio porque son un pago real, y la reparación
+  menor (140) va con mantenimiento.
+- **Índice nacional para lo de precio casi único,** aunque elijas ciudad: gasolinas, autos, motos y
+  bicis, telefonía, internet, TV de paga, streaming y avión. También para lo que tu ciudad ya no
+  cotiza. Todo lo demás usa los precios de tu ciudad.
+- **El mes del gasto es la base del índice personal** (`P(e) = 100`). El gasto de cada rubro se
+  reparte entre sus genéricos con los ponderadores oficiales llevados a ese mes por precios
+  relativos, igual que el INEGI; por eso el hogar promedio reproduce el INPC. Debe ser de
+  ago-2024 en adelante, cuando rige la canasta 2024.
+- **Aumento propio como serie que crece parejo cada mes:** `(1 + a)^(meses/12)`. Sirve para
+  partidas que suben una vez al año (renta, colegiatura) y que la persona conoce mejor que el
+  índice.
+- **Vivienda propia fuera por omisión** (modo `gasto_efectivo`): la mayoría de quien es dueño no
+  piensa en su casa como un gasto mensual. El modo `consumo` la incluye con la renta estimada.

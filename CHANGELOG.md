@@ -8,6 +8,11 @@ de datos (`datos: INPC hasta …`) no se anotan aquí; están en el historial de
 
 ### Fase 1: MVP (en curso)
 
+- **Presupuesto y cálculo personal** (#8): `bolsillometro plantilla` y
+  `bolsillometro mi-inflacion presupuesto.toml`. 32 rubros que cubren los 292 genéricos
+  (`catalogos/rubros.csv`), precios de la ciudad o nacionales según el genérico, vivienda propia
+  en modo "gasto efectivo" o "consumo", aumento propio por rubro y gasto no cubierto aparte. Un
+  presupuesto con el gasto del hogar promedio reproduce la inflación del INPC (±0.002 pp).
 - **Cetes y UDI de Banxico** (#7): UDI diaria y Cetes a 28 días por subasta en
   `data/banxico/`, bajados del SIE sin token. La UDI se valida contra el INPC del INEGI tramo
   por tramo y día por día (210 tramos y 3,195 días desde 2018, error máximo 1.6e-7). Comando

@@ -1,5 +1,5 @@
-"""Línea de comandos: ``actualizar``, ``actualizar-ciudades``, ``actualizar-banxico`` y
-``verificar``."""
+"""Línea de comandos: los datos (``actualizar``, ``actualizar-ciudades``, ``actualizar-banxico``,
+``verificar``) y tu inflación (``plantilla``, ``mi-inflacion``)."""
 
 from __future__ import annotations
 
@@ -8,7 +8,8 @@ import sys
 from collections.abc import Sequence
 from pathlib import Path
 
-from . import banxico, ciudades
+from . import banxico, ciudades, personal
+from . import datos as disco
 from .pipeline import ErrorValidacion, Reconstruccion, actualizar, verificar
 from .reconstruccion import Comparacion, error_maximo
 
@@ -66,6 +67,70 @@ def _imprimir_banxico(validacion: banxico.Validacion, datos: banxico.DatosBanxic
     )
 
 
+def _porcentaje(valor: float | None) -> str:
+    return "     —" if valor is None else f"{valor:6.2f}%"
+
+
+def _pesos(valor: float) -> str:
+    return f"${valor:,.0f}"
+
+
+def _imprimir_personal(
+    resultado: personal.Resultado, rubros: dict[str, personal.Rubro], nombre_ciudad: str | None
+) -> None:
+    presupuesto = resultado.presupuesto
+    print("Tu inflación personal (cálculos propios con datos del INPC, Fuente: INEGI)")
+    lugar = nombre_ciudad or "nacional"
+    print(
+        f"  ciudad: {lugar} · gasto de {presupuesto.periodo_gasto} · datos hasta {resultado.ultimo}"
+    )
+    print(f"\n  {'':<22}{'anual':>8}{'mensual':>9}")
+    filas = [("Tú", resultado.inflacion(12), resultado.inflacion(1))]
+    filas.append(("INPC nacional", resultado.inflacion_inpc(12), resultado.inflacion_inpc(1)))
+    if nombre_ciudad:
+        filas.append(
+            (
+                f"INPC {nombre_ciudad.split(',')[0]}",
+                resultado.inflacion_ciudad(12),
+                resultado.inflacion_ciudad(1),
+            )
+        )
+    for nombre, anual, mensual in filas:
+        print(f"  {nombre:<22}{_porcentaje(anual):>8}{_porcentaje(mensual):>9}")
+
+    if resultado.inflacion(12) is not None:
+        print("\n  Lo que más movió tu inflación anual (puntos porcentuales):")
+        for clave, puntos in list(resultado.incidencias_por_rubro(12).items())[:5]:
+            print(f"    {puntos:+5.2f}  {rubros[clave].nombre}")
+
+    print("\n  De dónde sale tu cifra:")
+    contados = personal.rubros_que_cuentan(presupuesto)
+    print(
+        f"    {_pesos(resultado.total_cubierto)} al mes en {len(contados)} rubros que mide el INPC"
+    )
+    print(f"    {resultado.porcentaje_directo:5.1f}% asignado directo a un genérico")
+    print(
+        f"    {resultado.porcentaje_imputado:5.1f}% repartido con ponderadores oficiales (imputado)"
+    )
+    if resultado.porcentaje_propio:
+        print(f"    {resultado.porcentaje_propio:5.1f}% con el aumento que tú capturaste")
+    if nombre_ciudad:
+        nacionales = 100 - resultado.porcentaje_ciudad - resultado.porcentaje_propio
+        print(
+            f"    Precios: {resultado.porcentaje_ciudad:.1f}% de tu ciudad y {nacionales:.1f}% "
+            "nacionales (lo de precio casi único o que tu ciudad no cotiza)"
+        )
+    if presupuesto.vivienda_propia == "gasto_efectivo":
+        print("    Vivienda propia: fuera (modo gasto_efectivo)")
+    if resultado.total_no_cubierto:
+        total = resultado.total_cubierto + resultado.total_no_cubierto
+        print(
+            f"    {_pesos(resultado.total_no_cubierto)} al mes que el INPC no mide "
+            f"({100 * resultado.total_no_cubierto / total:.1f}% de tu gasto): "
+            + ", ".join(c for c, monto in presupuesto.no_cubierto.items() if monto)
+        )
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="bolsillometro",
@@ -87,7 +152,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         "actualizar-banxico",
         help="descarga UDI y Cetes de Banxico, valida la UDI contra el INPC y los escribe",
     )
-    for subparser in (p_actualizar, p_verificar, p_ciudades, p_banxico):
+    p_plantilla = subcomandos.add_parser(
+        "plantilla", help="escribe un presupuesto.toml comentado para llenar"
+    )
+    p_plantilla.add_argument(
+        "salida", type=Path, nargs="?", default=Path("presupuesto.toml"), help="archivo a escribir"
+    )
+    p_mi = subcomandos.add_parser("mi-inflacion", help="calcula tu inflación personal")
+    p_mi.add_argument("presupuesto", type=Path, help="tu presupuesto.toml")
+    for subparser in (p_actualizar, p_verificar, p_ciudades, p_banxico, p_plantilla, p_mi):
         subparser.add_argument(
             "--datos", type=Path, default=Path("data"), help="directorio de datos"
         )
@@ -97,6 +170,41 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
 
     args = parser.parse_args(argv)
+    if args.comando == "plantilla":
+        if args.salida.exists():
+            print(f"{args.salida} ya existe; no lo sobrescribo.", file=sys.stderr)
+            return 1
+        claves = (
+            [c.clave for c in ciudades.leer_catalogo(args.datos)]
+            if (args.datos / ciudades.DIRECTORIO).exists()
+            else None
+        )
+        args.salida.write_text(personal.plantilla(personal.cargar_rubros(), claves), "utf-8")
+        print(f"Plantilla escrita en {args.salida}. Llénala y corre:")
+        print(f"  bolsillometro mi-inflacion {args.salida}")
+        return 0
+
+    if args.comando == "mi-inflacion":
+        rubros = personal.cargar_rubros()
+        try:
+            presupuesto = personal.leer_presupuesto(args.presupuesto.read_text("utf-8"), rubros)
+            datos_ciudades = None
+            nombre_ciudad = None
+            if presupuesto.ciudad != personal.NACIONAL:
+                datos_ciudades = ciudades.cargar(args.datos)
+                nombre_ciudad = next(
+                    (c.nombre for c in datos_ciudades.ciudades if c.clave == presupuesto.ciudad),
+                    None,
+                )
+            resultado = personal.calcular(
+                presupuesto, rubros, disco.cargar(args.datos), datos_ciudades
+            )
+        except (personal.ErrorPresupuesto, OSError) as error:
+            print(f"Error: {error}", file=sys.stderr)
+            return 1
+        _imprimir_personal(resultado, rubros, nombre_ciudad)
+        return 0
+
     if args.comando == "actualizar-ciudades":
         try:
             resumen_ciudades = ciudades.actualizar(args.datos)

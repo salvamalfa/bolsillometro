@@ -51,3 +51,8 @@ fase; si una cambia, no se borra: se marca como reemplazada y se anota la nueva.
     nacionales, con tolerancia de ±2 pp (el máximo observado fue 1.11 pp).
 - **Las ciudades van en su propio paso y commit del workflow,** y solo cuando el nacional trae
   un mes nuevo: tardan unos 10 minutos y, si fallan, el dato nacional ya quedó guardado.
+- **En `data/` las ciudades pueden ir atrás del nacional, nunca adelante.** Entre los dos pasos
+  del workflow (o si la descarga por ciudad falla un día), `data/` trae un mes nacional que las
+  ciudades todavía no; las pruebas y `verificar` lo aceptan si todas las ciudades llegan al
+  mismo mes. Lo que sí se exige es que una descarga nueva por ciudad llegue al mes del
+  nacional, porque el INEGI publica ambos el mismo día.

@@ -40,6 +40,7 @@ Requiere Python 3.11 o más reciente.
 pip install -e ".[dev]"
 python -m bolsillometro actualizar   # descarga, valida y escribe data/
 python -m bolsillometro verificar    # reconstruye el INPC con data/, sin red (--detalle para ver todo)
+python -m bolsillometro actualizar-ciudades   # 55 ciudades, ~10 min; valida contra el nacional
 pytest                               # pruebas, incluida la reconstrucción con los datos reales
 ```
 
@@ -57,6 +58,7 @@ los días de publicación del INPC y hace commit solo cuando hay datos nuevos.
 | `indices.py` | Motor Laspeyres/Lowe: índice ponderado, pesos tipo Lowe, variaciones e incidencias. |
 | `reconstruccion.py` | Reconstruye el INPC con los ponderadores oficiales y lo compara con el publicado. |
 | `pipeline.py` | Descarga, valida y escribe `data/`. |
+| `ciudades.py` | INPC por ciudad (55 ciudades × 292 genéricos, mensual): descarga, validación contra el nacional y `data/ciudades/`. |
 
 ## Documentos
 

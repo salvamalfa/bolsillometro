@@ -1,0 +1,254 @@
+{
+  "acotamiento": {
+    "desde": "2018-08",
+    "fuera_de_rango": 0,
+    "hasta": "2024-07",
+    "revisiones": 19874
+  },
+  "ciudades": 55,
+  "deslinde": "Cálculos propios con datos del INPC. No es un producto oficial del INEGI ni de Banco de México.",
+  "estructura": "112001700060",
+  "fuente": "INEGI, Índice Nacional de Precios al Consumidor (INPC), por ciudad",
+  "plausibilidad": {
+    "base": "2024-08",
+    "comparaciones": 770,
+    "diferencia_maxima_pp": 1.115,
+    "peor": "villahermosa 2026-06",
+    "tolerancia_pp": 2.0
+  },
+  "sin_dato_reciente": {
+    "acapulco": [
+      "146",
+      "221",
+      "249"
+    ],
+    "aguascalientes": [
+      "221"
+    ],
+    "atlacomulco": [
+      "146",
+      "221",
+      "226",
+      "249"
+    ],
+    "campeche": [
+      "146",
+      "221",
+      "226",
+      "249"
+    ],
+    "cancun": [
+      "146",
+      "221",
+      "226"
+    ],
+    "cd-acuna": [
+      "221",
+      "226",
+      "249"
+    ],
+    "cd-jimenez": [
+      "146",
+      "221"
+    ],
+    "cd-juarez": [
+      "221",
+      "249"
+    ],
+    "chetumal": [
+      "146",
+      "221",
+      "226",
+      "249"
+    ],
+    "chihuahua": [
+      "221"
+    ],
+    "coatzacoalcos": [
+      "146",
+      "221",
+      "226",
+      "249"
+    ],
+    "colima": [
+      "146",
+      "221",
+      "226"
+    ],
+    "cordoba": [
+      "146",
+      "221",
+      "226"
+    ],
+    "cortazar": [
+      "221",
+      "249"
+    ],
+    "cuernavaca": [
+      "146",
+      "221"
+    ],
+    "culiacan": [
+      "146",
+      "221"
+    ],
+    "durango": [
+      "146",
+      "221"
+    ],
+    "esperanza": [
+      "146",
+      "221",
+      "249"
+    ],
+    "fresnillo": [
+      "146",
+      "221",
+      "226",
+      "249"
+    ],
+    "hermosillo": [
+      "221",
+      "249"
+    ],
+    "huatabampo": [
+      "146",
+      "221",
+      "249"
+    ],
+    "iguala": [
+      "146",
+      "221"
+    ],
+    "izucar-de-matamoros": [
+      "146",
+      "221",
+      "226"
+    ],
+    "jacona": [
+      "146",
+      "221",
+      "226",
+      "249"
+    ],
+    "la-paz": [
+      "146",
+      "221",
+      "226",
+      "249"
+    ],
+    "leon": [
+      "221"
+    ],
+    "matamoros": [
+      "221",
+      "226",
+      "249"
+    ],
+    "merida": [
+      "146",
+      "221",
+      "226"
+    ],
+    "mexicali": [
+      "221"
+    ],
+    "monclova": [
+      "146",
+      "221",
+      "249"
+    ],
+    "morelia": [
+      "146",
+      "221"
+    ],
+    "oaxaca": [
+      "146",
+      "221"
+    ],
+    "pachuca": [
+      "146",
+      "221"
+    ],
+    "puebla": [
+      "221"
+    ],
+    "queretaro": [
+      "221"
+    ],
+    "saltillo": [
+      "221"
+    ],
+    "san-andres-tuxtla": [
+      "146",
+      "221",
+      "226",
+      "249"
+    ],
+    "san-luis-potosi": [
+      "221"
+    ],
+    "tampico": [
+      "221"
+    ],
+    "tapachula": [
+      "146",
+      "221"
+    ],
+    "tehuantepec": [
+      "146",
+      "221",
+      "249"
+    ],
+    "tepatitlan": [
+      "146",
+      "221",
+      "249"
+    ],
+    "tepic": [
+      "146",
+      "221",
+      "249"
+    ],
+    "tijuana": [
+      "146",
+      "221"
+    ],
+    "tlaxcala": [
+      "221",
+      "226"
+    ],
+    "toluca": [
+      "221",
+      "249"
+    ],
+    "torreon": [
+      "221"
+    ],
+    "tulancingo": [
+      "146",
+      "221",
+      "226",
+      "249"
+    ],
+    "tuxtla-gutierrez": [
+      "146",
+      "221",
+      "249"
+    ],
+    "veracruz": [
+      "146",
+      "221"
+    ],
+    "villahermosa": [
+      "146",
+      "221"
+    ],
+    "zacatecas": [
+      "146",
+      "221",
+      "226"
+    ]
+  },
+  "ultimo_mensual": "2026-09"
+}

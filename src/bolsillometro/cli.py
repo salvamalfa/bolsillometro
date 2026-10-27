@@ -1,4 +1,4 @@
-"""Línea de comandos: ``bolsillometro actualizar`` y ``bolsillometro verificar``."""
+"""Línea de comandos: ``actualizar``, ``actualizar-ciudades`` y ``verificar``."""
 
 from __future__ import annotations
 
@@ -7,6 +7,7 @@ import sys
 from collections.abc import Sequence
 from pathlib import Path
 
+from . import ciudades
 from .pipeline import ErrorValidacion, Reconstruccion, actualizar, verificar
 from .reconstruccion import Comparacion, error_maximo
 
@@ -35,6 +36,22 @@ def _imprimir_reconstruccion(resultado: Reconstruccion, detalle: bool) -> None:
         )
 
 
+def _imprimir_ciudades(validacion: ciudades.Validacion) -> None:
+    print("\nINPC por ciudad: 55 ciudades × 292 genéricos (mensual)")
+    print(
+        f"  acotamiento {ciudades.INICIO_ACOTAMIENTO} a {ciudades.FIN_ACOTAMIENTO}: "
+        f"{validacion.revisiones_acotamiento} revisiones, "
+        f"{len(validacion.fuera_de_rango)} fuera del rango de sus ciudades"
+    )
+    peor = validacion.peor
+    if peor:
+        print(
+            f"  plausibilidad: {len(validacion.plausibilidad)} comparaciones de inflación anual; "
+            f"la mayor diferencia es {peor.diferencia:+.2f} pp ({peor.ciudad}, {peor.periodo}; "
+            f"tolerancia ±{ciudades.TOLERANCIA_PLAUSIBILIDAD})"
+        )
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="bolsillometro",
@@ -48,13 +65,32 @@ def main(argv: Sequence[str] | None = None) -> int:
     p_verificar = subcomandos.add_parser(
         "verificar", help="reconstruye el INPC con los datos locales (sin red)"
     )
-    for subparser in (p_actualizar, p_verificar):
+    p_ciudades = subcomandos.add_parser(
+        "actualizar-ciudades",
+        help="descarga las 55 ciudades del INEGI, las valida contra el nacional y las escribe",
+    )
+    for subparser in (p_actualizar, p_verificar, p_ciudades):
         subparser.add_argument(
             "--datos", type=Path, default=Path("data"), help="directorio de datos"
         )
-        subparser.add_argument("--detalle", action="store_true", help="muestra todos los periodos")
+        if subparser is not p_ciudades:
+            subparser.add_argument(
+                "--detalle", action="store_true", help="muestra todos los periodos"
+            )
 
     args = parser.parse_args(argv)
+    if args.comando == "actualizar-ciudades":
+        try:
+            resumen_ciudades = ciudades.actualizar(args.datos)
+        except ciudades.ErrorCiudades as error:
+            print(f"Error de validación: {error}", file=sys.stderr)
+            return 1
+        nuevos = ", ".join(map(str, resumen_ciudades.nuevos[-6:])) or "ninguno"
+        print(f"Datos por ciudad escritos en {args.datos / ciudades.DIRECTORIO}/")
+        print(f"  periodos mensuales nuevos: {nuevos}")
+        _imprimir_ciudades(resumen_ciudades.validacion)
+        return 0
+
     try:
         if args.comando == "actualizar":
             resumen = actualizar(args.datos)
@@ -75,4 +111,12 @@ def main(argv: Sequence[str] | None = None) -> int:
         print("\nLa reconstrucción no cuadra con el INPC publicado.", file=sys.stderr)
         return 1
     print("\nLa reconstrucción cuadra con el INPC publicado (±0.001).")
+
+    if args.comando == "verificar" and (args.datos / ciudades.DIRECTORIO).exists():
+        try:
+            _imprimir_ciudades(ciudades.verificar(args.datos))
+        except ciudades.ErrorCiudades as error:
+            print(f"\nLos datos por ciudad no pasan la validación: {error}", file=sys.stderr)
+            return 1
+        print("\nLos datos por ciudad son consistentes con el nacional.")
     return 0

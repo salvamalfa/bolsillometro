@@ -238,8 +238,11 @@ def test_cli_mi_inflacion(tmp_path, capsys):
     )
     assert main(["mi-inflacion", str(destino), "--datos", str(DATOS)]) == 0
     salida = capsys.readouterr().out
-    assert "Pachuca, Hgo." in salida and "INPC nacional" in salida and "INPC Pachuca" in salida
-    assert "Renta de vivienda" in salida and "seguro_gastos_medicos" in salida
+    assert salida.startswith("Tu inflación: ") and "Pachuca, Hgo." in salida
+    assert "Renta de vivienda" in salida and "INPC" not in salida
+    assert main(["mi-inflacion", str(destino), "--datos", str(DATOS), "--detalle"]) == 0
+    detalle = capsys.readouterr().out
+    assert "el INPC de Pachuca, Hgo." in detalle and "seguro_gastos_medicos" in detalle
 
 
 def test_cli_mi_inflacion_con_error(tmp_path, capsys):

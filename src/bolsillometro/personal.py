@@ -214,7 +214,51 @@ def plantilla(rubros: Mapping[str, Rubro], ciudades: list[str] | None = None) ->
     return "\n".join(lineas)
 
 
+def _numero_toml(valor: float) -> str:
+    """Sin notación científica ni ceros de más: 7000, 1234567.5, 8.25."""
+    return f"{valor:.2f}".rstrip("0").rstrip(".")
+
+
+def a_toml(presupuesto: Presupuesto, rubros: Mapping[str, Rubro]) -> str:
+    """Escribe un presupuesto como TOML legible, con el nombre de cada rubro en comentario."""
+    lineas = [
+        "# Presupuesto de Bolsillómetro: pesos al mes por rubro.",
+        "# Tus datos no salen de tu computadora; no subas este archivo a ningún lado.",
+        f'ciudad = "{presupuesto.ciudad}"',
+        f'periodo_gasto = "{presupuesto.periodo_gasto}"',
+        f'vivienda_propia = "{presupuesto.vivienda_propia}"',
+        "",
+        "[gasto]",
+    ]
+    for clave, rubro in rubros.items():
+        if presupuesto.gasto.get(clave):
+            lineas.append(f"{clave} = {_numero_toml(presupuesto.gasto[clave])}  # {rubro.nombre}")
+    if presupuesto.aumento_propio:
+        lineas += ["", "[aumento_propio]"]
+        lineas += [f"{c} = {_numero_toml(v)}" for c, v in presupuesto.aumento_propio.items()]
+    if presupuesto.no_cubierto:
+        lineas += ["", "[no_cubierto]"]
+        lineas += [f"{c} = {_numero_toml(v)}" for c, v in presupuesto.no_cubierto.items()]
+    return "\n".join(lineas) + "\n"
+
+
 # --- cálculo -------------------------------------------------------------------------------
+
+
+def gasto_oficial_por_rubro(
+    rubros: Mapping[str, Rubro], nacional: DatosINPC, e: Periodo
+) -> dict[str, float]:
+    """Lo que gasta el hogar promedio del INPC en cada rubro, a precios del mes ``e``.
+
+    Son los ponderadores oficiales llevados de la 2Q jul-2024 a ``e`` por precios relativos
+    (``w_k · I_k(e) / I_k(b)``), sumados por rubro. Sirven para repartir un monto entre rubros.
+    """
+    oficiales = {p.codigo: p.ponderador for p in nacional.ponderadores}
+    base = valores_en({c: nacional.quincenal[c] for c in oficiales}, BASE_PONDERADORES)
+    en_e = valores_en({c: nacional.mensual[c] for c in oficiales}, e)
+    return {
+        r.clave: sum(oficiales[c] * en_e[c] / base[c] for c in r.genericos) for r in rubros.values()
+    }
 
 
 @dataclass(frozen=True)
@@ -276,6 +320,19 @@ class Resultado:
         for codigo, valor in por_codigo.items():
             por_rubro[self.rubro_de[codigo]] += valor
         return dict(sorted(por_rubro.items(), key=lambda par: -abs(par[1])))
+
+    def variacion_por_rubro(self, rezago: int = 12) -> dict[str, float]:
+        """Cuánto subieron, en %, los precios de cada rubro de tu canasta en ``rezago`` meses."""
+        hasta = self.ultimo
+        desde = hasta.anterior(rezago)
+        base = valores_en(self.series, self.presupuesto.periodo_gasto)
+        antes: dict[str, float] = defaultdict(float)
+        despues: dict[str, float] = defaultdict(float)
+        for codigo, peso in self.pesos.items():
+            rubro = self.rubro_de[codigo]
+            antes[rubro] += peso * self.series[codigo][desde] / base[codigo]
+            despues[rubro] += peso * self.series[codigo][hasta] / base[codigo]
+        return {rubro: (despues[rubro] / antes[rubro] - 1) * 100 for rubro in antes}
 
     @property
     def total_cubierto(self) -> float:

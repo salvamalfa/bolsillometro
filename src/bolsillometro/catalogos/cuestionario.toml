@@ -1,0 +1,253 @@
+# Cuestionario estandarizado para armar un presupuesto de Bolsillómetro.
+#
+# Lo usa quien entrevista (Claude, la web o una persona): las preguntas van en este orden y con
+# este texto. Las respuestas se guardan como JSON {id: valor} y `bolsillometro entrevista`
+# las convierte en un presupuesto.toml. Campos de cada pregunta:
+#
+# - tipo: "ciudad", "opcion", "monto" (pesos) o "porcentaje" (aumento anual, -99 a 1000).
+# - cada: para montos, cómo se pregunta: "mes" o "año" (los anuales se dividen entre 12). La
+#   respuesta puede traer su propia frecuencia: {"monto": 900, "cada": "bimestre"}.
+# - rubros: rubros que llena un monto; si son varios, se reparte con los ponderadores oficiales.
+# - no_cubierto / aumento_propio: a dónde va la respuesta, si no es gasto que mide el INPC.
+# - si: solo se pregunta si otra respuesta cumple: {pregunta, es} o {pregunta, mayor_que}.
+# - opcional: se puede saltar; si no, sin respuesta cuenta como 0.
+
+version = 1
+
+[[pregunta]]
+id = "ciudad"
+tipo = "ciudad"
+texto = "¿En qué ciudad vives? Si no está en la lista del INPC, dime la más cercana."
+
+[[pregunta]]
+id = "vivienda"
+tipo = "opcion"
+texto = "¿Tu casa es rentada, propia o prestada (vives con familia sin pagar renta)?"
+opciones = [
+  { valor = "rentada", texto = "Rentada" },
+  { valor = "propia", texto = "Propia (pagada o con hipoteca)" },
+  { valor = "prestada", texto = "Prestada o de la familia, sin pagar renta" },
+]
+
+[[pregunta]]
+id = "renta"
+tipo = "monto"
+cada = "mes"
+rubros = ["renta"]
+si = { pregunta = "vivienda", es = "rentada" }
+texto = "¿Cuánto pagas de renta al mes?"
+
+[[pregunta]]
+id = "aumento_renta"
+tipo = "porcentaje"
+aumento_propio = "renta"
+opcional = true
+si = { pregunta = "renta", mayor_que = 0 }
+texto = "¿Cuánto te subieron la renta en el último año, en porcentaje? Si no sabes, sáltala."
+
+[[pregunta]]
+id = "hipoteca"
+tipo = "monto"
+cada = "mes"
+no_cubierto = "hipoteca"
+si = { pregunta = "vivienda", es = "propia" }
+texto = "¿Pagas hipoteca? ¿Cuánto al mes? (Es deuda: la reporto aparte, no mueve tu inflación)."
+
+[[pregunta]]
+id = "super"
+tipo = "monto"
+cada = "mes"
+rubros = ["super", "carne", "lacteos", "frutas_verduras", "refrescos"]
+texto = "¿Cuánto gastas al mes en comida y bebida para la casa: súper, mercado, tianguis, tiendita?"
+
+[[pregunta]]
+id = "comer_fuera"
+tipo = "monto"
+cada = "mes"
+rubros = ["restaurantes", "comida_para_llevar"]
+texto = "¿Y en comer fuera o pedir comida: restaurantes, fondas, cafés, comida para llevar?"
+
+[[pregunta]]
+id = "alcohol_cigarros"
+tipo = "monto"
+cada = "mes"
+rubros = ["alcohol_cigarros"]
+texto = "¿Cuánto en cerveza, vino, licores o cigarros al mes?"
+
+[[pregunta]]
+id = "luz"
+tipo = "monto"
+cada = "mes"
+rubros = ["luz"]
+texto = "¿Cuánto pagas de luz? Si tu recibo es bimestral, dime el monto y yo lo divido."
+
+[[pregunta]]
+id = "agua"
+tipo = "monto"
+cada = "mes"
+rubros = ["agua"]
+texto = "¿Y de agua?"
+
+[[pregunta]]
+id = "gas"
+tipo = "monto"
+cada = "mes"
+rubros = ["gas"]
+texto = "¿Y de gas (tanque, cilindro o natural) al mes?"
+
+[[pregunta]]
+id = "celular"
+tipo = "monto"
+cada = "mes"
+rubros = ["celular"]
+texto = "¿Cuánto pagan de celular (y teléfono fijo, si tienen) en tu casa al mes?"
+
+[[pregunta]]
+id = "internet_tv"
+tipo = "monto"
+cada = "mes"
+rubros = ["internet_tv"]
+texto = "¿Y de internet y TV de paga?"
+
+[[pregunta]]
+id = "transporte_publico"
+tipo = "monto"
+cada = "mes"
+rubros = ["transporte_publico"]
+texto = "¿Cuánto gastan al mes en transporte público: metro, camión, combi, taxi o apps?"
+
+[[pregunta]]
+id = "auto"
+tipo = "opcion"
+texto = "¿Tienen auto o moto?"
+opciones = [{ valor = "si", texto = "Sí" }, { valor = "no", texto = "No" }]
+
+[[pregunta]]
+id = "gasolina"
+tipo = "monto"
+cada = "mes"
+rubros = ["gasolina"]
+si = { pregunta = "auto", es = "si" }
+texto = "¿Cuánto en gasolina al mes?"
+
+[[pregunta]]
+id = "auto_gastos"
+tipo = "monto"
+cada = "año"
+rubros = ["auto_gastos"]
+si = { pregunta = "auto", es = "si" }
+texto = "¿Cuánto al año en el auto: servicio, reparaciones, seguro, tenencia y verificación, casetas y estacionamiento?"
+
+[[pregunta]]
+id = "credito_auto"
+tipo = "monto"
+cada = "mes"
+no_cubierto = "credito_auto"
+si = { pregunta = "auto", es = "si" }
+texto = "¿Pagas mensualidad del auto? ¿Cuánto? (Es deuda: la reporto aparte)."
+
+[[pregunta]]
+id = "colegiaturas"
+tipo = "monto"
+cada = "mes"
+rubros = ["colegiaturas"]
+texto = "¿Cuánto pagan al mes de colegiaturas, guardería o clases extra?"
+
+[[pregunta]]
+id = "aumento_colegiatura"
+tipo = "porcentaje"
+aumento_propio = "colegiaturas"
+opcional = true
+si = { pregunta = "colegiaturas", mayor_que = 0 }
+texto = "¿Cuánto subió la colegiatura este ciclo escolar, en porcentaje? Si no sabes, sáltala."
+
+[[pregunta]]
+id = "utiles"
+tipo = "monto"
+cada = "año"
+rubros = ["utiles"]
+texto = "¿Cuánto al año en útiles, libros y uniformes?"
+
+[[pregunta]]
+id = "limpieza_cuidado"
+tipo = "monto"
+cada = "mes"
+rubros = ["limpieza", "cuidado_personal"]
+texto = "¿Cuánto al mes en limpieza y cuidado personal: detergente, jabón, papel, shampoo, corte de pelo?"
+
+[[pregunta]]
+id = "medicinas"
+tipo = "monto"
+cada = "mes"
+rubros = ["medicinas"]
+texto = "¿Cuánto en medicinas al mes?"
+
+[[pregunta]]
+id = "salud"
+tipo = "monto"
+cada = "año"
+rubros = ["salud"]
+texto = "¿Cuánto al año en consultas, dentista, análisis u hospital (lo que pagas tú, no el seguro)?"
+
+[[pregunta]]
+id = "ropa_calzado"
+tipo = "monto"
+cada = "año"
+rubros = ["ropa_calzado"]
+texto = "¿Cuánto al año en ropa y zapatos para toda la casa?"
+
+[[pregunta]]
+id = "casa"
+tipo = "monto"
+cada = "año"
+rubros = ["casa"]
+texto = "¿Cuánto al año en muebles, aparatos y cosas para la casa?"
+
+[[pregunta]]
+id = "mantenimiento"
+tipo = "monto"
+cada = "mes"
+rubros = ["mantenimiento"]
+texto = "¿Cuánto al mes en ayuda doméstica y reparaciones de la casa?"
+
+[[pregunta]]
+id = "diversion"
+tipo = "monto"
+cada = "mes"
+rubros = ["diversion"]
+texto = "¿Cuánto al mes en diversión: streaming, cine, gimnasio, fiestas, juguetes?"
+
+[[pregunta]]
+id = "mascotas"
+tipo = "monto"
+cada = "mes"
+rubros = ["mascotas"]
+texto = "¿Cuánto al mes en mascotas (comida y veterinario)?"
+
+[[pregunta]]
+id = "viajes"
+tipo = "monto"
+cada = "año"
+rubros = ["viajes"]
+texto = "¿Cuánto al año en viajes: avión, autobús foráneo, hoteles?"
+
+[[pregunta]]
+id = "otros_servicios"
+tipo = "monto"
+cada = "año"
+rubros = ["otros_servicios"]
+texto = "¿Cuánto al año en trámites y servicios profesionales (abogado, contador)?"
+
+[[pregunta]]
+id = "seguros"
+tipo = "monto"
+cada = "mes"
+no_cubierto = "seguros"
+texto = "¿Pagas seguro de gastos médicos o de vida? ¿Cuánto al mes? (El INPC no lo mide: va aparte)."
+
+[[pregunta]]
+id = "intereses"
+tipo = "monto"
+cada = "mes"
+no_cubierto = "intereses_y_comisiones"
+texto = "¿Cuánto pagas al mes de intereses y comisiones de tarjetas o préstamos? (Va aparte)."

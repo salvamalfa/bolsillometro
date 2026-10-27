@@ -28,7 +28,7 @@ bolsillometro = "bolsillometro.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-bolsillometro = ["catalogos/*.csv"]
+bolsillometro = ["catalogos/*.csv", "catalogos/*.toml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

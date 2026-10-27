@@ -88,3 +88,21 @@ fase; si una cambia, no se borra: se marca como reemplazada y se anota la nueva.
   índice.
 - **Vivienda propia fuera por omisión** (modo `gasto_efectivo`): la mayoría de quien es dueño no
   piensa en su casa como un gasto mensual. El modo `consumo` la incluye con la renta estimada.
+- **Una sola cifra** (27-oct-2026): el reporte da tu inflación de los últimos 12 meses y nada
+  más al frente. El INPC nacional y el de tu ciudad son referencias que confunden ("¿cuál es la
+  mía?"); solo aparecen con `--detalle`. Sí se muestra si los Cetes le ganaron, porque responde
+  la pregunta de inversión del proyecto.
+- **Onboarding por entrevista, no por archivo** (27-oct-2026): las personas no llenan el TOML;
+  quien entrevista (Claude con el skill `entrevista`, después la web y el plugin) hace las
+  preguntas del cuestionario estandarizado, en orden y con el mismo texto, y
+  `bolsillometro entrevista` convierte las respuestas. El cuestionario es un archivo de datos
+  para que todas las interfaces pregunten lo mismo.
+- **Preguntas que agrupan rubros:** "comida para la casa" llena súper, carne, lácteos, frutas y
+  refrescos; "comer fuera", restaurantes y comida para llevar; "limpieza y cuidado personal",
+  esos dos. El monto se reparte con los ponderadores oficiales: la persona no tiene por qué
+  saber cuánto de su súper es carne.
+- **Lo irregular se pregunta al año** (ropa, muebles, viajes, servicio del auto) y se divide
+  entre 12. La compra de auto no se pregunta: es irregular y su peso distorsionaría el mes.
+- **El mes del gasto en la entrevista es el último con datos:** las respuestas describen un mes
+  típico de hoy.
+- **`presupuestos/` está en `.gitignore`:** las respuestas de una persona nunca se suben.

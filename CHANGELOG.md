@@ -8,6 +8,11 @@ de datos (`datos: INPC hasta …`) no se anotan aquí; están en el historial de
 
 ### Fase 1: MVP (en curso)
 
+- **Entrevista y reporte de una cifra** (#9): cuestionario estandarizado de 33 preguntas en
+  lenguaje común (`catalogos/cuestionario.toml`), `bolsillometro entrevista respuestas.json` y
+  el skill `entrevista` para que Claude haga las preguntas y arme el presupuesto. El reporte
+  empieza con una sola cifra, tu inflación de 12 meses, y dice qué rubros la subieron y si los
+  Cetes a 28 días le ganaron; `--detalle` agrega la comparación con el INPC y el desglose.
 - **Presupuesto y cálculo personal** (#8): `bolsillometro plantilla` y
   `bolsillometro mi-inflacion presupuesto.toml`. 32 rubros que cubren los 292 genéricos
   (`catalogos/rubros.csv`), precios de la ciudad o nacionales según el genérico, vivienda propia

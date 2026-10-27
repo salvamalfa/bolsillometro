@@ -1,24 +1,29 @@
 # Pendientes
 
-Lo que quedó abierto al cerrar la sesión del 26-oct-2026. Al retomarlo, empieza por aquí.
+Aquí solo vive lo que sigue abierto. Al retomar el proyecto, empieza por aquí.
 
-## Dónde estamos
+## Ciclo de vida
 
-- La **fase 0 ya está en `main`** (PR #2). El pipeline descarga del INEGI los 292 genéricos
-  nacionales, mensuales y quincenales desde 2018, más los ponderadores 2024. Antes de escribir
-  `data/` reconstruye el INPC publicado con error de ±0.001.
-- Los datos llegan hasta **2026-09** (mensual) y **2026-10-1Q** (quincenal).
-- El workflow `actualizar-datos.yml` ya se probó a mano en `main`: los runners de GitHub
-  sí llegan al INEGI. El próximo dato (2Q de octubre) sale hacia el 9 de noviembre y debe
-  entrar solo, con un commit `datos: INPC hasta …`.
-- El repo se llama `salvamalfa/bolsillometro`. Antes se llamaba `combis-zempoala`.
+Cuando un pendiente se cierra, se borra de esta carpeta en el mismo PR que lo cierra:
 
-## Próximo paso técnico: la fase 1
+| Al cerrarse… | …pasa a |
+|---|---|
+| Un paso de código o de datos | [`CHANGELOG.md`](../CHANGELOG.md), con el número de su PR. |
+| Una decisión | [`docs/decisiones.md`](../docs/decisiones.md), con fecha y motivo. |
+| Una convención de trabajo | [`CONTRIBUTING.md`](../CONTRIBUTING.md). |
+| Todo lo demás | Solo el historial de git. |
 
-Ver [`fase-1.md`](fase-1.md). Las decisiones ya se tomaron y el plan va en 6 PRs. Están hechos
-el 1 (fórmulas 5 y 7 del motor) y el 2 (datos por ciudad); sigue el 3, Cetes y UDI de Banxico.
+Cuando se termina una fase, se borra su archivo (`fase-N.md`).
 
-## Pendientes no técnicos (antes del lanzamiento público)
+## Técnicos
+
+- [ ] **Fase 1, pasos 3 a 6:** ver [`fase-1.md`](fase-1.md). Sigue el 3: Cetes y UDI de
+  Banxico.
+- [ ] **Primera actualización automática:** el INEGI publica la 2Q de octubre y el mensual de
+  octubre hacia el 9-nov-2026. Confirmar que `actualizar-datos.yml` haga dos commits solos: uno
+  `datos: INPC hasta 2026-10-2Q` y otro `datos: INPC por ciudad hasta 2026-10`.
+
+## No técnicos (antes del lanzamiento público)
 
 - [ ] **Marca en el IMPI:** buscar "Bolsillómetro" en MARCia: marcas idénticas y fonéticamente
   parecidas, en las clases 9, 35, 36 y 42. Conviene que un agente de propiedad industrial
@@ -34,24 +39,7 @@ el 1 (fórmulas 5 y 7 del motor) y el 2 (datos por ciudad); sigue el 3, Cetes y 
 
 ## Limpieza opcional del repo en GitHub
 
-- [ ] Borrar la rama `claude/inflacion-personal`. Ya se fusionó con squash, pero conserva los
-  dos commits originales.
+- [ ] Borrar las ramas ya fusionadas con squash: `claude/inflacion-personal` (#2),
+  `claude/fase-1-motor` (#4) y `claude/fase-1-ciudades` (#5). Conservan los commits
+  originales, pero el contenido ya está en `main`.
 - [ ] Borrar la rama `claude/zempoala-combi-app-gxbqvi`, que es del proyecto de combis.
-
-## Notas para la próxima sesión
-
-- **Decisiones ya tomadas:**
-  - El código es propio, construido desde cero. No se hacen forks ni se depende de otros
-    repos del INPC.
-  - Paquete y CLI `bolsillometro`, licencia MIT, Python 3.11 o más.
-  - Solo `requests` y `openpyxl` como dependencias.
-  - Identificadores y docstrings en español.
-- **Diseño local-first:** los movimientos y facturas del usuario nunca salen de su máquina.
-  Hacia fuera solo salen agregados.
-- **Antes de cada push:** correr `ruff format --check src tests`, `ruff check src tests` y
-  `pytest`. Las 72 pruebas deben pasar, incluida la reconstrucción con los datos reales.
-- **Notas del episodio:** las del podcast (*Revolución de la Riqueza* #292) no se subieron al
-  repo porque citaban demasiado texto del episodio. Su resumen está en
-  `docs/00-investigacion-inicial.md`.
-- **Cómo funciona el INEGI:** los endpoints, ids de estructura y la receta de reconstrucción
-  están en `docs/notas/01-datos-inegi-metodologia.md` y en `src/bolsillometro/inegi.py`.

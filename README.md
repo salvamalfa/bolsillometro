@@ -7,7 +7,8 @@ los índices de los 292 genéricos del INPC re-ponderados con su propio gasto.
 Sirve para conocer tu costo de vida real y como benchmark de tus inversiones
 (rendimiento real contra *tu* inflación, no contra la de un hogar promedio).
 
-> Estado: fase 0 lista: datos del INEGI y prueba que reconstruye el INPC. Todavía no hay cálculo personal.
+> Estado: fase 1 en curso. Ya están los datos nacionales y de las 55 ciudades, validados contra el INPC publicado.
+> Todavía no hay cálculo personal; lo que sigue está en [`pendientes/`](pendientes/README.md).
 > Este repo antes era "Combis Zempoala"; ese proyecto se deprecó y su contenido sigue en el historial de git.
 
 ## La idea en una fórmula
@@ -62,7 +63,10 @@ los días de publicación del INPC y hace commit solo cuando hay datos nuevos.
 
 ## Documentos
 
-- [`pendientes/`](pendientes/README.md): lo que falta, incluido el alcance de la fase 1 y sus decisiones abiertas.
+- [`pendientes/`](pendientes/README.md): lo que sigue abierto, incluidos los pasos que faltan de la fase 1.
+- [`CHANGELOG.md`](CHANGELOG.md): lo que ya está hecho, por fase y PR.
+- [`docs/decisiones.md`](docs/decisiones.md): las decisiones de diseño ya tomadas y su motivo.
+- [`CONTRIBUTING.md`](CONTRIBUTING.md): cómo preparar el entorno, qué correr antes de cada push y las convenciones.
 - [`docs/00-investigacion-inicial.md`](docs/00-investigacion-inicial.md): reporte con la viabilidad, las fórmulas para
   re-ponderar genéricos, la arquitectura local-first, la hoja de ruta (MVP → plugin para Claude/ChatGPT → capa de pago
   opcional), los precedentes en México y el mundo, las ideas de nombre, el modelo de negocio y las líneas regulatorias.

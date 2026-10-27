@@ -1,5 +1,9 @@
-"""Línea de comandos: los datos (``actualizar``, ``actualizar-ciudades``, ``actualizar-banxico``,
-``verificar``) y tu inflación (``plantilla``, ``mi-inflacion``, ``entrevista``)."""
+"""Línea de comandos.
+
+- Datos: ``actualizar``, ``actualizar-ciudades``, ``actualizar-banxico`` y ``verificar``.
+- Tu inflación: ``plantilla``, ``mi-inflacion`` y ``entrevista``.
+- La web: ``web`` exporta sus datos.
+"""
 
 from __future__ import annotations
 
@@ -9,7 +13,7 @@ import sys
 from collections.abc import Sequence
 from pathlib import Path
 
-from . import banxico, ciudades, cuestionario, personal, reporte
+from . import banxico, ciudades, cuestionario, personal, reporte, web
 from . import datos as disco
 from .pipeline import ErrorValidacion, Reconstruccion, actualizar, verificar
 from .reconstruccion import Comparacion, error_maximo
@@ -122,6 +126,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     p_entrevista.add_argument(
         "--salida", type=Path, help="presupuesto a escribir (por omisión, junto a las respuestas)"
     )
+    p_web = subcomandos.add_parser(
+        "web", help="exporta los datos que usa la web estática (web/datos/) desde data/"
+    )
+    p_web.add_argument("--salida", type=Path, default=Path("web"), help="carpeta de la web")
     for subparser in (p_mi, p_entrevista):
         subparser.add_argument(
             "--detalle", action="store_true", help="agrega la comparación con el INPC y el desglose"
@@ -134,6 +142,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         p_plantilla,
         p_mi,
         p_entrevista,
+        p_web,
     ):
         subparser.add_argument(
             "--datos", type=Path, default=Path("data"), help="directorio de datos"
@@ -158,6 +167,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"  bolsillometro mi-inflacion {args.salida}")
         return 0
 
+    if args.comando == "web":
+        escritos = web.exportar(args.datos, args.salida)
+        print(
+            f"Datos de la web escritos en {args.salida / web.DIRECTORIO_DATOS}/ "
+            f"({len(escritos)} archivos)"
+        )
+        return 0
+
     if args.comando in ("mi-inflacion", "entrevista"):
         rubros = personal.cargar_rubros()
         try:
@@ -170,12 +187,19 @@ def main(argv: Sequence[str] | None = None) -> int:
                     if (args.datos / ciudades.DIRECTORIO).exists()
                     else None
                 )
+                nacional = disco.cargar(args.datos)
+                general_ciudad = None
+                if claves and respuestas.get("ciudad") in claves:
+                    general_ciudad = ciudades.cargar(args.datos).series[respuestas["ciudad"]][
+                        "general"
+                    ]
                 presupuesto = cuestionario.presupuesto_desde_respuestas(
                     respuestas,
                     cuestionario.cargar_cuestionario(),
                     rubros,
-                    disco.cargar(args.datos),
+                    nacional,
                     claves,
+                    cuestionario.mes_del_gasto(nacional, general_ciudad),
                 )
                 salida = args.salida or args.respuestas.with_suffix(".toml")
                 salida.write_text(personal.a_toml(presupuesto, rubros), "utf-8")

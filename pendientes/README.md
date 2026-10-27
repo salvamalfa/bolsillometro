@@ -17,7 +17,8 @@ Cuando se termina una fase, se borra su archivo (`fase-N.md`).
 
 ## Técnicos
 
-- [ ] **Fase 1, paso 6:** la web estática; ver [`fase-1.md`](fase-1.md).
+- [ ] **Cerrar la fase 1:** publicar la web y probarla con 20 a 50 personas; ver
+  [`fase-1.md`](fase-1.md).
 - [ ] **Primera actualización automática:** el INEGI publica la 2Q de octubre y el mensual de
   octubre hacia el 9-nov-2026. Confirmar que `actualizar-datos.yml` haga sus commits solos:
   `datos: INPC hasta 2026-10-2Q`, el de UDI y Cetes de Banxico y

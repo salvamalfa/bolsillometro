@@ -7,11 +7,10 @@ genéricos del INPC de su ciudad. Todavía no se conectan bancos.
 entiendan por qué su cifra difiere del INPC. Perfiles a cubrir: quien renta y quien es dueño,
 quien tiene auto y quien usa transporte público, escuela privada y pública.
 
-Va en 6 PRs; los pasos 1 a 5 ya están en [`CHANGELOG.md`](../CHANGELOG.md) y las decisiones
-de la fase, en [`docs/decisiones.md`](../docs/decisiones.md). Falta este:
+Los 6 pasos del plan ya están en [`CHANGELOG.md`](../CHANGELOG.md) y las decisiones de la fase,
+en [`docs/decisiones.md`](../docs/decisiones.md). Para cerrarla falta:
 
-## 6. Web estática
-
-Hace la misma entrevista (el cuestionario de `catalogos/cuestionario.toml`) y calcula en el
-navegador con los mismos datos; importa y exporta el mismo `presupuesto.toml`. No usa
-servidor y los datos no salen de la máquina.
+- [ ] **Publicar la web:** activar GitHub Pages (Settings → Pages → Source: GitHub Actions) y
+  correr el workflow "Publicar la web". Después se republica sola.
+- [ ] **Probar con 20 a 50 personas** de los perfiles de arriba, con la web o la entrevista, y
+  ver si entienden su cifra. Ajustar el cuestionario con lo que salga.

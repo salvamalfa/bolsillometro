@@ -28,6 +28,9 @@ reconstrucción del INPC nacional y la validación de las ciudades.
   Nunca se suben ni se pegan en un PR o issue.
 - **Datos:** `data/` no se edita a mano. Se regenera con `bolsillometro actualizar` y
   `bolsillometro actualizar-ciudades`, que validan antes de escribir.
+- **Web:** `web/datos/` tampoco se edita a mano: si cambian `data/`, los rubros o el
+  cuestionario, corre `bolsillometro web` (lo revisa `tests/test_web.py`). Si cambias el cálculo
+  en Python, cambia igual `web/calculo.js`: las pruebas comparan ambos.
 - **Commits y PRs:** un PR por paso, fusionado con squash. El título empieza con su área:
   `fase 1: …`, `docs: …` o `datos: …` (este último lo usa solo el workflow).
 

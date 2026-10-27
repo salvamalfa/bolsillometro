@@ -8,6 +8,11 @@ de datos (`datos: INPC hasta …`) no se anotan aquí; están en el historial de
 
 ### Fase 1: MVP (en curso)
 
+- **La web** (#11): `web/index.html` hace la misma entrevista con botones de rango, una pregunta
+  por pantalla, y muestra una sola cifra, lo que la subió y si los Cetes le ganaron. Calcula en
+  el navegador con `web/calculo.js`, que da lo mismo que Python (±1e-9) en cinco perfiles; los
+  datos (`web/datos/`, ~2 MB, una ciudad por archivo) los exporta `bolsillometro web` y el
+  workflow los regenera con cada actualización. Workflow para publicar en GitHub Pages.
 - **Ajustes tras la primera entrevista** (#10): la primera entrevista real (el dueño del
   proyecto, 27-oct-2026) salió bien con preguntas de opción por rango, así que el cuestionario
   ahora trae `[escalas]` estándar (a lo más 4 opciones, con un valor representativo cada una)

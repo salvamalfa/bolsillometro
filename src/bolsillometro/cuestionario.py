@@ -10,7 +10,8 @@ y ``presupuesto_desde_respuestas`` las convierte en un ``Presupuesto``:
 - Las preguntas cuya condición ``si`` no se cumple no cuentan, aunque traigan respuesta.
 - Una respuesta puede ser el texto de una opción de su ``escala`` ("$300 a $700"); se usa el
   valor que la escala le da. "No sé" en un aumento se omite.
-- El mes del gasto es el último con datos: las respuestas describen un mes típico de hoy.
+- El mes del gasto es el último con datos (de tu ciudad, si eliges una): las respuestas
+  describen un mes típico de hoy.
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .datos import COLUMNA_GENERAL, DatosINPC
+from .periodos import Periodo
 from .personal import NACIONAL, ErrorPresupuesto, Presupuesto, Rubro, gasto_oficial_por_rubro
 
 CUESTIONARIO = Path(__file__).parent / "catalogos" / "cuestionario.toml"
@@ -114,20 +116,39 @@ def _monto_mensual(valor: object, cada: str) -> float:
     return float(valor) / MESES_POR[cada]
 
 
+def _ultimo(serie: Mapping[Periodo, float | None]) -> Periodo:
+    return max(p for p, v in serie.items() if v is not None)
+
+
+def mes_del_gasto(nacional: DatosINPC, general_ciudad: Mapping | None = None) -> Periodo:
+    """El último mes con datos nacionales y, si hay ciudad, también de la ciudad.
+
+    Entre la publicación del nacional y la de las ciudades, la ciudad va un mes atrás; así el
+    cálculo sigue funcionando con el mes anterior en lugar de fallar.
+    """
+    ultimo = _ultimo(nacional.mensual[COLUMNA_GENERAL])
+    return min(ultimo, _ultimo(general_ciudad)) if general_ciudad else ultimo
+
+
 def presupuesto_desde_respuestas(
     respuestas: Mapping[str, object],
     cuestionario: Cuestionario,
     rubros: Mapping[str, Rubro],
     nacional: DatosINPC,
     ciudades_validas: list[str] | None = None,
+    periodo: Periodo | None = None,
 ) -> Presupuesto:
-    """Convierte las respuestas del cuestionario en un presupuesto listo para ``calcular``."""
+    """Convierte las respuestas del cuestionario en un presupuesto listo para ``calcular``.
+
+    ``periodo`` es el mes del gasto; por omisión, el último con datos nacionales. Con una ciudad
+    conviene pasar ``mes_del_gasto``, por si la ciudad todavía no tiene ese mes.
+    """
     preguntas = cuestionario.por_id()
     desconocidas = sorted(set(respuestas) - set(preguntas))
     if desconocidas:
         raise ErrorPresupuesto(f"Respuestas a preguntas que no existen: {', '.join(desconocidas)}")
 
-    periodo = max(p for p, v in nacional.mensual[COLUMNA_GENERAL].items() if v is not None)
+    periodo = periodo or _ultimo(nacional.mensual[COLUMNA_GENERAL])
     oficial = gasto_oficial_por_rubro(rubros, nacional, periodo)
     ciudad = NACIONAL
     gasto: dict[str, float] = {}

@@ -9,7 +9,7 @@ Sirve para conocer tu costo de vida real y como benchmark de tus inversiones
 
 > Estado: fase 1 en curso. Ya están los datos nacionales y de las 55 ciudades, validados contra el INPC publicado,
 > y la UDI y los Cetes de Banxico, validados contra el INPC.
-> Ya calcula tu inflación personal desde la línea de comandos; lo que sigue está en [`pendientes/`](pendientes/README.md).
+> Ya calcula tu inflación personal en la web, con Claude o desde la línea de comandos; lo que sigue está en [`pendientes/`](pendientes/README.md).
 > Este repo antes era "Combis Zempoala"; ese proyecto se deprecó y su contenido sigue en el historial de git.
 
 ## La idea en una fórmula
@@ -31,7 +31,11 @@ con los tuyos, da tu inflación.
 
 ## Calcula tu inflación
 
-La forma fácil es **la entrevista**: en Claude Code, dentro de este repo, pide "hazme la
+**En la web:** abre [`web/index.html`](web/index.html) en tu navegador (o la página publicada en
+GitHub Pages). Contestas unas 25 preguntas con rangos y te da tu inflación de los últimos 12
+meses. Todo se calcula en tu navegador; tus respuestas no se envían a ningún lado.
+
+**Con Claude:** la entrevista conversada: en Claude Code, dentro de este repo, pide "hazme la
 entrevista" (skill [`entrevista`](.claude/skills/entrevista/SKILL.md)). Claude te hace las
 preguntas del [cuestionario estandarizado](src/bolsillometro/catalogos/cuestionario.toml) en
 lenguaje común (renta, súper, luz, gasolina, colegiaturas…), arma tu presupuesto y te da **una
@@ -87,6 +91,8 @@ los días de publicación del INPC y hace commit solo cuando hay datos nuevos.
 | `personal.py` | Tu inflación: presupuesto en TOML, catálogo de rubros (`catalogos/rubros.csv`) y cálculo con precios de tu ciudad o nacionales. |
 | `cuestionario.py` | Del cuestionario estandarizado (`catalogos/cuestionario.toml`) a un presupuesto: frecuencias, condiciones y reparto oficial entre rubros. |
 | `reporte.py` | El reporte en lenguaje claro: una cifra, qué la movió y si los Cetes le ganaron; `--detalle` para el resto. |
+| `web.py` | Exporta lo que necesita la web (`web/datos/`): los últimos 15 meses de precios, rubros, cuestionario y Cetes. |
+| `web/` | La web estática: la misma entrevista y el mismo cálculo en JavaScript (`calculo.js`), probado contra Python. |
 
 ## Documentos
 

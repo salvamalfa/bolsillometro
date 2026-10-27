@@ -20,7 +20,8 @@ from bolsillometro.personal import (
 )
 
 DATOS = Path(__file__).resolve().parents[1] / "data"
-ULTIMO = Periodo(2026, 9)
+# El último mes con datos: cambia con cada actualización, así que se lee de data/.
+ULTIMO = Periodo.desde_texto(disco.leer_metadatos(DATOS / "metadatos.json")["ultimo_mensual"])
 
 
 @pytest.fixture(scope="module")
@@ -163,6 +164,15 @@ def test_errores_de_respuestas(cuestionario, rubros, nacional, respuestas, mensa
         _convertir(respuestas, cuestionario, rubros, nacional)
 
 
+def test_mes_del_gasto_usa_el_ultimo_de_la_ciudad_si_va_atras(nacional):
+    from bolsillometro.cuestionario import mes_del_gasto
+
+    assert mes_del_gasto(nacional) == ULTIMO
+    general = {ULTIMO.anterior(1): 140.0, ULTIMO: None}
+    assert mes_del_gasto(nacional, general) == ULTIMO.anterior(1)
+    assert mes_del_gasto(nacional, {ULTIMO: 140.0}) == ULTIMO
+
+
 def test_ciudad_desconocida(cuestionario, rubros, nacional):
     with pytest.raises(ErrorPresupuesto, match="ciudad desconocida"):
         presupuesto_desde_respuestas(
@@ -188,12 +198,13 @@ def test_el_toml_se_lee_de_vuelta(cuestionario, rubros, nacional):
 
 def _resultado(rubros, nacional, ciudad="nacional"):
     gasto = {"super": 4000.0, "renta": 7000.0, "gasolina": 2000.0, "colegiaturas": 3000.0}
+    from bolsillometro.cuestionario import mes_del_gasto
     from bolsillometro.personal import Presupuesto
 
     por_ciudad = ciudades.cargar(DATOS) if ciudad != "nacional" else None
-    return calcular(
-        Presupuesto(ciudad, ULTIMO, "gasto_efectivo", gasto), rubros, nacional, por_ciudad
-    )
+    general = por_ciudad.series[ciudad]["general"] if por_ciudad else None
+    mes = mes_del_gasto(nacional, general)
+    return calcular(Presupuesto(ciudad, mes, "gasto_efectivo", gasto), rubros, nacional, por_ciudad)
 
 
 def test_el_reporte_empieza_con_una_sola_cifra(rubros, nacional):

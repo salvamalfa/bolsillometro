@@ -7,7 +7,8 @@ los índices de los 292 genéricos del INPC re-ponderados con su propio gasto.
 Sirve para conocer tu costo de vida real y como benchmark de tus inversiones
 (rendimiento real contra *tu* inflación, no contra la de un hogar promedio).
 
-> Estado: fase 1 en curso. Ya están los datos nacionales y de las 55 ciudades, validados contra el INPC publicado.
+> Estado: fase 1 en curso. Ya están los datos nacionales y de las 55 ciudades, validados contra el INPC publicado,
+> y la UDI y los Cetes de Banxico, validados contra el INPC.
 > Todavía no hay cálculo personal; lo que sigue está en [`pendientes/`](pendientes/README.md).
 > Este repo antes era "Combis Zempoala"; ese proyecto se deprecó y su contenido sigue en el historial de git.
 
@@ -42,6 +43,7 @@ pip install -e ".[dev]"
 python -m bolsillometro actualizar   # descarga, valida y escribe data/
 python -m bolsillometro verificar    # reconstruye el INPC con data/, sin red (--detalle para ver todo)
 python -m bolsillometro actualizar-ciudades   # 55 ciudades, ~10 min; valida contra el nacional
+python -m bolsillometro actualizar-banxico    # UDI y Cetes; valida la UDI contra el INPC
 pytest                               # pruebas, incluida la reconstrucción con los datos reales
 ```
 
@@ -60,6 +62,8 @@ los días de publicación del INPC y hace commit solo cuando hay datos nuevos.
 | `reconstruccion.py` | Reconstruye el INPC con los ponderadores oficiales y lo compara con el publicado. |
 | `pipeline.py` | Descarga, valida y escribe `data/`. |
 | `ciudades.py` | INPC por ciudad (55 ciudades × 292 genéricos, mensual): descarga, validación contra el nacional y `data/ciudades/`. |
+| `banxico.py` | UDI y Cetes a 28 días del SIE de Banxico: descarga, validación de la UDI contra el INPC y rendimientos de fin de mes a fin de mes. |
+| `red.py` | Cliente HTTP con reintentos, común al INEGI y a Banxico. |
 
 ## Documentos
 

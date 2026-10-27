@@ -43,6 +43,27 @@ jobs:
           git commit -m "datos: INPC hasta $ultimo (Fuente: INEGI)"
           git push
 
+      # UDI y Cetes de Banxico: dos peticiones chicas, así que corren siempre. La UDI se valida
+      # contra el INPC que acaba de quedar en data/. Van en su propio commit.
+      - name: Descargar, validar y escribir data/banxico/
+        run: python -m bolsillometro actualizar-banxico --datos data
+
+      - name: Pruebas con los datos de Banxico
+        run: pytest
+
+      - name: Commit si hay datos nuevos de Banxico
+        run: |
+          if [ -z "$(git status --porcelain -- data/banxico)" ]; then
+            echo "Sin datos nuevos de Banxico."
+            exit 0
+          fi
+          ultima=$(python -c "import json; print(json.load(open('data/banxico/metadatos.json'))['ultima_udi'])")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/banxico
+          git commit -m "datos: UDI y Cetes de Banxico, UDI hasta $ultima"
+          git push
+
       # Las ciudades tardan ~10 minutos (un árbol de ~63 MB y 55 exportaciones), así que solo
       # se bajan cuando el nacional trae un mes que data/ciudades todavía no tiene. Van en su
       # propio commit: si fallan, el nacional ya quedó guardado.

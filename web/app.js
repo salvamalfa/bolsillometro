@@ -142,6 +142,9 @@
       $("etiqueta-monto").textContent = p.tipo === "porcentaje" ? "Otro porcentaje" : "Otro monto exacto";
       $("cada").textContent = p.tipo === "porcentaje" ? "% al año" : p.cada === "año" ? "al año" : "al mes";
       $("monto").value = typeof respuestas[p.id] === "number" ? respuestas[p.id] : "";
+      // Un aumento puede ser negativo (la renta bajó); un monto no.
+      $("monto").min = p.tipo === "porcentaje" ? "-99" : "0";
+      $("monto").max = p.tipo === "porcentaje" ? "1000" : "";
     }
     $("atras").hidden = historial.length === 0;
     mostrar("pregunta");
@@ -260,7 +263,12 @@
   $("otro").addEventListener("submit", function (evento) {
     evento.preventDefault();
     var valor = Number($("monto").value);
-    if ($("monto").value === "" || !isFinite(valor) || valor < 0) return error("Escribe un número de 0 en adelante.");
+    var valido = $("monto").value !== "" && isFinite(valor);
+    if (preguntas[actual].tipo === "porcentaje") {
+      if (!valido || valor < -99 || valor > 1000) return error("Escribe un porcentaje entre -99 y 1000.");
+    } else if (!valido || valor < 0) {
+      return error("Escribe un número de 0 en adelante.");
+    }
     responder(valor);
   });
   $("descargar").addEventListener("click", descargar);

@@ -151,7 +151,7 @@ escala = "servicios"
 tipo = "monto"
 cada = "mes"
 rubros = ["luz"]
-texto = "¿Cuánto pagas de luz? Si tu recibo es bimestral, dime el monto y yo lo divido."
+texto = "¿Cuánto pagas de luz al mes? Si tu recibo es bimestral, toma la mitad."
 
 [[pregunta]]
 id = "agua"

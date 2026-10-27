@@ -134,9 +134,11 @@ def presupuesto_desde_respuestas(
     aumento: dict[str, float] = {}
     no_cubierto: dict[str, float] = {}
 
+    # En orden, y solo las que aplican según las anteriores: una respuesta guardada para una
+    # pregunta que ya no aplica (p. ej. gasolina tras decir que no hay auto) no se valida.
     resueltas = {}
     for pregunta in cuestionario.preguntas:
-        if pregunta.id in respuestas:
+        if pregunta.id in respuestas and aplica(pregunta, resueltas):
             valor = resolver(pregunta, respuestas[pregunta.id], cuestionario)
             if valor is not _OMITIDA:
                 resueltas[pregunta.id] = valor

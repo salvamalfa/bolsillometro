@@ -94,6 +94,12 @@ def test_las_respuestas_pueden_ser_opciones_de_la_escala(cuestionario, rubros, n
     assert _convertir(respuestas, cuestionario, rubros, nacional).aumento_propio == {"renta": 6}
 
 
+def test_una_respuesta_que_ya_no_aplica_no_se_valida(cuestionario, rubros, nacional):
+    respuestas = {"super": 1000, "auto": "no", "gasolina": "No sé"}
+    presupuesto = _convertir(respuestas, cuestionario, rubros, nacional)
+    assert "gasolina" not in presupuesto.gasto
+
+
 def test_aplica(cuestionario):
     preguntas = cuestionario.por_id()
     assert aplica(preguntas["gasolina"], {"auto": "si"})

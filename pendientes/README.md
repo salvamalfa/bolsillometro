@@ -20,8 +20,9 @@ Cuando se termina una fase, se borra su archivo (`fase-N.md`).
 - [ ] **Fase 1, pasos 5 y 6:** ver [`fase-1.md`](fase-1.md). Sigue el 5: el reporte (incidencias
   en lenguaje claro y rendimiento real contra Cetes y UDI).
 - [ ] **Primera actualización automática:** el INEGI publica la 2Q de octubre y el mensual de
-  octubre hacia el 9-nov-2026. Confirmar que `actualizar-datos.yml` haga dos commits solos: uno
-  `datos: INPC hasta 2026-10-2Q` y otro `datos: INPC por ciudad hasta 2026-10`.
+  octubre hacia el 9-nov-2026. Confirmar que `actualizar-datos.yml` haga sus commits solos:
+  `datos: INPC hasta 2026-10-2Q`, el de UDI y Cetes de Banxico y
+  `datos: INPC por ciudad hasta 2026-10`.
 
 ## No técnicos (antes del lanzamiento público)
 

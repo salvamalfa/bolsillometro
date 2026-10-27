@@ -7,12 +7,9 @@ documentada, por eso el pipeline valida todo lo que descarga antes de escribirlo
 
 from __future__ import annotations
 
-import time
 from collections.abc import Iterable
 
-import requests
-
-from . import __version__
+from .red import ClienteHTTP, ErrorFuente
 
 URL_APP = "https://www.inegi.org.mx/app/indicesdeprecios"
 URL_ARBOL = f"{URL_APP}/servicios/ArbolAjaxInteraccion.asmx/ObtieneNodos"
@@ -23,46 +20,13 @@ ESTRUCTURA_MENSUAL = "112001700030"  # INPC nacional (mensual), por objeto del g
 ESTRUCTURA_QUINCENAL = "112001600030"  # INPC nacional (quincenal), por objeto del gasto
 ESTRUCTURA_CIUDADES = "112001700060"  # INPC por ciudad (mensual): 55 ciudades × 292 genéricos
 
-ENCABEZADOS = {"User-Agent": f"bolsillometro/{__version__}"}
 
-
-class ErrorINEGI(RuntimeError):
+class ErrorINEGI(ErrorFuente):
     """El INEGI respondió algo distinto de lo esperado."""
 
 
-class ClienteINEGI:
-    def __init__(
-        self,
-        sesion: requests.Session | None = None,
-        timeout: float = 180,
-        reintentos: int = 3,
-        espera: float = 5,
-    ) -> None:
-        self.sesion = sesion or requests.Session()
-        self.sesion.headers.update(ENCABEZADOS)
-        self.timeout = timeout
-        self.reintentos = reintentos
-        self.espera = espera
-
-    def _pedir(
-        self, metodo: str, url: str, timeout: float | None = None, **kwargs
-    ) -> requests.Response:
-        for intento in range(1, self.reintentos + 1):
-            try:
-                respuesta = self.sesion.request(
-                    metodo, url, timeout=timeout or self.timeout, **kwargs
-                )
-                if respuesta.status_code < 500:
-                    respuesta.raise_for_status()
-                    return respuesta
-                error: Exception = ErrorINEGI(f"HTTP {respuesta.status_code} en {url}")
-            except (requests.ConnectionError, requests.Timeout) as excepcion:
-                error = excepcion
-            if intento < self.reintentos:
-                time.sleep(self.espera * intento)
-        raise ErrorINEGI(
-            f"Sin respuesta válida de {url} tras {self.reintentos} intentos"
-        ) from error
+class ClienteINEGI(ClienteHTTP):
+    Error = ErrorINEGI
 
     def obtener_arbol(self, estructura: str, timeout: float | None = None) -> dict:
         """Árbol de series de una estructura (ids, claves jerárquicas y títulos).

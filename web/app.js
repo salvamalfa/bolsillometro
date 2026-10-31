@@ -215,7 +215,7 @@
       }
       suben.appendChild(ul);
       var nota = document.createElement("p");
-      nota.className = "contador";
+      nota.className = "nota";
       nota.textContent = "“Aporta” son puntos de tu " + porcentaje(r.inflacion) + ".";
       suben.appendChild(nota);
     }

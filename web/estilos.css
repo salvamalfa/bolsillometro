@@ -367,6 +367,12 @@ footer a {
   color: var(--azul);
 }
 
+.nota {
+  margin: 12px 0 0;
+  color: var(--gris);
+  font-size: 12px;
+}
+
 @media (max-width: 480px) {
   h1 {
     font-size: 32px;

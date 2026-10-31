@@ -1,0 +1,43 @@
+name: Publicar la web
+
+# Publica web/ en GitHub Pages cuando cambia la web o se actualizan los datos.
+# Requiere activar Pages una vez: Settings → Pages → Source: GitHub Actions.
+on:
+  push:
+    branches: [main]
+    paths: ["web/**"]
+  workflow_run:
+    workflows: ["Actualizar datos del INEGI"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    # Sin Pages activado se salta (en vez de fallar); a mano siempre se intenta.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.repository.has_pages &&
+       (github.event_name == 'push' || github.event.workflow_run.conclusion == 'success'))
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: despliegue
+        uses: actions/deploy-pages@v4

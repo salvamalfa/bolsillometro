@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bolsímetro: tu inflación</title>
+    <meta name="description" content="Calcula tu propia inflación con tu gasto y los precios del INPC. Todo pasa en tu navegador." />
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <a href="https://formamx.com/bolsimetro/" aria-label="Bolsímetro, un proyecto de forma"><img src="forma.svg" alt="forma" width="86" height="24" /></a>
+    </header>
+    <main id="app" aria-live="polite">
+      <section id="inicio" class="pantalla">
+        <p class="marca">Bolsímetro</p>
+        <h1>¿Cuánto te sube la vida <em>a ti</em>?</h1>
+        <p>
+          La inflación oficial es la del hogar promedio. La tuya depende de en qué gastas: si
+          rentas, si tienes auto, si pagas colegiatura. Contesta unas 25 preguntas cortas, con
+          rangos aproximados, y te damos <strong>una cifra: tu inflación de los últimos 12 meses</strong>,
+          qué la subió y si tus ahorros le ganan.
+        </p>
+        <p class="privacidad">
+          Todo se calcula en tu navegador. Tus respuestas no se envían a ningún lado.
+        </p>
+        <button id="empezar" class="principal" type="button">Empezar</button>
+      </section>
+
+      <section id="pregunta" class="pantalla" hidden>
+        <div class="avance" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+          <div id="barra"></div>
+        </div>
+        <p id="contador" class="contador"></p>
+        <h2 id="texto"></h2>
+        <div id="opciones" class="opciones"></div>
+        <form id="otro" class="otro" hidden>
+          <label for="monto" id="etiqueta-monto">Otro monto</label>
+          <div class="fila">
+            <span aria-hidden="true">$</span>
+            <input id="monto" type="number" inputmode="decimal" min="0" step="any" placeholder="0" />
+            <span id="cada" class="cada"></span>
+            <button type="submit">Siguiente</button>
+          </div>
+        </form>
+        <button id="atras" class="secundario" type="button">← Atrás</button>
+      </section>
+
+      <section id="resultado" class="pantalla" hidden>
+        <p class="marca">Tu inflación</p>
+        <p id="cifra" class="cifra"></p>
+        <p id="periodo" class="periodo"></p>
+        <div id="suben" class="tarjeta"></div>
+        <div id="cetes" class="tarjeta"></div>
+        <div class="acciones">
+          <button id="descargar" class="secundario" type="button">Descargar mis respuestas</button>
+          <button id="otra-vez" class="secundario" type="button">Empezar de nuevo</button>
+        </div>
+      </section>
+
+      <p id="error" class="error" role="alert" hidden></p>
+    </main>
+    <footer>
+      <p id="fuente"></p>
+      <p>Referencia, no asesoría de inversiones. Código abierto:
+        <a href="https://github.com/salvamalfa/bolsillometro">github.com/salvamalfa/bolsillometro</a>.</p>
+    </footer>
+    <script src="datos/base.js"></script>
+    <script src="calculo.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

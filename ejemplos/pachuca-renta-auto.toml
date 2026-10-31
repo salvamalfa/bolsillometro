@@ -1,0 +1,31 @@
+# Ejemplo: hogar que renta en Pachuca, con auto e hijos en escuela privada.
+# Los montos son ilustrativos. Para el tuyo: bolsillometro plantilla mi-presupuesto.toml
+ciudad = "pachuca"
+periodo_gasto = "2026-09"
+vivienda_propia = "gasto_efectivo"
+
+[gasto]
+super = 3500
+carne = 1800
+lacteos = 900
+frutas_verduras = 1200
+restaurantes = 1500
+renta = 7500
+agua = 250
+luz = 450
+gas = 600
+celular = 400
+internet_tv = 550
+transporte_publico = 300
+gasolina = 2800
+auto_gastos = 900
+colegiaturas = 4500
+cuidado_personal = 700
+diversion = 600
+
+[aumento_propio]
+renta = 8.0
+
+[no_cubierto]
+hipoteca = 0  # la deuda no es consumo: nunca entra al índice
+seguro_gastos_medicos = 1800

@@ -1,0 +1,109 @@
+name: Actualizar datos del INEGI
+
+on:
+  schedule:
+    # El INEGI difunde el INPC hacia los días 9 y 24 a las 8:00 de la CDMX (14:00 UTC).
+    # La ventana cubre los corrimientos por fines de semana y días festivos.
+    - cron: "30 14 8-11,23-26 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actualizar-datos
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+
+      - name: Descargar, validar y escribir data/
+        # La web (web/datos/) se regenera en el mismo commit que los datos, para que siempre
+        # coincidan con data/ (lo revisa tests/test_web.py).
+        run: |
+          python -m bolsillometro actualizar --datos data
+          python -m bolsillometro web --datos data
+
+      - name: Pruebas con los datos nuevos
+        run: pytest
+
+      - name: Commit si hay datos nuevos
+        run: |
+          if [ -z "$(git status --porcelain -- data web/datos)" ]; then
+            echo "Sin datos nuevos."
+            exit 0
+          fi
+          ultimo=$(python -c "import json; print(json.load(open('data/metadatos.json'))['ultimo_quincenal'])")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data web/datos
+          git commit -m "datos: INPC hasta $ultimo (Fuente: INEGI)"
+          git push
+
+      # UDI y Cetes de Banxico: dos peticiones chicas, así que corren siempre. La UDI se valida
+      # contra el INPC que acaba de quedar en data/. Van en su propio commit.
+      - name: Descargar, validar y escribir data/banxico/
+        run: |
+          python -m bolsillometro actualizar-banxico --datos data
+          python -m bolsillometro web --datos data
+
+      - name: Pruebas con los datos de Banxico
+        run: pytest
+
+      - name: Commit si hay datos nuevos de Banxico
+        run: |
+          if [ -z "$(git status --porcelain -- data/banxico web/datos)" ]; then
+            echo "Sin datos nuevos de Banxico."
+            exit 0
+          fi
+          ultima=$(python -c "import json; print(json.load(open('data/banxico/metadatos.json'))['ultima_udi'])")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/banxico web/datos
+          git commit -m "datos: UDI y Cetes de Banxico, UDI hasta $ultima"
+          git push
+
+      # Las ciudades tardan ~10 minutos (un árbol de ~63 MB y 55 exportaciones), así que solo
+      # se bajan cuando el nacional trae un mes que data/ciudades todavía no tiene. Van en su
+      # propio commit: si fallan, el nacional ya quedó guardado.
+      - name: ¿Faltan meses por ciudad?
+        id: ciudades
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, pathlib
+          nacional = json.load(open("data/metadatos.json"))["ultimo_mensual"]
+          ruta = pathlib.Path("data/ciudades/metadatos.json")
+          ciudades = json.load(ruta.open())["ultimo_mensual"] if ruta.exists() else ""
+          print(f"pendiente={'si' if ciudades != nacional else 'no'}")
+          PY
+
+      - name: Descargar, validar y escribir data/ciudades/
+        if: steps.ciudades.outputs.pendiente == 'si'
+        run: |
+          python -m bolsillometro actualizar-ciudades --datos data
+          python -m bolsillometro web --datos data
+
+      - name: Pruebas con los datos por ciudad
+        if: steps.ciudades.outputs.pendiente == 'si'
+        run: pytest
+
+      - name: Commit si hay datos nuevos por ciudad
+        if: steps.ciudades.outputs.pendiente == 'si'
+        run: |
+          if [ -z "$(git status --porcelain -- data/ciudades web/datos)" ]; then
+            echo "Sin datos nuevos por ciudad."
+            exit 0
+          fi
+          ultimo=$(python -c "import json; print(json.load(open('data/ciudades/metadatos.json'))['ultimo_mensual'])")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ciudades web/datos
+          git commit -m "datos: INPC por ciudad hasta $ultimo (Fuente: INEGI)"
+          git push

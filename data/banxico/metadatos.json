@@ -1,0 +1,18 @@
+{
+  "deslinde": "Cálculos propios con datos de Banxico y del INPC. No es un producto oficial del INEGI ni de Banco de México.",
+  "fuente": "Banco de México, Sistema de Información Económica (SIE)",
+  "origen": "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarSeries",
+  "series": {
+    "cetes28": "SF43936",
+    "udi": "SP68257"
+  },
+  "udi_contra_inpc": {
+    "dias_revisados": 3195,
+    "error_maximo": 1.48e-07,
+    "error_maximo_diario": 1.58e-07,
+    "tolerancia": 1e-06,
+    "tramos": 210
+  },
+  "ultima_subasta_cetes28": "2026-10-22",
+  "ultima_udi": "2026-11-10"
+}

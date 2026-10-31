@@ -160,7 +160,7 @@ INEGI publica los índices de los 292 genéricos (nacional, quincenal y mensual)
 - INEGI también publica el Índice de Precios de la Canasta de Consumo Mínimo (subconjunto de 170 genéricos tras las fusiones; antes 176), definido con Coneval. — [INEGI, Documento metodológico INPC 2024, §10.2](https://www.inegi.org.mx/contenidos/productos/prod_serv/contenidos/espanol/bvinegi/productos/nueva_estruc/889463918639.pdf); [Boletín 633/26](https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/inpc/inpc_1q2026_10.pdf)
 
 ### Inferences
-- Para un usuario de Zempoala, Hidalgo, la ciudad del INPC más cercana es **Pachuca**: es una de las 55 áreas y tiene sus 292 genéricos publicados. Tulancingo, también en Hidalgo, es otra área.
+- Para un usuario de un municipio de Hidalgo que no es área del INPC, la ciudad del INPC más cercana es **Pachuca**: es una de las 55 áreas y tiene sus 292 genéricos publicados. Tulancingo, también en Hidalgo, es otra área.
 - Para re-ponderar con gasto propio, el ponderador oficial importa poco, porque uno pone su propio peso. Sí sirve como referencia ("mi canasta vs la del hogar promedio") y para verificar la agregación.
 - La falta de una matriz ciudad × genérico pública impide reconstruir exactamente el INPC de Pachuca. Pero si se usan índices de Pachuca por genérico con pesos personales, esa matriz no hace falta.
 

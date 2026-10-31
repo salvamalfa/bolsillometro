@@ -44,4 +44,3 @@ Cuando se termina una fase, se borra su archivo (`fase-N.md`).
 - [ ] Borrar las ramas ya fusionadas con squash: `claude/inflacion-personal` (#2),
   `claude/fase-1-motor` (#4) y `claude/fase-1-ciudades` (#5). Conservan los commits
   originales, pero el contenido ya está en `main`.
-- [ ] Borrar la rama `claude/zempoala-combi-app-gxbqvi`, que es del proyecto de combis.

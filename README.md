@@ -10,7 +10,6 @@ Sirve para conocer tu costo de vida real y como benchmark de tus inversiones
 > Estado: fase 1 en curso. Ya están los datos nacionales y de las 55 ciudades, validados contra el INPC publicado,
 > y la UDI y los Cetes de Banxico, validados contra el INPC.
 > Ya calcula tu inflación personal en la web, con Claude o desde la línea de comandos; lo que sigue está en [`pendientes/`](pendientes/README.md).
-> Este repo antes era "Combis Zempoala"; ese proyecto se deprecó y su contenido sigue en el historial de git.
 
 ## La idea en una fórmula
 

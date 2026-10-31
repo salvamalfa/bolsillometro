@@ -43,13 +43,9 @@ de datos (`datos: INPC hasta …`) no se anotan aquí; están en el historial de
 ## 0.1.0: fase 0, datos y motor (26-oct-2026)
 
 - **Pendientes al cierre de la fase 0** (#3).
-- **Bolsillómetro sustituye al proyecto de combis Zempoala** (#2):
+- **Inicio del Bolsímetro** (#2):
   - Investigación de viabilidad y notas con fuentes en `docs/`.
   - Pipeline que descarga del INEGI los 292 genéricos nacionales (mensual y quincenal desde
     2018) y los ponderadores 2024, y valida que el INPC se reconstruya con ±0.001.
   - Motor Laspeyres/Lowe, CLI `actualizar` y `verificar`, y workflows de pruebas y de
     actualización automática.
-
-## Anterior: combis Zempoala (deprecado)
-
-- Investigación inicial del proyecto de combis (#1). Su contenido sigue en el historial de git.

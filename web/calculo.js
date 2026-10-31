@@ -1,5 +1,5 @@
 /*
- * Bolsillómetro: el mismo cálculo que el CLI (cuestionario.py, personal.py, banxico.py),
+ * Bolsímetro: el mismo cálculo que el CLI (cuestionario.py, personal.py, banxico.py),
  * en el navegador. Las pruebas de tests/test_web.py lo corren en Node y lo comparan contra
  * Python con los mismos datos.
  *

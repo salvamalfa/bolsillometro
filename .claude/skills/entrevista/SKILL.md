@@ -1,9 +1,9 @@
 ---
 name: entrevista
-description: Entrevista a una persona con el cuestionario estandarizado de Bolsillómetro, arma su presupuesto y le da su inflación personal. Úsalo cuando alguien quiera saber su inflación, "hacer la entrevista" o capturar su gasto.
+description: Entrevista a una persona con el cuestionario estandarizado de Bolsímetro, arma su presupuesto y le da su inflación personal. Úsalo cuando alguien quiera saber su inflación, "hacer la entrevista" o capturar su gasto.
 ---
 
-# Entrevista de Bolsillómetro
+# Entrevista de Bolsímetro
 
 **Objetivo:** que la persona obtenga **una cifra, su inflación personal**, sin llenar archivos.
 Tú haces las preguntas, armas el presupuesto y corres el cálculo.

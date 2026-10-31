@@ -173,7 +173,7 @@ def rubros_que_cuentan(presupuesto: Presupuesto) -> list[str]:
 def plantilla(rubros: Mapping[str, Rubro], ciudades: list[str] | None = None) -> str:
     """Texto de un ``presupuesto.toml`` comentado, con todos los rubros en cero."""
     lineas = [
-        "# Bolsillómetro: tu presupuesto. Pon cuánto gastas AL MES en cada rubro, en pesos.",
+        "# Bolsímetro: tu presupuesto. Pon cuánto gastas AL MES en cada rubro, en pesos.",
         "# Deja en 0 lo que no gastas. Tus datos no salen de tu computadora.",
         "",
         '# Tu ciudad (la más cercana del INPC) o "nacional".',
@@ -222,7 +222,7 @@ def _numero_toml(valor: float) -> str:
 def a_toml(presupuesto: Presupuesto, rubros: Mapping[str, Rubro]) -> str:
     """Escribe un presupuesto como TOML legible, con el nombre de cada rubro en comentario."""
     lineas = [
-        "# Presupuesto de Bolsillómetro: pesos al mes por rubro.",
+        "# Presupuesto de Bolsímetro: pesos al mes por rubro.",
         "# Tus datos no salen de tu computadora; no subas este archivo a ningún lado.",
         f'ciudad = "{presupuesto.ciudad}"',
         f'periodo_gasto = "{presupuesto.periodo_gasto}"',

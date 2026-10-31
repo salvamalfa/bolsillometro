@@ -1,4 +1,4 @@
-# Cuestionario estandarizado para armar un presupuesto de Bolsillómetro.
+# Cuestionario estandarizado para armar un presupuesto de Bolsímetro.
 #
 # Lo usa quien entrevista (Claude, la web o una persona): las preguntas van en este orden y con
 # este texto. Las respuestas se guardan como JSON {id: valor} y `bolsillometro entrevista`

@@ -215,7 +215,7 @@
       }
       suben.appendChild(ul);
       var nota = document.createElement("p");
-      nota.className = "contador";
+      nota.className = "nota";
       nota.textContent = "“Aporta” son puntos de tu " + porcentaje(r.inflacion) + ".";
       suben.appendChild(nota);
     }
@@ -243,7 +243,7 @@
     var blob = new Blob([JSON.stringify(respuestas, null, 2) + "\n"], { type: "application/json" });
     var enlace = document.createElement("a");
     enlace.href = URL.createObjectURL(blob);
-    enlace.download = "mis-respuestas-bolsillometro.json";
+    enlace.download = "mis-respuestas-bolsimetro.json";
     document.body.appendChild(enlace);
     enlace.click();
     enlace.remove();

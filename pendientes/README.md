@@ -26,11 +26,12 @@ Cuando se termina una fase, se borra su archivo (`fase-N.md`).
 
 ## No técnicos (antes del lanzamiento público)
 
-- [ ] **Marca en el IMPI:** buscar "Bolsillómetro" en MARCia: marcas idénticas y fonéticamente
+- [ ] **Marca en el IMPI:** buscar "Bolsímetro" en MARCia: marcas idénticas y fonéticamente
   parecidas, en las clases 9, 35, 36 y 42. Conviene que un agente de propiedad industrial
   confirme las clases antes de presentar la solicitud.
-- [ ] **Dominios:** registrar juntos `bolsillometro.com`, `.mx` y `.app`. El 26-oct-2026 los
-  tres se veían libres, pero eso era solo una señal, no una garantía.
+- [ ] **Dominios:** el nombre pasó a Bolsímetro el 31-oct-2026. Ese día `bolsimetro.com` ya
+  estaba registrado por alguien más y `bolsimetro.app` se veía libre (solo una señal, no una
+  garantía). Por ahora la web vive en formamx.com/bolsimetro/calcula.
 - [ ] **Abogado mexicano:** confirmar tres puntos:
   - Que mostrar "tu inflación como benchmark" no cruza a asesoría de inversiones (LMV art. 225).
   - Qué exige la LFPDPPP 2025 si algún día se guardan datos de usuarios.

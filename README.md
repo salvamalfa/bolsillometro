@@ -1,4 +1,4 @@
-# Bolsillómetro
+# Bolsímetro
 
 **Tu inflación personal con datos del INPC (Fuente: INEGI).**
 
